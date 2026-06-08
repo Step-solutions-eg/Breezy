@@ -38,7 +38,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url(/images/hero-interior.png)",
+            backgroundImage: "url(/images/hero-interior.jpeg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -64,11 +64,11 @@ export default function HeroSection() {
               lineHeight: "1.2em",
             }}
           >
-            Designing interiors that balance clarity,
+            A hidden sanctuary in the heart of Siwa Oasis,
             <br />
-            comfort, and elegance, transforming everyday
+            where desert silence meets unparalleled luxury
             <br />
-            spaces into considered living environments.
+            and timeless Egyptian hospitality.
           </p>
 
           <MagneticWrapper>
@@ -108,7 +108,7 @@ export default function HeroSection() {
                 </svg>
               </span>
               <span className="whitespace-nowrap text-base font-medium leading-none">
-                Get In Touch
+                Book Your Stay
               </span>
             </Link>
           </MagneticWrapper>

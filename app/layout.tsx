@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BreezyIsland — Interior Design",
+  title: "Breezy Island — Siwa Oasis Retreat",
   description:
-    "Designing interiors that balance clarity, comfort, and elegance, transforming everyday spaces into considered living environments.",
+    "A hidden sanctuary in the heart of Siwa Oasis, where desert silence meets unparalleled luxury and timeless Egyptian hospitality.",
   keywords:
-    "interior design, BreezyIsland, luxury interiors, residential design",
+    "Breezy Island, Siwa Oasis, Egypt hotel, desert retreat, luxury resort Siwa",
   openGraph: {
-    title: "BreezyIsland — Interior Design",
+    title: "Breezy Island — Siwa Oasis Retreat",
     description:
-      "Transforming everyday spaces into considered living environments.",
+      "A hidden sanctuary in Siwa where desert silence meets unparalleled luxury.",
     type: "website",
   },
 };

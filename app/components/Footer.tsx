@@ -11,9 +11,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const pageLinks = [
   { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Articles", href: "#articles" },
+  { label: "Our Story", href: "#about" },
+  { label: "Retreats", href: "#projects" },
+  { label: "Experiences", href: "#services" },
   { label: "Contact Us", href: "#contact" },
 ];
 
@@ -55,15 +55,15 @@ export default function Footer() {
           >
             Begin Your
             <br />
-            <span className="italic">Design</span> Journey
+            <span className="italic">Journey</span> to Siwa
           </h2>
 
           <p
             data-footer-item
             className="mt-12 max-w-[545px] text-2xl font-medium leading-[1.18] text-text-tertiary"
           >
-            Get in touch to discuss your project and explore how our design
-            approach can bring your vision to life.
+            Ready to escape? Reach out and let us help you plan your perfect
+            stay at Breezy Island.
           </p>
 
           <form
@@ -76,7 +76,7 @@ export default function Footer() {
             <motion.input
               id="footer-email"
               type="email"
-              placeholder="jane@framer.com"
+              placeholder="your@email.com"
               whileFocus={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 400, damping: 26 }}
               className="h-14 min-w-0 flex-1 rounded-[7px] border border-dashed border-white/30 bg-transparent px-4 text-xl font-medium text-white outline-none placeholder:text-text-tertiary focus:border-solid"
@@ -109,7 +109,7 @@ export default function Footer() {
           data-footer-item
           className="grid grid-cols-1 gap-10 pt-1 sm:grid-cols-3"
         >
-          <FooterColumn title="Pages" links={pageLinks} />
+          <FooterColumn title="Navigate" links={pageLinks} />
           <FooterColumn
             title="Legals"
             links={[
@@ -121,7 +121,7 @@ export default function Footer() {
             title="Social"
             links={[
               { label: "Instagram", href: "#" },
-              { label: "X", href: "#" },
+              { label: "Facebook", href: "#" },
             ]}
           />
         </div>

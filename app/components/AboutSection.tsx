@@ -11,27 +11,27 @@ gsap.registerPlugin(ScrollTrigger);
 const stats = [
   {
     value: 10,
-    suffix: " +",
+    suffix: "",
     description:
-      "Years of experience delivering thoughtful interior design solutions with clarity, precision, and long-term value.",
+      "Years of Siwan hospitality rooted in tradition and authentic desert warmth.",
   },
   {
-    value: 30,
-    suffix: " +",
+    value: 5,
+    suffix: "",
     description:
-      "Trusted partners supporting precise execution and high-quality interior outcomes.",
+      "Acres of pristine oasis sanctuary surrounded by endless palm groves.",
   },
   {
-    value: 120,
-    suffix: " +",
+    value: 50,
+    suffix: "+",
     description:
-      "Completed projects shaped by careful planning, refined execution, and a clear design vision.",
+      "Luxury rooms and private villas crafted for peace and total relaxation.",
   },
   {
-    value: 95,
-    suffix: " %",
+    value: 100,
+    suffix: "%",
     description:
-      "Client satisfaction built through trust, collaboration, and consistent design quality.",
+      "Tranquility guaranteed. Every guest leaves with a renewed sense of self.",
   },
 ];
 
@@ -124,7 +124,7 @@ export default function AboutSection() {
               <path d="M3 7.5h8.4M8.2 4.2l3.3 3.3-3.3 3.3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </motion.svg>
           </span>
-          <span className="text-base font-normal leading-none">About Us</span>
+          <span className="text-base font-normal leading-none">Our Story</span>
         </motion.div>
 
         <div ref={headingRef} className="grid grid-cols-1 gap-12 lg:grid-cols-[0.49fr_0.51fr] lg:items-start">
@@ -134,18 +134,18 @@ export default function AboutSection() {
               fontFamily: '"SF Mono", monospace',
             }}
           >
-            Shaping Refined
+            A Hidden Sanctuary
             <br />
-            Spaces Through
+            in the Heart
             <br />
-            Considered Design
+            of Siwa
           </h2>
 
           <p className="max-w-[850px] pt-8 text-[clamp(27px,1.62vw,32px)] font-normal leading-[1.22] tracking-normal">
-            Through a thoughtful and collaborative process, we translate design
-            concepts into environments that respond to both the space and the
-            people who inhabit it, delivering interiors that are calm, enduring,
-            and carefully composed.
+            Nestled among ancient palm groves and golden dunes, Breezy Island
+            offers a rare escape where timeless Egyptian hospitality meets
+            understated luxury. Every detail is designed to help you disconnect,
+            unwind, and rediscover the rhythm of a slower life.
           </p>
         </div>
 

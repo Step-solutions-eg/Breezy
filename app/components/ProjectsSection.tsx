@@ -14,33 +14,33 @@ import MagneticWrapper from "./MagneticWrapper";
 const projects = [
   {
     id: "01",
-    name: "Stonehaven Residence",
-    category: "Private Residential Interior",
-    bedrooms: 3,
-    bathrooms: 3,
-    size: "2,450",
-    image: "/images/project-stonehaven.png",
-    thumbnail: "/images/project-stonehaven.png",
+    name: "Palm Courtyard Suite",
+    category: "Private Garden Suite",
+    bedrooms: 2,
+    bathrooms: 2,
+    size: "1,200",
+    image: "/images/project-stonehaven.jpeg",
+    thumbnail: "/images/project-stonehaven.jpeg",
   },
   {
     id: "02",
-    name: "Cedarwood Penthouse",
-    category: "Penthouse Interior",
-    bedrooms: 4,
-    bathrooms: 4,
-    size: "3,800",
-    image: "/images/project-stonehaven.png",
-    thumbnail: "/images/project-stonehaven.png",
+    name: "Desert Vista Villa",
+    category: "Panoramic Villa with Pool",
+    bedrooms: 3,
+    bathrooms: 3,
+    size: "2,400",
+    image: "/images/project-stonehaven.jpeg",
+    thumbnail: "/images/project-stonehaven.jpeg",
   },
   {
     id: "03",
-    name: "The Aldine Apartment",
-    category: "Urban Residential",
-    bedrooms: 2,
-    bathrooms: 2,
-    size: "1,650",
-    image: "/images/project-stonehaven.png",
-    thumbnail: "/images/project-stonehaven.png",
+    name: "Oasis Hideaway Room",
+    category: "Garden View Retreat",
+    bedrooms: 1,
+    bathrooms: 1,
+    size: "550",
+    image: "/images/project-stonehaven.jpeg",
+    thumbnail: "/images/project-stonehaven.jpeg",
   },
 ];
 
@@ -56,103 +56,110 @@ export default function ProjectsSection() {
 
   const project = projects[current];
 
-  useGSAP(() => {
-    const mm = gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.to(imageRef.current, {
-        scale: 1.1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.to(imageRef.current, {
+          scale: 1.1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
 
-      gsap.from("[data-project-label]", {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      gsap.from("[data-project-title]", {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      gsap.from("[data-project-stat]", {
-        opacity: 0,
-        y: 30,
-        stagger: 0.12,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "[data-project-stats]",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      gsap.from("[data-project-cta]", {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        delay: 0.3,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "[data-project-stats]",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      gsap.from("[data-project-card]", {
-        opacity: 0,
-        x: 30,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "[data-project-card]",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      const statTargets = gsap.utils.toArray<HTMLElement>("[data-stat-project-value]");
-      statTargets.forEach((el) => {
-        const target = parseFloat(el.dataset.statProjectTarget || "0");
-        const formatted = el.dataset.statProjectFormatted === "true";
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: target,
-          duration: 2,
+        gsap.from("[data-project-label]", {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: el.parentElement,
+            trigger: contentRef.current,
             start: "top 85%",
             toggleActions: "play none none none",
           },
-          onUpdate: () => {
-            el.textContent = formatted ? Math.round(obj.val).toLocaleString() : Math.round(obj.val).toString();
+        });
+
+        gsap.from("[data-project-title]", {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
           },
         });
+
+        gsap.from("[data-project-stat]", {
+          opacity: 0,
+          y: 30,
+          stagger: 0.12,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "[data-project-stats]",
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        gsap.from("[data-project-cta]", {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          delay: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "[data-project-stats]",
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        gsap.from("[data-project-card]", {
+          opacity: 0,
+          x: 30,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "[data-project-card]",
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        const statTargets = gsap.utils.toArray<HTMLElement>(
+          "[data-stat-project-value]",
+        );
+        statTargets.forEach((el) => {
+          const target = parseFloat(el.dataset.statProjectTarget || "0");
+          const formatted = el.dataset.statProjectFormatted === "true";
+          const obj = { val: 0 };
+          gsap.to(obj, {
+            val: target,
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: el.parentElement,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+            onUpdate: () => {
+              el.textContent = formatted
+                ? Math.round(obj.val).toLocaleString()
+                : Math.round(obj.val).toString();
+            },
+          });
+        });
       });
-    });
-  }, { scope: sectionRef, dependencies: [current] });
+    },
+    { scope: sectionRef, dependencies: [current] },
+  );
 
   return (
     <section
@@ -173,9 +180,15 @@ export default function ProjectsSection() {
         <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[rgba(8,7,6,0.42)] to-transparent" />
       </div>
 
-      <div ref={contentRef} className="relative z-10 h-full px-[30px] py-[31px]">
-        <span data-project-label className="absolute left-[30px] top-9 text-base font-medium leading-none tracking-normal">
-          Featured Projects
+      <div
+        ref={contentRef}
+        className="relative z-10 h-full px-[30px] py-[31px]"
+      >
+        <span
+          data-project-label
+          className="absolute left-[30px] top-9 text-base font-medium leading-none tracking-normal"
+        >
+          Our Retreats
         </span>
 
         <motion.div
@@ -204,14 +217,51 @@ export default function ProjectsSection() {
         </motion.div>
 
         <div className="absolute left-[30px] top-[31.4%] w-[min(780px,calc(100vw-60px))]">
-          <h2 data-project-title className="mb-[38px] max-w-[650px] text-[clamp(72px,5.25vw,100px)] font-bold leading-[0.94] tracking-normal">
+          <h2
+            data-project-title
+            className="mb-[38px] max-w-[650px] text-[clamp(72px,5.25vw,100px)] font-bold leading-[0.94] tracking-normal"
+          >
             {project.name}
           </h2>
 
-          <div data-project-stats className="mb-[58px] grid max-w-[780px] grid-cols-3 gap-10 md:gap-[42px]">
-            <motion.div data-project-stat whileHover={{ y: -4, scale: 1.01 }} transition={{ type: "spring", stiffness: 400, damping: 26 }}><ProjectStat index={0} value={project.bedrooms} label="Bedrooms" /></motion.div>
-            <motion.div data-project-stat whileHover={{ y: -4, scale: 1.01 }} transition={{ type: "spring", stiffness: 400, damping: 26 }}><ProjectStat index={1} value={project.bathrooms} label="Bathrooms" /></motion.div>
-            <motion.div data-project-stat whileHover={{ y: -4, scale: 1.01 }} transition={{ type: "spring", stiffness: 400, damping: 26 }}><ProjectStat index={2} value={parseInt(project.size.replace(/,/g, ""))} label="Size" formatted /></motion.div>
+          <div
+            data-project-stats
+            className="mb-[58px] grid max-w-[780px] grid-cols-3 gap-10 md:gap-[42px]"
+          >
+            <motion.div
+              data-project-stat
+              whileHover={{ y: -4, scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 400, damping: 26 }}
+            >
+              <ProjectStat
+                index={0}
+                value={project.bedrooms}
+                label="Guests"
+              />
+            </motion.div>
+            <motion.div
+              data-project-stat
+              whileHover={{ y: -4, scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 400, damping: 26 }}
+            >
+              <ProjectStat
+                index={1}
+                value={project.bathrooms}
+                label="Bathrooms"
+              />
+            </motion.div>
+            <motion.div
+              data-project-stat
+              whileHover={{ y: -4, scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 400, damping: 26 }}
+            >
+              <ProjectStat
+                index={2}
+                value={parseInt(project.size.replace(/,/g, ""))}
+                label="Sq Ft"
+                formatted
+              />
+            </motion.div>
           </div>
 
           <div data-project-cta>
@@ -251,7 +301,7 @@ export default function ProjectsSection() {
                     />
                   </svg>
                 </span>
-                See Project
+                View Room
               </Link>
             </MagneticWrapper>
           </div>

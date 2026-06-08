@@ -12,34 +12,34 @@ import MagneticWrapper from "./MagneticWrapper";
 
 const faqs = [
   {
-    question: "What services do you offer?",
+    question: "How do I get to Breezy Island?",
     answer:
-      "We provide full-service interior support including spatial planning, concept development, material direction, project coordination, styling, and final layering.",
+      "Siwa Oasis is approximately a 7-hour drive from Cairo or a 4-hour drive from Marsa Matrouh. We can arrange private transfers or help coordinate your journey from either city.",
   },
   {
-    question: "How do I get started?",
+    question: "What is the best time to visit Siwa?",
     answer:
-      "Start with a short consultation so we can understand the space, your priorities, timeline, and the level of support you need.",
+      "The ideal time is between October and April when temperatures are mild and pleasant. Winter months offer cool desert nights perfect for campfires and stargazing.",
   },
   {
-    question: "Do you work with international clients?",
+    question: "Do you offer airport transfers?",
     answer:
-      "Yes. We support remote and international clients through structured design presentations, digital approvals, and coordinated installation guidance.",
+      "Yes. We provide private airport transfers from Marsa Matrouh International Airport and can arrange pickup from Cairo or Alexandria upon request.",
   },
   {
-    question: "What areas do you specialize in?",
+    question: "What amenities are included in my stay?",
     answer:
-      "We specialize in residential interiors, refined living spaces, material-led renovations, and complete room-by-room design systems.",
+      "Every stay includes daily breakfast, complimentary Wi-Fi, access to our spa facilities, guided property tours, and 24-hour concierge service.",
   },
   {
-    question: "How long does it take to complete a project?",
+    question: "Is the hotel suitable for families?",
     answer:
-      "Timelines vary by scope. A focused room can move quickly, while full interiors require a more considered planning, sourcing, and execution process.",
+      "Absolutely. We offer family-friendly suites, children's activities, and can arrange private excursions suitable for all ages.",
   },
   {
-    question: "Do you offer investment consulting?",
+    question: "What dining options are available?",
     answer:
-      "We offer design-focused guidance for owners preparing properties for long-term value, rental appeal, or resale presentation.",
+      "Our restaurant serves authentic Siwan cuisine made from locally sourced ingredients. We also offer private dining experiences, cooking classes, and sunset dinners in the dunes.",
   },
 ];
 
@@ -139,8 +139,8 @@ export default function FaqSection() {
           </h2>
 
           <p data-faq-text className="mt-20 max-w-[760px] text-[22px] font-medium leading-[1.2] text-text-secondary">
-            Helpful information designed to guide you through our services and
-            design approach.
+            Everything you need to know about planning your perfect stay at
+            Breezy Island.
           </p>
 
           <div data-faq-cta>
@@ -180,7 +180,7 @@ export default function FaqSection() {
                   />
                 </svg>
               </span>
-              Learn More About Our Process
+               Contact Our Concierge
             </Link>
           </MagneticWrapper>
           </div>

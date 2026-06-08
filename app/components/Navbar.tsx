@@ -3,12 +3,13 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Articles", href: "#articles" },
+  { label: "About", href: "#about" },
+  { label: "Retreats", href: "#projects" },
+  { label: "Experiences", href: "#services" },
 ];
 
 export default function Navbar() {
@@ -45,19 +46,26 @@ export default function Navbar() {
       }`}
     >
       <nav className="relative mx-auto flex h-16 max-w-none items-start justify-between px-8 pt-5 pb-5">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 400, damping: 26 }}
-        >
-          <Link
-            href="/"
-            className={`select-none text-base font-black leading-[0.78] no-underline transition-colors duration-200 ${
-              isDark ? "text-white" : "text-text-primary"
+        <Link href="/" className="relative block h-16 w-16 shrink-0">
+          <Image
+            src="/images/Profile Picture White.jpg"
+            alt="Breezy Island"
+            fill
+            className={`object-cover transition-opacity duration-300 rounded-[1.2rem] ${
+              isDark ? "opacity-100" : "opacity-0"
             }`}
-          >
-            Breezy<span className="font-light italic" style={{ fontFamily: '"New York", serif' }}>Island</span>
-          </Link>
-        </motion.div>
+            priority
+          />
+          <Image
+            src="/images/Profile Picture Green.jpg"
+            alt="Breezy Island"
+            fill
+            className={`object-cover transition-opacity duration-300 rounded-[1.2rem] ${
+              isDark ? "opacity-0" : "opacity-100"
+            }`}
+            priority
+          />
+        </Link>
 
         <div className="absolute left-1/2 top-6 hidden -translate-x-1/2 items-center gap-5 md:flex">
           {navLinks.map((link) => (
@@ -88,12 +96,12 @@ export default function Navbar() {
         >
           <span className="relative block overflow-hidden">
             <span className="block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-full">
-              Contact Us
+              Book Now
             </span>
             <span className={`absolute inset-x-0 top-0 block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] translate-y-[1.2em] group-hover:translate-y-0 ${
               isDark ? "text-white/30" : "text-black/20"
             }`}>
-              Contact Us
+              Book Now
             </span>
           </span>
         </Link>

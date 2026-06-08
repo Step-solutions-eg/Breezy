@@ -1,16 +1,20 @@
 # Graph Report - breezy  (2026-06-08)
 
 ## Corpus Check
-- 33 files · ~70,166 words
+- 35 files · ~584,829 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 295 nodes · 282 edges · 31 communities (19 shown, 12 thin omitted)
+- 346 nodes · 330 edges · 32 communities (20 shown, 12 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.92)
 - Token cost: 0 input · 0 output
 
+## Graph Freshness
+- Built from commit: `ddfa9520`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
+
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_App Pages & Navigation|App Pages & Navigation]]
 - [[_COMMUNITY_Project Setup & Branding|Project Setup & Branding]]
 - [[_COMMUNITY_Next.js Documentation|Next.js Documentation]]
 - [[_COMMUNITY_Projects Showcase|Projects Showcase]]
@@ -38,37 +42,35 @@
 - [[_COMMUNITY_Community 28|Community 28]]
 - [[_COMMUNITY_Community 29|Community 29]]
 - [[_COMMUNITY_Community 31|Community 31]]
+- [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 34|Community 34]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
 2. `Framer Motion (Motion v12) — Full Reference` - 13 edges
 3. `GSAP ScrollTrigger — Full Reference` - 13 edges
 4. `Micro-Interaction System Implementation Plan` - 13 edges
-5. `Recipes with Copilot Prompts` - 11 edges
-6. `Mirell Studio — Interior Design Website` - 10 edges
-7. `Interaction Matrix` - 10 edges
-8. `GSAP & Framer Motion — Scroll Animations Skill` - 9 edges
-9. `Recipes with Copilot Prompts` - 9 edges
-10. `Micro-Interaction System — Mirell Studio` - 8 edges
+5. `BreezyIsland — Storytelling Narrative Redesign` - 13 edges
+6. `Recipes with Copilot Prompts` - 11 edges
+7. `Mirell Studio — Interior Design Website` - 10 edges
+8. `Interaction Matrix` - 10 edges
+9. `GSAP & Framer Motion — Scroll Animations Skill` - 9 edges
+10. `Recipes with Copilot Prompts` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `HeroSection()` --references--> `Hero Interior Living Space`  [EXTRACTED]
   app/components/HeroSection.tsx → public/hero-interior.png
 - `Stonehaven Residence Project Entry` --references--> `Stonehaven Residence Interior Photography`  [EXTRACTED]
-  app/components/ProjectsSection.tsx → public/project-stonehaven.png
+  app/components/ProjectsSection.tsx → public/project-stonehaven.jpeg
 - `Hero Interior Living Space` --conceptually_related_to--> `Stonehaven Residence Interior Photography`  [INFERRED]
-  public/hero-interior.png → public/project-stonehaven.png
+  public/hero-interior.png → public/project-stonehaven.jpeg
 - `Next.js Logo` --conceptually_related_to--> `Vercel Logo`  [INFERRED]
   public/next.svg → public/vercel.svg
 
 ## Import Cycles
 - None detected.
 
-## Communities (31 total, 12 thin omitted)
-
-### Community 0 - "App Pages & Navigation"
-Cohesion: 0.08
-Nodes (6): cardVariants, containerVariants, faqs, collaborators, projects, services
+## Communities (32 total, 12 thin omitted)
 
 ### Community 1 - "Project Setup & Branding"
 Cohesion: 0.17
@@ -87,8 +89,8 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+11 more)
 
 ### Community 11 - "TypeScript Env Types"
-Cohesion: 0.22
-Nodes (9): devDependencies, eslint, eslint-config-next, tailwindcss, @tailwindcss/postcss, @types/node, @types/react, @types/react-dom (+1 more)
+Cohesion: 0.05
+Nodes (40): Architecture, BreezyIsland — Storytelling Narrative Redesign, Changes from current, Changes from current, Changes from current, Changes from current, Changes from current, Changes from current (+32 more)
 
 ### Community 16 - "Community 16"
 Cohesion: 0.11
@@ -115,12 +117,12 @@ Cohesion: 0.15
 Nodes (12): computedHash, skillPath, source, sourceType, skills, gsap-framer-scroll-animation, web-design-guidelines, version (+4 more)
 
 ### Community 22 - "Community 22"
-Cohesion: 0.11
-Nodes (18): dependencies, ecc-universal, framer-motion, gsap, @gsap/react, lenis, locomotive-scroll, next (+10 more)
+Cohesion: 0.07
+Nodes (27): dependencies, ecc-universal, framer-motion, gsap, @gsap/react, lenis, locomotive-scroll, next (+19 more)
 
 ### Community 23 - "Community 23"
-Cohesion: 0.08
-Nodes (14): Home(), stats, articles, Footer(), footerLinks, pageLinks, HeroSection(), Navbar() (+6 more)
+Cohesion: 0.05
+Nodes (17): Home(), stats, articles, cardVariants, containerVariants, faqs, HeroSection(), Navbar() (+9 more)
 
 ### Community 24 - "Community 24"
 Cohesion: 0.40
@@ -130,8 +132,16 @@ Nodes (4): Guidelines Source, How It Works, Usage, Web Interface Guidelines
 Cohesion: 0.50
 Nodes (3): Deploy on Vercel, Getting Started, Learn More
 
+### Community 32 - "Community 32"
+Cohesion: 0.20
+Nodes (9): Storytelling Redesign Implementation Plan, Task 1: Hero — Chapter 1 (The Problem), Task 2: About — Chapter 2 (The Realization), Task 3: Approach (Services → Chapter 3 - The Process), Task 4: Projects — Chapter 4 (The Proof), Task 5: Articles — Chapter 5 (The Insights), Task 6: FAQ — Chapter 6 (The Doubts), Task 7: ProcessCta + Footer — Chapter 7 (The Invitation) (+1 more)
+
+### Community 34 - "Community 34"
+Cohesion: 0.29
+Nodes (3): Footer(), footerLinks, pageLinks
+
 ## Knowledge Gaps
-- **191 isolated node(s):** `$schema`, `plugin`, `@opencode-ai/plugin`, `containerVariants`, `cardVariants` (+186 more)
+- **231 isolated node(s):** `$schema`, `plugin`, `@opencode-ai/plugin`, `containerVariants`, `cardVariants` (+226 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -139,15 +149,15 @@ Nodes (3): Deploy on Vercel, Getting Started, Learn More
 _Questions this graph is uniquely positioned to answer:_
 
 - **What connects `$schema`, `plugin`, `@opencode-ai/plugin` to the rest of the system?**
-  _192 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `App Pages & Navigation` be split into smaller, more focused modules?**
-  _Cohesion score 0.0812807881773399 - nodes in this community are weakly interconnected._
+  _232 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Next.js Documentation` be split into smaller, more focused modules?**
   _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._
 - **Should `Projects Showcase` be split into smaller, more focused modules?**
   _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._
 - **Should `Hero Section` be split into smaller, more focused modules?**
   _Cohesion score 0.1 - nodes in this community are weakly interconnected._
+- **Should `TypeScript Env Types` be split into smaller, more focused modules?**
+  _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `Community 16` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Should `Community 17` be split into smaller, more focused modules?**

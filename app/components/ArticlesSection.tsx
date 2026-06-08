@@ -13,24 +13,24 @@ import MagneticWrapper from "./MagneticWrapper";
 
 const articles = [
   {
-    category: "Architectural Design",
-    date: "Dec 17, 2025",
-    title: "The Language of Light in Contemporary Homes",
-    image: "/images/project-stonehaven.png",
+    category: "Siwa Travel",
+    date: "Jun 8, 2026",
+    title: "A Guide to Siwa's Hidden Salt Lakes",
+    image: "/images/3.jpeg",
     href: "#",
   },
   {
-    category: "Architectural Design",
-    date: "Jan 1, 2026",
-    title: "Material Honesty in Modern Architecture",
-    image: "/images/hero-interior.png",
+    category: "Local Culture",
+    date: "May 22, 2026",
+    title: "The Art of Siwan Hospitality and Tradition",
+    image: "/images/article.jpeg",
     href: "#",
   },
   {
-    category: "Residential Architecture",
-    date: "Dec 30, 2025",
-    title: "Designing Homes Around Daily Life",
-    image: "/images/project-stonehaven.png",
+    category: "Desert Explorer",
+    date: "May 10, 2026",
+    title: "Best Sunset Spots in the Oasis",
+    image: "/images/2.jpeg",
     href: "#",
   },
 ];
@@ -55,72 +55,77 @@ const cardVariants = {
 export default function ArticlesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const mm = gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.utils.toArray<HTMLElement>("[data-article-image]").forEach((img) => {
-        gsap.to(img, {
-          scale: 1.08,
-          ease: "none",
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.utils
+          .toArray<HTMLElement>("[data-article-image]")
+          .forEach((img) => {
+            gsap.to(img, {
+              scale: 1.08,
+              ease: "none",
+              scrollTrigger: {
+                trigger: img,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            });
+          });
+
+        gsap.from("[data-article-badge]", {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          ease: "power2.out",
           scrollTrigger: {
-            trigger: img,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
+            trigger: "[data-article-badge]",
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        gsap.from("[data-article-heading]", {
+          opacity: 0,
+          y: 40,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "[data-article-heading]",
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        gsap.from("[data-article-text]", {
+          opacity: 0,
+          y: 30,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "[data-article-text]",
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        gsap.from("[data-article-cta]", {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          delay: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "[data-article-cta]",
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
         });
       });
-
-      gsap.from("[data-article-badge]", {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "[data-article-badge]",
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      gsap.from("[data-article-heading]", {
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: "[data-article-heading]",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      gsap.from("[data-article-text]", {
-        opacity: 0,
-        y: 30,
-        duration: 0.7,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "[data-article-text]",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      gsap.from("[data-article-cta]", {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        delay: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "[data-article-cta]",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-    });
-  }, { scope: sectionRef });
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section
@@ -130,7 +135,7 @@ export default function ArticlesSection() {
     >
       <div className="mb-24">
         <div data-article-badge>
-          <SectionBadge label="Recent Articles" />
+            <SectionBadge label="Siwa Stories" />
         </div>
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
@@ -142,35 +147,60 @@ export default function ArticlesSection() {
                 fontFamily: '"SF Mono", monospace',
               }}
             >
-              Design Stories &amp;
+              Discover the
               <br />
-              Studio Journal
+              Magic of Siwa
             </h2>
-            <p data-article-text className="mt-20 max-w-[760px] text-[22px] font-medium leading-[1.2] text-text-primary">
-              Insights and reflections on interior design, architecture, and
-              <br className="hidden md:block" />
-              the evolving relationship between space and everyday life.
+            <p
+              data-article-text
+              className="mt-20 max-w-[760px] text-[22px] font-medium leading-[1.2] text-text-primary"
+            >
+            Stories and guides from the heart of the oasis
+            <br className="hidden md:block" />
+            hidden gems, local wisdom, and the beauty of life in Siwa.
             </p>
           </div>
 
           <div data-article-cta>
             <MagneticWrapper>
-            <Link
-              href="#"
-              className="group mb-4 inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98]"
-              style={{ color: "#fff" }}
-            >
-              <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
-                <svg viewBox="0 0 24 24" fill="none" className="absolute size-4 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5" aria-hidden="true">
-                  <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <svg viewBox="0 0 24 24" fill="none" className="absolute size-4 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" aria-hidden="true">
-                  <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              See All Articles
-            </Link>
-          </MagneticWrapper>
+              <Link
+                href="#"
+                className="group mb-4 inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98]"
+                style={{ color: "#fff" }}
+              >
+                <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="absolute size-4 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12h14M13 5l7 7-7 7"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="absolute size-4 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12h14M13 5l7 7-7 7"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                Read More Stories
+              </Link>
+            </MagneticWrapper>
           </div>
         </div>
       </div>
@@ -197,7 +227,11 @@ export default function ArticlesSection() {
                   className="object-cover transition duration-700 group-hover:scale-[1.08]"
                   style={{
                     objectPosition:
-                      index === 0 ? "44% 50%" : index === 1 ? "52% 50%" : "68% 50%",
+                      index === 0
+                        ? "44% 50%"
+                        : index === 1
+                          ? "52% 50%"
+                          : "68% 50%",
                   }}
                   sizes="(min-width: 768px) 33vw, 100vw"
                 />
@@ -228,11 +262,23 @@ export default function ArticlesSection() {
 
               <div className="absolute bottom-[26px] right-5">
                 <MagneticWrapper>
-                  <div className="flex size-[75px] items-center justify-center rounded-full bg-black text-white hover:bg-white hover:text-[#111]"
+                  <div
+                    className="flex size-[75px] items-center justify-center rounded-full bg-black text-white hover:bg-white hover:text-[#111]"
                     style={{ transition: "background-color 0.3s, color 0.3s" }}
                   >
-                    <svg viewBox="0 0 24 24" fill="none" className="size-[30px] -rotate-45" aria-hidden="true">
-                      <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="size-[30px] -rotate-45"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 12h14M13 5l7 7-7 7"
+                        stroke="currentColor"
+                        strokeWidth="1.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </div>
                 </MagneticWrapper>
@@ -249,8 +295,20 @@ function SectionBadge({ label }: { label: string }) {
   return (
     <div className="mb-12 inline-flex h-10 w-fit items-center gap-2.5 rounded-full bg-surface-raised py-1 pl-2 pr-4">
       <span className="flex size-7 items-center justify-center rounded-full bg-surface-overlay text-white">
-        <svg width="14" height="14" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-          <path d="M3 7.5h8.4M8.2 4.2l3.3 3.3-3.3 3.3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 15 15"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 7.5h8.4M8.2 4.2l3.3 3.3-3.3 3.3"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </span>
       <span className="text-base font-normal leading-none">{label}</span>

@@ -1,0 +1,264 @@
+"use client";
+
+import { useState, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, AnimatePresence } from "framer-motion";
+
+gsap.registerPlugin(ScrollTrigger);
+import Link from "next/link";
+import MagneticWrapper from "./MagneticWrapper";
+
+const faqs = [
+  {
+    question: "What services do you offer?",
+    answer:
+      "We provide full-service interior support including spatial planning, concept development, material direction, project coordination, styling, and final layering.",
+  },
+  {
+    question: "How do I get started?",
+    answer:
+      "Start with a short consultation so we can understand the space, your priorities, timeline, and the level of support you need.",
+  },
+  {
+    question: "Do you work with international clients?",
+    answer:
+      "Yes. We support remote and international clients through structured design presentations, digital approvals, and coordinated installation guidance.",
+  },
+  {
+    question: "What areas do you specialize in?",
+    answer:
+      "We specialize in residential interiors, refined living spaces, material-led renovations, and complete room-by-room design systems.",
+  },
+  {
+    question: "How long does it take to complete a project?",
+    answer:
+      "Timelines vary by scope. A focused room can move quickly, while full interiors require a more considered planning, sourcing, and execution process.",
+  },
+  {
+    question: "Do you offer investment consulting?",
+    answer:
+      "We offer design-focused guidance for owners preparing properties for long-term value, rental appeal, or resale presentation.",
+  },
+];
+
+export default function FaqSection() {
+  const [openIndex, setOpenIndex] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from("[data-faq-item]", {
+        opacity: 0,
+        y: 30,
+        stagger: 0.1,
+        duration: 0.7,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      gsap.from("[data-faq-badge]", {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "[data-faq-badge]",
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      gsap.from("[data-faq-heading]", {
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "[data-faq-heading]",
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      gsap.from("[data-faq-text]", {
+        opacity: 0,
+        y: 30,
+        duration: 0.7,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "[data-faq-text]",
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      gsap.from("[data-faq-cta]", {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        delay: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "[data-faq-cta]",
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    });
+  }, { scope: sectionRef });
+
+  return (
+    <section
+      ref={sectionRef}
+      id="faq"
+      className="relative bg-surface-base px-8 py-24 text-text-primary md:px-8"
+    >
+      <div className="grid gap-16 lg:grid-cols-[0.98fr_1fr] lg:gap-24">
+        <div className="pt-1">
+          <div data-faq-badge>
+            <SectionBadge label="FAQ'S" />
+          </div>
+
+          <h2
+            data-faq-heading
+            className="max-w-[650px] text-[clamp(48px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
+            style={{
+                fontFamily: '"SF Mono", monospace',
+            }}
+          >
+            Your Questions,
+            <br />
+            Answered
+          </h2>
+
+          <p data-faq-text className="mt-20 max-w-[760px] text-[22px] font-medium leading-[1.2] text-text-secondary">
+            Helpful information designed to guide you through our services and
+            design approach.
+          </p>
+
+          <div data-faq-cta>
+            <MagneticWrapper>
+            <Link
+              href="#services"
+              className="group mt-14 inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98]"
+              style={{ color: "#fff" }}
+            >
+              <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="absolute size-4 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5 12h14M13 5l7 7-7 7"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="absolute size-4 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5 12h14M13 5l7 7-7 7"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+              Learn More About Our Process
+            </Link>
+          </MagneticWrapper>
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div key={faq.question} data-faq-item className="rounded-[7px] bg-black/5 p-3">
+                <motion.button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                  className="flex min-h-[60px] w-full items-center justify-between gap-5 px-3 text-left rounded-[7px]"
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-base font-medium leading-tight">
+                    {faq.question}
+                  </span>
+                  <motion.span
+                    animate={{ rotate: isOpen ? 45 : 0 }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="flex size-14 shrink-0 items-center justify-center rounded-full bg-surface-base text-base font-medium leading-none"
+                  >
+                    +
+                  </motion.span>
+                </motion.button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen ? (
+                    <motion.div
+                      key="answer"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-3 rounded-[7px] bg-surface-base px-5 py-7">
+                        <p className="max-w-[780px] text-[clamp(20px,1.2vw,24px)] font-medium leading-[1.16]">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SectionBadge({ label }: { label: string }) {
+  return (
+    <div className="mb-12 inline-flex h-10 w-fit items-center gap-2.5 rounded-full bg-surface-raised py-1 pl-2 pr-4">
+      <span className="flex size-7 items-center justify-center rounded-full bg-surface-overlay text-white">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 15 15"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 7.5h8.4M8.2 4.2l3.3 3.3-3.3 3.3"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
+      <span className="text-base font-normal leading-none">{label}</span>
+    </div>
+  );
+}

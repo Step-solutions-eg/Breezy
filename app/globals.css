@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "New York";
+  src: url("/fonts/New%20York/NewYork.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "New York";
+  src: url("/fonts/New%20York/NewYorkItalic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Mono";
+  src: url("/fonts/SF%20MONO/SF-Mono-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Mono";
+  src: url("/fonts/SF%20MONO/SF-Mono-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Mono";
+  src: url("/fonts/SF%20MONO/SF-Mono-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Mono";
+  src: url("/fonts/SF%20MONO/SF-Mono-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Mono";
+  src: url("/fonts/SF%20MONO/SF-Mono-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Mono";
+  src: url("/fonts/SF%20MONO/SF-Mono-Heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer components {
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease-out;
+  }
+
+  .nav-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  .nav-underline-active::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@theme inline {
+  --color-surface-base: #F2F1EF;
+  --color-surface-raised: #F3EEE7;
+  --color-surface-overlay: #503A26;
+  --color-text-primary: #503A26;
+  --color-text-secondary: #5E6B57;
+  --color-text-tertiary: #C8A17E;
+  --color-border-default: #7D9C9A;
+  --color-accent: #C8A17E;
+  --color-accent-secondary: #7D9C9A;
+  --font-sans: "SF Mono", monospace;
+  --font-heading: "New York", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--color-surface-base);
+  color: var(--color-text-primary);
+  font-family: "SF Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "New York", serif;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: #503A26;
+  color: #F2F1EF;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3EEE7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C8A17E;
+  border-radius: 999px;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+[data-scale] {
+  will-change: transform, opacity;
+}

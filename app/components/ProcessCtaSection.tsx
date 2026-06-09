@@ -53,17 +53,17 @@ export default function ProcessCtaSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-surface-base px-8 pb-36 pt-20 text-text-primary md:px-8"
+      className="relative bg-surface-base px-4 pb-24 pt-12 text-text-primary sm:px-8 sm:pb-36 sm:pt-20"
     >
-      <div className="grid gap-16 lg:grid-cols-[0.98fr_1fr] lg:gap-24">
-        <div ref={contentRef} className="flex min-h-[740px] flex-col pb-8">
+      <div className="grid gap-12 lg:grid-cols-[0.98fr_1fr] lg:gap-24">
+        <div ref={contentRef} className="flex min-h-0 flex-col pb-4 sm:min-h-[740px] sm:pb-8">
           <div data-cta-content>
             <SectionBadge label="Escape to Siwa. Book Your Stay Today." />
           </div>
 
           <div data-cta-content>
             <h2
-              className="max-w-[650px] text-[clamp(48px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
+              className="max-w-[650px] text-[clamp(40px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
               style={{
                 fontFamily: '"SF Mono", monospace',
               }}
@@ -75,7 +75,7 @@ export default function ProcessCtaSection() {
           </div>
 
           <div data-cta-content>
-            <p className="mt-12 max-w-[660px] text-[clamp(24px,1.52vw,30px)] font-medium leading-[1.18] text-text-primary">
+            <p className="mt-8 max-w-[660px] text-lg font-medium leading-[1.18] text-text-primary sm:mt-12 sm:text-[clamp(24px,1.52vw,30px)]">
               Trade the noise for silence. Trade the city for the oasis.
               Your room under the stars, your days filled with discovery, your
               evenings wrapped in the warmth of Siwan hospitality.
@@ -86,14 +86,14 @@ export default function ProcessCtaSection() {
             <MagneticWrapper>
               <Link
                 href="#contact"
-                className="group mt-16 inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98]"
+                className="group mt-10 inline-flex h-12 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-5 text-sm font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] sm:mt-16 sm:h-14 sm:pr-6 sm:text-base"
                 style={{ color: "#fff" }}
               >
-                <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
+                <span className="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white sm:size-10">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-4 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5"
+                    className="absolute size-3 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -107,7 +107,7 @@ export default function ProcessCtaSection() {
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-4 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+                    className="absolute size-3 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -124,13 +124,13 @@ export default function ProcessCtaSection() {
             </MagneticWrapper>
           </div>
 
-          <div className="mt-auto" data-cta-content>
+          <div className="mt-8 sm:mt-auto" data-cta-content>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-5 text-base font-medium leading-none text-text-secondary"
+              className="mb-4 text-sm font-medium leading-none text-text-secondary sm:mb-5 sm:text-base"
             >
               Join travelers who found peace in the heart of Siwa
             </motion.p>
@@ -141,7 +141,7 @@ export default function ProcessCtaSection() {
                   whileHover={{ scale: 1.15, zIndex: 10 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 26 }}
-                  className="flex size-14 items-center justify-center rounded-full border-2 border-dashed border-surface-base bg-surface-overlay text-lg font-bold text-white shadow-sm"
+                  className="flex size-10 items-center justify-center rounded-full border-2 border-dashed border-surface-base bg-surface-overlay text-sm font-bold text-white shadow-sm sm:size-14 sm:text-lg"
                   style={{
                     background:
                       index % 2 === 0
@@ -158,7 +158,7 @@ export default function ProcessCtaSection() {
 
         <div
           ref={imageRef}
-          className="relative min-h-[720px] overflow-hidden rounded-[7px] lg:min-h-[858px] will-change-transform"
+          className="relative min-h-[280px] overflow-hidden rounded-[7px] sm:min-h-[500px] lg:min-h-[858px] will-change-transform"
         >
           <Image
             src="/images/4.jpeg"

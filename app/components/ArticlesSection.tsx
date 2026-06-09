@@ -131,18 +131,18 @@ export default function ArticlesSection() {
     <section
       ref={sectionRef}
       id="articles"
-      className="relative bg-surface-base px-8 pb-36 pt-6 text-text-primary md:px-8"
+      className="relative bg-surface-base px-4 pb-24 pt-6 text-text-primary sm:px-8 sm:pb-36"
     >
-      <div className="mb-24">
+      <div className="mb-12 sm:mb-24">
         <div data-article-badge>
             <SectionBadge label="Siwa Stories" />
         </div>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="mt-8 grid gap-8 sm:mt-12 sm:gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <h2
               data-article-heading
-              className="max-w-[650px] text-[clamp(48px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
+              className="max-w-[650px] text-[clamp(40px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
               style={{
                 fontFamily: '"SF Mono", monospace',
               }}
@@ -153,7 +153,7 @@ export default function ArticlesSection() {
             </h2>
             <p
               data-article-text
-              className="mt-20 max-w-[760px] text-[22px] font-medium leading-[1.2] text-text-primary"
+              className="mt-10 max-w-[760px] text-lg font-medium leading-[1.2] text-text-primary sm:mt-20 sm:text-[22px]"
             >
             Stories and guides from the heart of the oasis
             <br className="hidden md:block" />
@@ -165,14 +165,14 @@ export default function ArticlesSection() {
             <MagneticWrapper>
               <Link
                 href="#"
-                className="group mb-4 inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98]"
+                className="group mb-4 inline-flex h-12 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-5 text-sm font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] sm:h-14 sm:pr-6 sm:text-base"
                 style={{ color: "#fff" }}
               >
-                <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
+                <span className="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white sm:size-10">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-4 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5"
+                    className="absolute size-3 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -186,7 +186,7 @@ export default function ArticlesSection() {
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-4 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+                    className="absolute size-3 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -210,13 +210,13 @@ export default function ArticlesSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
-        className="grid gap-5 md:grid-cols-3"
+        className="grid gap-5 sm:grid-cols-2 md:grid-cols-3"
       >
         {articles.map((article, index) => (
           <motion.div key={article.title} variants={cardVariants}>
             <Link
               href={article.href}
-              className="group relative min-h-[624px] block overflow-hidden rounded-[7px] bg-surface-overlay text-white no-underline transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]"
+              className="group relative min-h-[440px] block overflow-hidden rounded-[7px] bg-surface-overlay text-white no-underline transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] sm:min-h-[560px] md:min-h-[624px]"
             >
               <div className="absolute inset-0 overflow-hidden">
                 <Image
@@ -242,34 +242,34 @@ export default function ArticlesSection() {
               <motion.span
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 26 }}
-                className="absolute left-5 top-[21px] rounded-full bg-[rgba(135,132,124,0.82)] px-[18px] py-[11px] text-base font-medium leading-none text-white backdrop-blur-[2px]"
+                className="absolute left-4 top-4 rounded-full bg-[rgba(135,132,124,0.82)] px-3 py-2 text-xs font-medium leading-none text-white backdrop-blur-[2px] sm:left-5 sm:top-[21px] sm:px-[18px] sm:py-[11px] sm:text-base"
               >
                 {article.category}
               </motion.span>
 
-              <div className="absolute bottom-[28px] left-5 max-w-[390px] pr-[86px]">
-                <p className="text-base font-normal leading-none text-white">
+              <div className="absolute bottom-4 left-4 max-w-[calc(100%-8rem)] sm:bottom-[28px] sm:left-5 sm:max-w-[390px] sm:pr-[86px]">
+                <p className="text-xs font-normal leading-none text-white sm:text-base">
                   {article.date}
                 </p>
                 <motion.h3
                   whileHover={{ x: 3 }}
                   transition={{ type: "spring", stiffness: 400, damping: 26 }}
-                  className="mt-[15px] text-[22px] font-normal leading-[1.08] tracking-normal text-white"
+                  className="mt-2 text-base font-normal leading-[1.08] tracking-normal text-white sm:mt-[15px] sm:text-[22px]"
                 >
                   {article.title}
                 </motion.h3>
               </div>
 
-              <div className="absolute bottom-[26px] right-5">
+              <div className="absolute bottom-4 right-4 sm:bottom-[26px] sm:right-5">
                 <MagneticWrapper>
                   <div
-                    className="flex size-[75px] items-center justify-center rounded-full bg-black text-white hover:bg-white hover:text-[#111]"
+                    className="flex size-12 items-center justify-center rounded-full bg-black text-white hover:bg-white hover:text-[#111] sm:size-[75px]"
                     style={{ transition: "background-color 0.3s, color 0.3s" }}
                   >
                     <svg
                       viewBox="0 0 24 24"
                       fill="none"
-                      className="size-[30px] -rotate-45"
+                      className="size-5 -rotate-45 sm:size-[30px]"
                       aria-hidden="true"
                     >
                       <path

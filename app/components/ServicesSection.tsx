@@ -128,10 +128,10 @@ export default function ServicesSection() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative bg-surface-base px-8 py-36 text-text-primary md:px-8"
+      className="relative bg-surface-base px-4 py-20 text-text-primary sm:px-8 sm:py-36"
     >
-      <div className="grid gap-16 lg:grid-cols-[1fr_0.94fr] lg:gap-20">
-        <div className="flex min-h-[780px] flex-col">
+      <div className="grid gap-12 lg:grid-cols-[1fr_0.94fr] lg:gap-20">
+        <div className="flex min-h-0 flex-col sm:min-h-[780px]">
           <motion.div
             data-service-badge
             whileHover={{ scale: 1.03 }}
@@ -142,7 +142,7 @@ export default function ServicesSection() {
 
           <h2
             data-service-heading
-            className="max-w-[650px] text-[clamp(48px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
+            className="max-w-[650px] text-[clamp(40px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
             style={{
               fontFamily: '"SF Mono", monospace',
             }}
@@ -156,14 +156,14 @@ export default function ServicesSection() {
             <MagneticWrapper>
               <Link
                 href="#about"
-                className="group mt-24 inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-6 text-base font-medium leading-none text-white no-underline transition duration-200 hover:opacity-90 active:scale-[0.98]"
+                className="group mt-12 inline-flex h-12 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-5 text-sm font-medium leading-none text-white no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] sm:mt-24 sm:h-14 sm:pr-6 sm:text-base"
                 style={{ color: "#fff" }}
               >
-                <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
+                <span className="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white sm:size-10">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-4 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5"
+                    className="absolute size-3 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -177,7 +177,7 @@ export default function ServicesSection() {
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-4 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+                    className="absolute size-3 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -196,7 +196,7 @@ export default function ServicesSection() {
 
           <div
             ref={serviceGridRef}
-            className="mt-20 grid gap-[28px] sm:grid-cols-2"
+            className="mt-12 grid gap-4 sm:mt-20 sm:gap-[28px] sm:grid-cols-2"
           >
             {services.map((service) => (
               <motion.article
@@ -205,20 +205,20 @@ export default function ServicesSection() {
                 whileHover={{ y: -6, scale: 1.02 }}
                 whileTap={{ scale: 0.99 }}
                 transition={{ type: "spring", stiffness: 400, damping: 26 }}
-                className="block h-[240px] w-full rounded-[7px] bg-surface-raised px-5 py-5 text-text-primary transition-colors duration-300 hover:brightness-[0.96]"
+                className="block min-h-[200px] w-full rounded-[7px] bg-surface-raised px-4 py-4 text-text-primary transition-colors duration-300 hover:brightness-[0.96] sm:h-[240px] sm:px-5 sm:py-5"
               >
                 <motion.span
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 26 }}
-                  className="flex size-12 items-center justify-center rounded-full bg-white text-[22px] font-medium leading-none text-text-primary"
+                  className="flex size-10 items-center justify-center rounded-full bg-white text-lg font-medium leading-none text-text-primary sm:size-12 sm:text-[22px]"
                 >
                   {service.number}
                 </motion.span>
-                <h3 className="mt-[35px] mb-[25px] text-[22px] font-normal leading-[1.05] tracking-normal">
+                <h3 className="mt-5 mb-4 text-lg font-normal leading-[1.05] tracking-normal sm:mt-[35px] sm:mb-[25px] sm:text-[22px]">
                   {service.title}
                 </h3>
                 <p
-                  className="mt-2 max-w-[330px] text-[18px] font-normal leading-[1.22] text-text-secondary"
+                  className="mt-1 max-w-[330px] text-sm font-normal leading-[1.22] text-text-secondary sm:mt-2 sm:text-[18px]"
                   style={{
                     fontFamily: '"SF Mono", monospace',
                   }}
@@ -232,7 +232,7 @@ export default function ServicesSection() {
 
         <div
           ref={imageRef}
-          className="relative min-h-[680px] overflow-hidden rounded-[7px] lg:min-h-[805px] will-change-transform"
+          className="relative min-h-[320px] overflow-hidden rounded-[7px] sm:min-h-[600px] lg:min-h-[805px] will-change-transform"
         >
           <Image
             src="/images/hero-interior-1.jpeg"

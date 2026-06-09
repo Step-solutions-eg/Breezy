@@ -165,7 +165,7 @@ export default function ProjectsSection() {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative h-dvh min-h-[760px] w-full overflow-hidden bg-surface-overlay text-white"
+      className="relative h-dvh min-h-[600px] w-full overflow-hidden bg-surface-overlay text-white md:min-h-[760px]"
     >
       <div ref={imageRef} className="absolute inset-0 will-change-transform">
         <Image
@@ -182,11 +182,11 @@ export default function ProjectsSection() {
 
       <div
         ref={contentRef}
-        className="relative z-10 h-full px-[30px] py-[31px]"
+        className="relative z-10 flex h-full flex-col px-4 py-6 sm:px-[30px] sm:py-[31px]"
       >
         <span
           data-project-label
-          className="absolute left-[30px] top-9 text-base font-medium leading-none tracking-normal"
+          className="text-sm font-medium leading-none tracking-normal sm:text-base sm:absolute sm:left-[30px] sm:top-9"
         >
           Our Retreats
         </span>
@@ -195,7 +195,7 @@ export default function ProjectsSection() {
           data-project-card
           whileHover={{ y: -4, scale: 1.02 }}
           transition={{ type: "spring", stiffness: 400, damping: 26 }}
-          className="absolute right-[30px] top-[31px] hidden h-[145px] w-[430px] grid-cols-[124px_1fr] gap-5 rounded-[7px] bg-white/12 p-3 shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.24)] backdrop-blur-xl backdrop-saturate-150 md:grid"
+          className="hidden md:absolute md:right-[30px] md:top-[31px] md:grid md:h-[145px] md:w-[430px] md:grid-cols-[124px_1fr] md:gap-5 md:rounded-[7px] md:bg-white/12 md:p-3 md:shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.24)] md:backdrop-blur-xl md:backdrop-saturate-150"
         >
           <div className="relative h-[120px] overflow-hidden rounded-[7px]">
             <Image
@@ -216,17 +216,17 @@ export default function ProjectsSection() {
           </div>
         </motion.div>
 
-        <div className="absolute left-[30px] top-[31.4%] w-[min(780px,calc(100vw-60px))]">
+        <div className="mt-6 sm:mt-0 sm:absolute sm:left-[30px] sm:top-[31.4%] sm:w-[min(780px,calc(100vw-60px))]">
           <h2
             data-project-title
-            className="mb-[38px] max-w-[650px] text-[clamp(72px,5.25vw,100px)] font-bold leading-[0.94] tracking-normal"
+            className="mb-6 max-w-[650px] text-[clamp(44px,5.25vw,100px)] font-bold leading-[0.94] tracking-normal sm:mb-[38px]"
           >
             {project.name}
           </h2>
 
           <div
             data-project-stats
-            className="mb-[58px] grid max-w-[780px] grid-cols-3 gap-10 md:gap-[42px]"
+            className="mb-8 grid max-w-[780px] grid-cols-3 gap-6 sm:mb-[58px] sm:gap-[42px]"
           >
             <motion.div
               data-project-stat
@@ -268,14 +268,14 @@ export default function ProjectsSection() {
             <MagneticWrapper>
               <Link
                 href="#contact"
-                className="group inline-flex h-14 items-center gap-4 overflow-hidden rounded-full bg-white py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:bg-surface-base active:scale-[0.98]"
+                className="group inline-flex h-12 items-center gap-4 overflow-hidden rounded-full bg-white py-2 pl-2 pr-5 text-sm font-medium leading-none no-underline transition duration-200 hover:bg-surface-base active:scale-[0.98] sm:h-14 sm:pr-6 sm:text-base"
                 style={{ color: "#503A26" }}
               >
-                <span className="relative flex size-10 items-center justify-center overflow-hidden rounded-full bg-surface-overlay">
+                <span className="relative flex size-8 items-center justify-center overflow-hidden rounded-full bg-surface-overlay sm:size-10">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-4 -rotate-45 transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5"
+                    className="absolute size-3 -rotate-45 transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -289,7 +289,7 @@ export default function ProjectsSection() {
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-4 -rotate-45 -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+                    className="absolute size-3 -rotate-45 -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -307,21 +307,22 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        <div className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
+        <div className="mt-auto flex items-center justify-center gap-8 sm:absolute sm:bottom-5 sm:left-1/2 sm:mt-0 sm:-translate-x-1/2">
           <motion.button
             onClick={prev}
             whileHover={{ scale: 1.15, x: -4 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 26 }}
             aria-label="Previous project"
-            className="group flex h-14 w-[68px] items-center justify-center text-white"
+            className="group flex h-12 w-12 items-center justify-center text-white/80 hover:text-white sm:h-14 sm:w-[68px]"
           >
             <svg
-              width="68"
-              height="42"
+              width="40"
+              height="28"
               viewBox="0 0 73 39"
               fill="none"
               aria-hidden="true"
+              className="sm:w-[68px] sm:h-[39px]"
             >
               <path
                 d="M70 19.5H5M21 4 5 19.5 21 35"
@@ -338,14 +339,15 @@ export default function ProjectsSection() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 26 }}
             aria-label="Next project"
-            className="group flex h-14 w-[68px] items-center justify-center text-white"
+            className="group flex h-12 w-12 items-center justify-center text-white/80 hover:text-white sm:h-14 sm:w-[68px]"
           >
             <svg
-              width="68"
-              height="42"
+              width="40"
+              height="28"
               viewBox="0 0 73 39"
               fill="none"
               aria-hidden="true"
+              className="sm:w-[68px] sm:h-[39px]"
             >
               <path
                 d="M3 19.5h65M52 4l16 15.5L52 35"

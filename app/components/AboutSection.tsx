@@ -106,7 +106,7 @@ export default function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="bg-surface-base px-7 py-11 text-text-primary md:px-7"
+      className="bg-surface-base px-4 py-11 text-text-primary sm:px-7"
     >
       <div className="w-full">
         <motion.div
@@ -127,9 +127,9 @@ export default function AboutSection() {
           <span className="text-base font-normal leading-none">Our Story</span>
         </motion.div>
 
-        <div ref={headingRef} className="grid grid-cols-1 gap-12 lg:grid-cols-[0.49fr_0.51fr] lg:items-start">
+        <div ref={headingRef} className="grid grid-cols-1 gap-8 lg:grid-cols-[0.49fr_0.51fr] lg:items-start lg:gap-12">
           <h2
-            className="max-w-[650px] text-[clamp(48px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
+            className="max-w-[650px] text-[clamp(40px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
             style={{
               fontFamily: '"SF Mono", monospace',
             }}
@@ -141,7 +141,7 @@ export default function AboutSection() {
             of Siwa
           </h2>
 
-          <p className="max-w-[850px] pt-8 text-[clamp(27px,1.62vw,32px)] font-normal leading-[1.22] tracking-normal">
+          <p className="max-w-[850px] pt-4 text-[clamp(22px,1.62vw,32px)] font-normal leading-[1.22] tracking-normal lg:pt-8">
             Nestled among ancient palm groves and golden dunes, Breezy Island
             offers a rare escape where timeless Egyptian hospitality meets
             understated luxury. Every detail is designed to help you disconnect,
@@ -149,14 +149,14 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="mt-[122px] grid border-t border-accent-secondary/20 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid border-t border-accent-secondary/20 sm:mt-[122px] sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               data-stat-card
               whileHover={{ y: -4, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 400, damping: 26 }}
-              className={`min-h-[322px] border-accent-secondary/20 px-5 pb-10 pt-10 sm:border-l ${
+              className={`min-h-[240px] border-accent-secondary/20 px-5 pb-8 pt-8 sm:min-h-[322px] sm:border-l sm:pb-10 sm:pt-10 ${
                 index === 0 ? "sm:border-l-0" : ""
               }`}
             >
@@ -164,11 +164,11 @@ export default function AboutSection() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 26 }}
                 data-stat-value={index}
-                className="block text-[clamp(48px,3.35vw,64px)] font-normal leading-none tracking-normal"
+                className="block text-[clamp(40px,3.35vw,64px)] font-normal leading-none tracking-normal"
               >
                 0{stat.suffix}
               </motion.span>
-              <p className="mt-14 max-w-[380px] text-[clamp(20px,1.14vw,23px)] font-normal leading-[1.18] text-text-primary">
+              <p className="mt-8 max-w-[380px] text-[clamp(17px,1.14vw,23px)] font-normal leading-[1.18] text-text-primary sm:mt-14">
                 {stat.description}
               </p>
             </motion.div>

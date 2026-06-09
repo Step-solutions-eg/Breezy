@@ -52,29 +52,26 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.6 }}
-        className="relative z-10 h-full px-8 text-white"
+        className="relative z-10 flex h-full flex-col justify-center px-4 text-white sm:px-8"
       >
-        <div className="absolute left-8 top-44 max-w-[490px] md:top-44 pointer-events-auto">
+        <div className="max-w-[490px] pointer-events-auto mb-auto mt-28 sm:mt-44 sm:ml-8">
           <p
+            className="text-[clamp(18px,2.2vw,26px)] font-normal leading-[1.2] tracking-[-0.02em]"
             style={{
               fontFamily: '"SF Mono", monospace',
-              fontSize: "26px",
-              fontWeight: 400,
-              letterSpacing: "-0.02em",
-              lineHeight: "1.2em",
             }}
           >
             A hidden sanctuary in the heart of Siwa Oasis,
-            <br />
+            <br className="hidden sm:block" />
             where desert silence meets unparalleled luxury
-            <br />
+            <br className="hidden sm:block" />
             and timeless Egyptian hospitality.
           </p>
 
           <MagneticWrapper>
             <Link
               href="#contact"
-              className="group mt-11 inline-flex w-fit items-center gap-4 overflow-hidden rounded-full bg-white py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:bg-surface-raised active:scale-[0.98]"
+              className="group mt-8 inline-flex w-fit items-center gap-4 overflow-hidden rounded-full bg-white py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:bg-surface-raised active:scale-[0.98] sm:mt-11"
               style={{ color: "#503A26" }}
             >
               <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-surface-overlay">
@@ -118,14 +115,14 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 1 }}
-          className="pointer-events-none absolute bottom-[5%] left-1/2 -translate-x-1/2 select-none leading-none"
+          className="pointer-events-none select-none leading-none"
         >
-          <div className="flex items-end justify-center w-[90vw] pr-14">
-            <span className="text-[clamp(80px,16vw,650px)] font-black leading-[0.7]">
+          <div className="flex items-end justify-center w-full max-w-[100vw] overflow-hidden px-2 sm:px-0">
+            <span className="text-[clamp(64px,18vw,650px)] font-black leading-[0.7]">
               Breezy
             </span>
             <span
-              className="text-[clamp(80px,16vw,650px)] font-light italic leading-[0.7]"
+              className="text-[clamp(64px,18vw,650px)] font-light italic leading-[0.7]"
               style={{ fontFamily: '"New York", serif' }}
             >
               Island

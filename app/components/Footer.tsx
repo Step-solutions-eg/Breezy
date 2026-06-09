@@ -45,13 +45,13 @@ export default function Footer() {
     <footer
       ref={sectionRef}
       id="contact"
-      className="relative min-h-[856px] overflow-hidden bg-surface-overlay px-6 pt-24 text-white"
+      className="relative min-h-[856px] overflow-hidden bg-surface-overlay px-4 pt-16 text-white sm:px-6 sm:pt-24"
     >
-      <div className="relative z-10 grid gap-16 lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="relative z-10 grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
         <div>
           <h2
             data-footer-item
-            className="text-[clamp(58px,4.3vw,86px)] font-normal leading-[0.98]"
+            className="text-[clamp(42px,4.3vw,86px)] font-normal leading-[0.98]"
           >
             Begin Your
             <br />
@@ -60,7 +60,7 @@ export default function Footer() {
 
           <p
             data-footer-item
-            className="mt-12 max-w-[545px] text-2xl font-medium leading-[1.18] text-text-tertiary"
+            className="mt-8 max-w-[545px] text-lg font-medium leading-[1.18] text-text-tertiary sm:mt-12 sm:text-2xl"
           >
             Ready to escape? Reach out and let us help you plan your perfect
             stay at Breezy Island.
@@ -68,7 +68,7 @@ export default function Footer() {
 
           <form
             data-footer-item
-            className="mt-20 flex max-w-[650px] flex-col gap-5 sm:flex-row"
+            className="mt-10 flex max-w-[650px] flex-col gap-4 sm:mt-20 sm:flex-row sm:gap-5"
           >
             <label className="sr-only" htmlFor="footer-email">
               Email address
@@ -79,7 +79,7 @@ export default function Footer() {
               placeholder="your@email.com"
               whileFocus={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 400, damping: 26 }}
-              className="h-14 min-w-0 flex-1 rounded-[7px] border border-dashed border-white/30 bg-transparent px-4 text-xl font-medium text-white outline-none placeholder:text-text-tertiary focus:border-solid"
+              className="h-12 min-w-0 flex-1 rounded-[7px] border border-dashed border-white/30 bg-transparent px-4 text-base font-medium text-white outline-none placeholder:text-text-tertiary focus:border-solid sm:h-14 sm:text-xl"
             />
             <motion.button
               type="submit"
@@ -90,13 +90,13 @@ export default function Footer() {
                 damping: 10,
                 mass: 0.5,
               }}
-              className="group inline-flex h-14 w-fit items-center gap-4 rounded-[7px] bg-white py-2 pl-2 pr-6 text-xl font-bold transition duration-200 hover:bg-surface-base"
+              className="group inline-flex h-12 w-full items-center justify-center gap-3 rounded-[7px] bg-white py-2 pl-2 pr-5 text-base font-bold transition duration-200 hover:bg-surface-base sm:h-14 sm:w-fit sm:pr-6 sm:text-xl"
               style={{ color: "#503A26" }}
             >
               <motion.span
                 whileHover={{ x: 3 }}
                 transition={{ type: "spring", stiffness: 400, damping: 26 }}
-                className="flex h-10 w-10 items-center justify-center rounded-[7px] bg-surface-overlay text-white"
+                className="flex size-8 items-center justify-center rounded-[7px] bg-surface-overlay text-white sm:size-10"
               >
                 <ArrowIcon />
               </motion.span>
@@ -107,7 +107,7 @@ export default function Footer() {
 
         <div
           data-footer-item
-          className="grid grid-cols-1 gap-10 pt-1 sm:grid-cols-3"
+          className="grid grid-cols-2 gap-8 pt-1 sm:grid-cols-3 sm:gap-10"
         >
           <FooterColumn title="Navigate" links={pageLinks} />
           <FooterColumn
@@ -130,14 +130,14 @@ export default function Footer() {
       <motion.div
         whileHover={{ scale: 1.005 }}
         transition={{ type: "spring", stiffness: 400, damping: 26 }}
-        className="pointer-events-none absolute bottom-[5%] left-1/2 -translate-x-1/2 select-none leading-none"
+        className="pointer-events-none absolute bottom-[5%] left-1/2 -translate-x-1/2 select-none leading-none w-full overflow-hidden"
       >
-        <div className="flex items-end justify-center w-[90vw] pr-14">
-          <span className="text-[clamp(80px,16vw,650px)] font-black leading-[0.7]">
+        <div className="flex items-end justify-center w-full max-w-[100vw] px-2">
+          <span className="text-[clamp(56px,18vw,650px)] font-black leading-[0.7]">
             Breezy
           </span>
           <span
-            className="text-[clamp(80px,16vw,650px)] font-light italic leading-[0.7]"
+            className="text-[clamp(56px,18vw,650px)] font-light italic leading-[0.7]"
             style={{ fontFamily: '"New York", serif' }}
           >
             Island

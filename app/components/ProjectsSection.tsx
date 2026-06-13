@@ -219,14 +219,14 @@ export default function ProjectsSection() {
         <div className="mt-6 sm:mt-0 sm:absolute sm:left-[30px] sm:top-[31.4%] sm:w-[min(780px,calc(100vw-60px))]">
           <h2
             data-project-title
-            className="mb-6 max-w-[650px] text-[clamp(44px,5.25vw,100px)] font-bold leading-[0.94] tracking-normal sm:mb-[38px]"
+            className="mb-4 max-w-[650px] text-[clamp(32px,5.25vw,100px)] font-bold leading-[0.94] tracking-normal sm:mb-[38px] sm:text-[clamp(72px,5.25vw,100px)]"
           >
             {project.name}
           </h2>
 
           <div
             data-project-stats
-            className="mb-8 grid max-w-[780px] grid-cols-3 gap-6 sm:mb-[58px] sm:gap-[42px]"
+            className="mb-8 grid max-w-[780px] grid-cols-1 gap-6 sm:mb-[58px] sm:grid-cols-3 sm:gap-[42px]"
           >
             <motion.div
               data-project-stat
@@ -307,27 +307,27 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        <div className="mt-auto flex items-center justify-center gap-8 sm:absolute sm:bottom-5 sm:left-1/2 sm:mt-0 sm:-translate-x-1/2">
+        <div className="absolute bottom-[5%] right-0 flex items-center justify-end gap-4 pr-4 sm:left-1/2 sm:-translate-x-1/2 sm:bottom-5 sm:right-auto sm:pr-0 sm:justify-center sm:gap-8">
           <motion.button
             onClick={prev}
-            whileHover={{ scale: 1.15, x: -4 }}
+            whileHover={{ scale: 1.1, x: -2 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 26 }}
             aria-label="Previous project"
-            className="group flex h-12 w-12 items-center justify-center text-white/80 hover:text-white sm:h-14 sm:w-[68px]"
+            className="flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white hover:text-[#111] sm:size-[68px]"
           >
             <svg
-              width="40"
-              height="28"
-              viewBox="0 0 73 39"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
               fill="none"
+              className="size-5 sm:size-7"
               aria-hidden="true"
-              className="sm:w-[68px] sm:h-[39px]"
             >
               <path
-                d="M70 19.5H5M21 4 5 19.5 21 35"
+                d="M19 12H5M11 18l-6-6 6-6"
                 stroke="currentColor"
-                strokeWidth="5.5"
+                strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -335,24 +335,24 @@ export default function ProjectsSection() {
           </motion.button>
           <motion.button
             onClick={next}
-            whileHover={{ scale: 1.15, x: 4 }}
+            whileHover={{ scale: 1.1, x: 2 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 26 }}
             aria-label="Next project"
-            className="group flex h-12 w-12 items-center justify-center text-white/80 hover:text-white sm:h-14 sm:w-[68px]"
+            className="flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white hover:text-[#111] sm:size-[68px]"
           >
             <svg
-              width="40"
-              height="28"
-              viewBox="0 0 73 39"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
               fill="none"
+              className="size-5 sm:size-7"
               aria-hidden="true"
-              className="sm:w-[68px] sm:h-[39px]"
             >
               <path
-                d="M3 19.5h65M52 4l16 15.5L52 35"
+                d="M5 12h14M13 18l6-6-6-6"
                 stroke="currentColor"
-                strokeWidth="5.5"
+                strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />

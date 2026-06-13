@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Breezy Island
-description: Editorial Luxury interior design studio — warm creams, deep espresso tones, high-contrast serif/variable typography, film-grain texture overlay, floating glass components, and photographic storytelling.
+description: Editorial Luxury desert retreat — warm creams, deep espresso tones, sage green accents, serif/monospace typography, glass morphism, and photographic storytelling.
 colors:
   surface-base: "#F2F1EF"
   surface-raised: "#F3EEE7"
@@ -46,158 +46,130 @@ typography:
     fontWeight: 500
     lineHeight: 1
     letterSpacing: 0.2em
-rounded:
-  sm: 7px
-  md: 12px
-  lg: 16px
-  xl: 24px
-  xxl: 32px
-  full: 9999px
-spacing:
-  xs: 4px
-  sm: 8px
-  md: 16px
-  lg: 24px
-  xl: 32px
-  xxl: 48px
-  section-y: 96px
-components:
-  badge:
-    backgroundColor: "{colors.surface-raised}"
-    textColor: "{colors.text-primary}"
-    rounded: "{rounded.full}"
-    padding: 4px 16px
-  badge-icon-wrapper:
-    backgroundColor: "{colors.surface-overlay}"
-    textColor: "#FFFFFF"
-    rounded: "{rounded.full}"
-    size: 28px
-  button-cta:
-    backgroundColor: "{colors.surface-overlay}"
-    textColor: "#FFFFFF"
-    rounded: "{rounded.full}"
-    padding: 8px 24px
-  button-cta-hover:
-    backgroundColor: "{colors.surface-overlay}"
-    textColor: "#FFFFFF"
-    opacity: 0.9
-  button-cta-icon:
-    backgroundColor: "#FFFFFF"
-    textColor: "{colors.surface-overlay}"
-    rounded: "{rounded.full}"
-    size: 40px
-  card-article:
-    backgroundColor: "{colors.surface-overlay}"
-    textColor: "#FFFFFF"
-    rounded: 7px
-  card-project:
-    backdropFilter: blur-xl
-    backgroundColor: "rgba(255,255,255,0.12)"
-    rounded: 7px
-  double-bezel-outer:
-    padding: 6px
-    rounded: 32px
-    borderColor: "rgba(255,255,255,0.1)"
-  double-bezel-inner:
-    rounded: 26px
-    insetShadow: true
+  logo:
+    fontFamily: "New York"
+    fontSize: "clamp(18px, 1.5vw, 20px) / clamp(40px, 12vw, 420px) / clamp(48px, 16vw, 580px)"
+    fontWeight: 400
+    lineHeight: 0.7
 ---
+# Breezy Island Design System
 
 ## Overview
 
-**Editorial Luxury** — Breezy Island is a high-end interior design brand. Every visual decision whispers luxury, spatial awareness, and tactile warmth. The overall vibe is warm creams, deep espresso tones, high-contrast serif/variable typography with monospace accent, film-grain texture overlay, floating glass components, and photographic storytelling. The hero image is the brand's anchor — treated as hero art, not a generic background.
+**Editorial Luxury** — Breezy Island is a luxury desert retreat in Siwa Oasis, Egypt. The design whispers warmth, escape, and natural luxury through warm creams, deep espresso tones, sage green accents, high-contrast serif/monospace typography, and photographic storytelling.
+
+## Brand Voice
+- Warm, inviting, and exclusive
+- Editorial and sophisticated
+- Desert-inspired natural luxury
+- Not generic beach resort — Siwa Oasis is ancient, mystical, remote
 
 ## Colors
 
-The palette is rooted in warm neutrals with deep espresso and sage green accents, evoking natural materials, earth, and refined craftsmanship.
-
-- **Surface Base (#F2F1EF):** Warm cream foundation for all page backgrounds. Softer than pure white, evokes natural linen.
-- **Surface Raised (#F3EEE7):** Slightly warmer tone for cards, badges, and raised elements. Subtle shift from base.
-- **Surface Overlay (#503A26):** Deep espresso used for navbars, overlays, button backgrounds, and dark text on light surfaces. The anchoring dark tone.
-- **Text Primary (#503A26):** Espresso for all body text, headings in monospace sections. Provides warmth while maintaining readability.
-- **Text Secondary (#5E6B57):** Muted sage green for secondary text, captions, and metadata. Evokes olive branches and natural foliage.
-- **Text Tertiary (#C8A17E):** Warm gold for accent text, decorative elements, and tertiary information.
-- **Border Default (#7D9C9A):** Teal-gray for borders, dividers, and structural lines. Adds a subtle cool counterpoint to warm browns.
-- **Accent (#C8A17E):** Warm gold — the primary driver for interactive highlights and decorative accents.
-- **Accent Secondary (#7D9C9A):** Teal-gray — secondary accent used sparingly for variety.
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `surface-base` | `#F2F1EF` | Page backgrounds, warm cream |
+| `surface-raised` | `#F3EEE7` | Cards, badges, raised elements |
+| `surface-overlay` | `#503A26` | Navbars, button fills, dark elements |
+| `text-primary` | `#503A26` | Body text, headings |
+| `text-secondary` | `#5E6B57` | Secondary text, nav links, sage green |
+| `text-tertiary` | `#C8A17E` | Accent text, decorative |
+| `border-default` | `#7D9C9A` | Borders, dividers, teal-gray |
+| `accent` | `#C8A17E` | Interactive highlights, warm gold |
+| `accent-secondary` | `#7D9C9A` | Secondary accent, teal-gray |
 
 ## Typography
 
-The typography strategy pairs **New York** (serif) for editorial headings with **SF Mono** (monospace) for body text and labels. This unexpected combination creates a distinctive, editorial-meets-technical voice.
+### Font Pairing
+- **New York (serif):** Editorial headings, logo mark, display text
+- **SF Mono (monospace):** Body text, labels, navigation
 
-- **Heading Display:** New York serif, 64px, regular weight, tight leading (0.985). Used for hero titles and major section headings. Evokes magazine spread sophistication.
-- **Heading XL:** SF Mono, 48px, medium weight, uppercase. Used for section headers in the monospace style. Transforms the utilitarian nature of monospace into a design statement.
-- **Body LG:** SF Mono, 22px, regular. Used for feature descriptions and lead paragraphs.
-- **Body MD:** SF Mono, 16px, regular. Default body text for articles, project descriptions, and general content.
-- **Body SM:** SF Mono, 14px. Small print, captions, and metadata.
-- **Label Caps:** SF Mono, 10px, medium weight, 0.2em letter-spacing, uppercase. Used for eyebrow tags and badge labels.
+### Logo Mark
+- `Breezy` + `Island` (no space) — both in New York serif
+- `Island` is italic (`font-normal italic`)
+- Three sizes depending on placement:
+  - Navbar: `clamp(18px, 1.5vw, 20px)`
+  - Hero watermark: `clamp(40px, 12vw, 420px)` with `font-black`
+  - Footer watermark: `clamp(48px, 16vw, 580px)` with `font-black`
+- All use `leading-[0.7]`
+
+### Fluid Type Scale
+| Token | Size | Usage |
+|-------|------|-------|
+| heading-display | `clamp(48px, 4.3vw, 86px)` | Section titles |
+| body-lg | `clamp(18px, 2.2vw, 26px)` | Feature descriptions |
+| navbar-links | `16px` | Desktop nav links, SF Mono |
+| label-caps | `10px, 0.2em tracking` | Eyebrow badges |
 
 ## Layout
 
-The layout follows an **Asymmetrical Bento / Editorial Cascade** model. Sections use generous vertical whitespace (py-24 to py-40) with content grouped into intentional, asymmetric grids.
+### Section Spacing
+- `py-24` to `py-40` vertical padding
+- Content max-width varies by section (no universal container)
+- Asymmetric grids preferred over symmetrical layouts
 
-- **Macro-Whitespace:** Section padding of 96px–160px vertically creates a slow, rhythmic scroll experience.
-- **Asymmetric Grids:** Content is never centered symmetrically. Text and image blocks use intentional off-balance ratios (e.g., 0.49fr / 0.51fr, or 1fr / auto).
-- **Max-width content:** Text blocks are capped at 650px–780px for optimal readability.
-- **Fluid typography:** Uses `clamp()` for fluid type scaling (e.g., `clamp(48px, 3.35vw, 64px)`).
+### Hero Section
+- Full-screen (`h-dvh` / `h-screen`)
+- Background image with multiple dark overlay layers (rgba(12,10,8, opacity))
+- Solid overlay: 0.55 opacity
+- Horizontal gradient: 0.50/0.20/0.35
+- Bottom gradient: 0.55/0.20
+- CTA: white button-in-button with dual SVG arrow animation
+- Watermark at bottom: "Breezy Island" in New York serif
 
-## Elevation & Depth
-
-Depth is achieved through **tonal layering** and **glass morphism** rather than heavy shadows.
-
-- **Glass panels:** Floating navbar uses `backdrop-blur-xl backdrop-saturate-150` with subtle white border overlay (`inset 0 1px 0 rgba(255,255,255,0.24)`).
-- **Project cards** use `box-shadow: 0 24px 70px rgba(0,0,0,0.28)` with glass backdrop.
-- **Image overlays** use dark gradients (`rgba(8,8,7, 0.48)` to `rgba(8,8,7, 0.4)`) rather than drop shadows.
-- **No harsh drop shadows** on standard elements. Hierarchy is conveyed through color contrast and spacing.
-
-## Shapes
-
-The shape language balances **architectural precision** with organic softness.
-
-- **7px radius** — the default corner radius for cards, images, and containers. A deliberate middle ground between sharp and pill.
-- **Full/9999px** — used exclusively for badge pills, CTA buttons, and the floating navbar.
-- **32px / 2rem** — used for the outer shell of double-bezel (Doppelrand) cards.
-- **No mixing** of sharp and rounded corners within the same component.
+### Navbar
+- Fixed header, scroll-aware show/hide
+- Desktop: centered links + Book Now link
+- Mobile: hamburger morphs to X (500ms, custom cubic-bezier)
+- Mobile menu overlay:
+  - Background: `bg-surface-base/95 backdrop-blur-3xl` (cream)
+  - Links: New York serif, espresso/caption color `#5E6B57`
+  - Staggered blur-in: `opacity: 0; y: 56; filter: blur(8px)` → reveal
+  - Book Now matches other link styles
+  - Lenis stop/start on open/close
 
 ## Components
 
-### Fluid Island Navbar
-- Floating glass pill, `mt-6 mx-auto w-max rounded-full`
-- `backdrop-blur-3xl bg-black/80` for full-screen menu overlay
-- Hamburger morphs to X with rotating bars
-- Staggered link reveal (translate-y → 0, opacity 0 → 1)
-
 ### Button-in-Button CTA
-- Trailing arrow in its own circular wrapper, flush against button edge
-- Dual SVG arrows with translate transforms on hover for directional reveal
-- `rounded-full`, white icon circle on dark button
+- Trailing arrow in circular wrapper, flush against edge
+- Dual SVG arrows with translate transforms on hover
+- `rounded-full`, white icon circle, dark text
 
-### Double-Bezel (Doppelrand) Cards
-- Outer shell: `p-1.5 rounded-[2rem] border-white/10`
-- Inner core: inset shadow, `rounded-[1.625rem]`
-- Used for featured content cards and project showcases
+### Mobile Menu
+- Full-screen cream overlay
+- Links in New York serif at `text-5xl/sm:text-7xl`
+- Staggered blur reveal (0.065s per item, 0.08s initial delay)
+- Hamburger SVG: 24x24 viewBox, `#5E6B57` fill, white only on hero
+- Decorative top rule (`h-px bg-[#503A26]/10`)
 
-### Section Badge
-- `inline-flex h-10 rounded-full bg-surface-raised py-1 pl-2 pr-4`
-- Icon wrapper: 28px circle with `bg-surface-overlay text-white`
-- Label: SF Mono, 16px, regular weight
+### Watermark Text
+- Absolute positioned at bottom of section
+- Flex layout with `justify-center`
+- Hero: `bottom-6`
+- Footer: `bottom-[6%]`, `overflow-hidden` on parent
+- Both: `pointer-events-none select-none leading-none`
 
-### Article Cards
-- Full-height clickable card with background image
-- Dark gradient overlay (`rgba(8,8,7,0.48)` → `rgba(8,8,7,0.4)`) on hover
-- Bottom gradient fade for text readability
-- Category pill: `rounded-full bg-[rgba(135,132,124,0.82)] backdrop-blur-[2px]`
-- Hover: image scales 1.08×, title shifts right 3px
+## Elevation & Depth
+- Dark overlays over hero image using rgba values
+- Glass morphism via `backdrop-blur` on fixed elements only
+- No harsh drop shadows—hierarchy through color and spacing
+- Tonal layering for depth
+
+## Motion
+- Custom cubic-bezier: `cubic-bezier(0.32,0.72,0,1)` for all custom transitions
+- Spring physics with real mass/damping for interactive elements
+- Section entry: 800ms+, translate-y + blur + opacity
+- GPU-safe: transform and opacity only
+- No `linear` or `ease-in-out` transitions
 
 ## Do's and Don'ts
-
-- Do use New York serif for major editorial headings and SF Mono for all body text
-- Don't use Inter, Roboto, Arial, Open Sans, or Helvetica fonts
-- Do use the double-bezel (Doppelrand) card pattern for featured content
-- Don't use generic 1px solid gray borders or harsh drop shadows
-- Do use `cubic-bezier(0.32,0.72,0,1)` for custom transitions
-- Don't use `linear` or `ease-in-out` transitions
-- Do use `min-h-[100dvh]` not `h-screen` for full-height sections
-- Don't animate `top`, `left`, `width`, or `height` — only `transform` and `opacity`
-- Do use `IntersectionObserver` or Framer Motion's `whileInView` — never `window.addEventListener('scroll')`
-- Do apply `will-change: transform` only on actively animating elements
+- Do use New York serif for editorial headings, SF Mono for body
+- Don't use Inter, Roboto, Arial, Open Sans, Helvetica
+- Do use the button-in-button pattern for CTAs
+- Don't use generic 1px solid gray borders or harsh shadows
+- Do use `cubic-bezier(0.32,0.72,0,1)` for transitions
+- Don't use `linear` or `ease-in-out`
+- Do use `min-h-[100dvh]` over `h-screen`
+- Don't animate `top`, `left`, `width`, `height`
+- Do stop Lenis when opening modals/menus
+- Do read DESIGN.md before every edit

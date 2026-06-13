@@ -1,30 +1,49 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
+import { useLanguage } from "../lib/language";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Retreats", href: "#projects" },
-  { label: "Experiences", href: "#services" },
+  { label: "Home", href: "/" },
+  { label: "Our Story", href: "/story" },
+  { label: "Rooms", href: "/rooms" },
+  { label: "Adventure Club", href: "/adventure-club" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
-export default function Navbar() {
-  const { scrollY } = useScroll();
+function stopLenis() {
+  const lenis = (window as unknown as Record<string, unknown>).__lenis as
+    | { stop: () => void }
+    | undefined;
+  lenis?.stop();
+}
+
+function startLenis() {
+  const lenis = (window as unknown as Record<string, unknown>).__lenis as
+    | { start: () => void }
+    | undefined;
+  lenis?.start();
+}
+
+export default function Navbar({ mode, scrollContainer, alwaysScrolled }: { mode?: "default" | "hide-on-scroll"; scrollContainer?: React.RefObject<HTMLElement | null>; alwaysScrolled?: boolean }) {
+  const { scrollY } = useScroll({ container: scrollContainer ?? undefined });
+  const { language, setLanguage } = useLanguage();
   const prevRef = useRef(0);
-  const [state, setState] = useState<"top" | "scrolled" | "hidden">("top");
+  const [state, setState] = useState<"top" | "scrolled" | "hidden">(
+    alwaysScrolled ? "scrolled" : mode === "hide-on-scroll" ? "scrolled" : "top"
+  );
   const [menuOpen, setMenuOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (current) => {
+    if (alwaysScrolled) return;
     const scrollingDown = current > prevRef.current;
-    const pastHero = current > window.innerHeight * 0.85;
+    const pastHero = mode === "hide-on-scroll" ? true : current > window.innerHeight * 0.85;
 
     if (!pastHero && state !== "top") {
       setState("top");
-    } else if (pastHero && scrollingDown && current > window.innerHeight * 0.85 + 92) {
+    } else if (pastHero && scrollingDown && (mode === "hide-on-scroll" || current > window.innerHeight * 0.85 + 92)) {
       if (state !== "hidden") setState("hidden");
     } else if (pastHero && state !== "scrolled") {
       setState("scrolled");
@@ -36,181 +55,196 @@ export default function Navbar() {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
+      stopLenis();
     } else {
       document.body.style.overflow = "";
+      startLenis();
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+      startLenis();
+    };
   }, [menuOpen]);
 
   const isDark = !menuOpen && state === "top";
-  const isMenuDark = menuOpen;
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  const stagger = 0.065;
 
   return (
-    <motion.header
-      initial={{ y: -80 }}
-      animate={{ y: state === "hidden" && !menuOpen ? -80 : 0 }}
-      transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`fixed left-0 right-0 top-0 z-50 border-b transition-colors duration-300 ${
-        isDark
-          ? "border-transparent bg-transparent text-white"
-          : "border-border-default bg-surface-base/95 text-text-primary backdrop-blur-sm"
-      } ${menuOpen ? "!border-transparent !bg-transparent !text-white" : ""}`}
-    >
-      <nav className="relative mx-auto flex h-16 max-w-none items-start justify-between px-4 pt-5 pb-5 sm:px-8">
-        <Link
-          href="/"
-          className="relative block h-12 w-12 shrink-0 sm:h-16 sm:w-16"
-          onClick={closeMenu}
-          aria-label="Home"
-        >
-          <Image
-            src="/images/Profile Picture White.jpg"
-            alt="Breezy Island"
-            fill
-            sizes="(max-width: 640px) 48px, 64px"
-            className={`object-cover transition-opacity duration-300 rounded-[1.2rem] ${
-              isDark || menuOpen ? "opacity-100" : "opacity-0"
-            }`}
-            priority
-          />
-          <Image
-            src="/images/Profile Picture Green.jpg"
-            alt="Breezy Island"
-            fill
-            sizes="(max-width: 640px) 48px, 64px"
-            className={`object-cover transition-opacity duration-300 rounded-[1.2rem] ${
-              isDark || menuOpen ? "opacity-0" : "opacity-100"
-            }`}
-            priority
-          />
-        </Link>
-
-        <div className="absolute left-1/2 top-6 hidden -translate-x-1/2 items-center gap-5 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`group relative overflow-hidden text-base font-normal leading-none transition-colors duration-200 ${
-                isDark ? "text-white/80 hover:text-white" : "text-text-primary hover:text-surface-overlay"
+    <>
+      <motion.header
+        initial={false}
+        animate={{ y: state === "hidden" && !menuOpen ? -80 : 0 }}
+        transition={{ type: "spring", stiffness: 100, damping: 22, mass: 1.2 }}
+        className={`fixed left-0 right-0 top-0 z-50 border-b transition-colors duration-300 ${
+          isDark
+            ? "border-transparent bg-transparent text-white"
+            : "border-border-default bg-surface-base/95 text-text-primary backdrop-blur-sm"
+        } ${menuOpen ? "!border-transparent !bg-transparent !text-white pointer-events-none" : ""}`}
+      >
+        <nav className="relative mx-auto flex h-16 max-w-none items-center justify-between px-4 sm:px-8">
+          <Link
+            href="/"
+            onClick={closeMenu}
+            aria-label="Breezy Island"
+            className="relative shrink-0"
+          >
+            <span
+              className={`block whitespace-nowrap font-heading text-lg font-normal leading-none tracking-tight transition-opacity duration-300 sm:text-xl ${
+                isDark && !menuOpen ? "opacity-100" : "opacity-0 absolute inset-0"
               }`}
             >
-              <span className="relative block overflow-hidden">
-                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-full">
-                  {link.label}
-                </span>
-                <span className="absolute inset-0 block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] translate-y-full group-hover:translate-y-0">
-                  {link.label}
-                </span>
-              </span>
-            </Link>
-          ))}
-        </div>
-
-        <Link
-          href="#contact"
-          className={`group relative overflow-hidden text-base font-normal leading-none transition-colors duration-200 hidden md:block ${
-            isDark ? "text-white/80 hover:text-white" : "text-text-primary hover:text-surface-overlay"
-          }`}
-        >
-          <span className="relative block overflow-hidden">
-            <span className="block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-full">
-              Book Now
+              Breezy<span className="font-heading font-normal italic">Island</span>
             </span>
-            <span className={`absolute inset-x-0 top-0 block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] translate-y-[1.2em] group-hover:translate-y-0 ${
-              isDark ? "text-white/30" : "text-black/20"
-            }`}>
-              Book Now
+            <span
+              className={`block whitespace-nowrap font-heading text-lg font-normal leading-none tracking-tight text-[#5E6B57] transition-opacity duration-300 sm:text-xl ${
+                !isDark || menuOpen ? "opacity-100" : "opacity-0 absolute inset-0"
+              }`}
+            >
+              Breezy<span className="font-heading font-normal italic">Island</span>
             </span>
-          </span>
-        </Link>
+          </Link>
 
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 1000, damping: 10, mass: 0.5 }}
-          className="group z-50 flex size-11 items-center justify-center rounded-[7px] transition-colors duration-200 md:hidden"
-          onClick={() => setMenuOpen((o) => !o)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-        >
-          <svg width="22" height="16" viewBox="0 0 22 16" fill="none" className="overflow-visible">
-            <rect
-              x="0" y="0" width="22" height="2" rx="1"
-              fill={isMenuDark || isDark ? "white" : "#503A26"}
-              className="origin-center transition-all duration-300"
-              style={{
-                transform: menuOpen ? "rotate(45deg) translate(0px, 0px)" : "none",
-                translate: menuOpen ? "0 7px" : "0 0",
-              }}
-            />
-            <rect
-              x="0" y="7" width="16" height="2" rx="1"
-              fill={isMenuDark || isDark ? "white" : "#503A26"}
-              className="origin-left transition-all duration-300"
-              style={{
-                opacity: menuOpen ? 0 : 1,
-                transform: menuOpen ? "scaleX(0)" : "scaleX(1)",
-              }}
-            />
-            <rect
-              x="0" y="14" width="22" height="2" rx="1"
-              fill={isMenuDark || isDark ? "white" : "#503A26"}
-              className="origin-center transition-all duration-300"
-              style={{
-                transform: menuOpen ? "rotate(-45deg) translate(0px, -0px)" : "none",
-                translate: menuOpen ? "0 -7px" : "0 0",
-              }}
-            />
-          </svg>
-        </motion.button>
-      </nav>
+          <div className="absolute left-1/2 top-6 hidden -translate-x-1/2 items-center gap-5 md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`group relative overflow-hidden text-base font-normal leading-none transition-colors duration-200 ${
+                  isDark ? "text-white/80 hover:text-white" : "!text-[#5E6B57] hover:text-[#5E6B57]/70"
+                }`}
+              >
+                <span className="relative block overflow-hidden">
+                  <span className="block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-full">
+                    {link.label}
+                  </span>
+                  <span className="absolute inset-0 block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] translate-y-full group-hover:translate-y-0">
+                    {link.label}
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="hidden items-center rounded-full bg-surface-raised/80 p-1 md:flex">
+            {(["en", "ar"] as const).map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => setLanguage(item)}
+                aria-pressed={language === item}
+                className={`h-8 rounded-full px-3 text-[11px] font-medium uppercase leading-none transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                  language === item
+                    ? "bg-surface-overlay text-white"
+                    : "text-text-secondary hover:text-text-primary"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 1000, damping: 10, mass: 0.5 }}
+            className="group pointer-events-auto z-50 flex size-11 items-center justify-center rounded-[7px] transition-colors duration-200 md:hidden"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="overflow-visible">
+              <rect
+                x="2" y="5" width="20" height="2" rx="1"
+                fill={isDark && !menuOpen ? "white" : "#5E6B57"}
+                className="transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                style={{
+                  transformOrigin: "12px 6px",
+                  transform: menuOpen ? "translateY(6px) rotate(45deg)" : "none",
+                }}
+              />
+              <rect
+                x="2" y="11" width="20" height="2" rx="1"
+                fill={isDark && !menuOpen ? "white" : "#5E6B57"}
+                className="transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                style={{
+                  transformOrigin: "12px 12px",
+                  transform: menuOpen ? "scaleX(0)" : "scaleX(1)",
+                }}
+              />
+              <rect
+                x="2" y="17" width="20" height="2" rx="1"
+                fill={isDark && !menuOpen ? "white" : "#5E6B57"}
+                className="transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                style={{
+                  transformOrigin: "12px 18px",
+                  transform: menuOpen ? "translateY(-6px) rotate(-45deg)" : "none",
+                }}
+              />
+            </svg>
+          </motion.button>
+        </nav>
+      </motion.header>
 
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-black/80 backdrop-blur-3xl"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
+            className="fixed inset-0 z-40 flex flex-col bg-surface-base/95 backdrop-blur-3xl"
           >
-            <nav className="flex flex-col items-center gap-8">
+            <div className="absolute left-4 right-4 top-24 h-px bg-[#503A26]/10 sm:left-8 sm:right-8" />
+
+            <nav className="flex flex-1 flex-col items-center justify-center gap-5 px-4">
+              <motion.div
+                initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
+                transition={{ delay: 0.03, duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+                className="mb-6 flex items-center rounded-full bg-surface-raised p-1"
+              >
+                {(["en", "ar"] as const).map((item) => (
+                  <button
+                    key={item}
+                    type="button"
+                    onClick={() => setLanguage(item)}
+                    aria-pressed={language === item}
+                    className={`h-10 rounded-full px-4 text-xs font-medium uppercase leading-none transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                      language === item
+                        ? "bg-surface-overlay text-white"
+                        : "text-text-secondary"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </motion.div>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.label}
-                  initial={{ opacity: 0, y: 32 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -16 }}
-                  transition={{ delay: i * 0.08, duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                  initial={{ opacity: 0, y: 56, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -32, filter: "blur(8px)" }}
+                  transition={{ delay: i * stagger + 0.08, duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
                 >
                   <Link
                     href={link.href}
                     onClick={closeMenu}
-                    className="text-3xl font-medium leading-none text-white/90 no-underline transition-colors duration-200 hover:text-white sm:text-4xl"
+                    className="group relative block font-heading text-5xl leading-none tracking-tight text-[#503A26] transition-colors duration-500 hover:text-[#503A26]/70 sm:text-7xl"
                   >
-                    {link.label}
+                    <span className="block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-x-2">
+                      {link.label}
+                    </span>
+                    <span className="absolute -bottom-2 left-0 h-px w-0 bg-[#503A26]/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:w-full" />
                   </Link>
                 </motion.div>
               ))}
-              <motion.div
-                initial={{ opacity: 0, y: 32 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ delay: navLinks.length * 0.08 + 0.08, duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                className="mt-4"
-              >
-                <Link
-                  href="#contact"
-                  onClick={closeMenu}
-                  className="inline-flex h-12 items-center gap-3 rounded-full bg-white px-6 text-base font-medium leading-none text-surface-overlay no-underline"
-                >
-                  Book Now
-                </Link>
-              </motion.div>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   );
 }

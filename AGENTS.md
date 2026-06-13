@@ -1,10 +1,12 @@
-# Mirell Studio — Interior Design Website
+# Breezy Island — Siwa Oasis Retreat
 
 This file is read by AI agents before editing. **It is authoritative.** Follow it.
 
+**IMPORTANT: Always read `DESIGN.md` at the start of every prompt before making any changes.** It is the canonical design reference and takes precedence over general patterns.
+
 ## Project Identity
 
-A high-end interior design studio site for **Mirell Studio**. Every line of code must feel like a $150k+ agency build — award-worthy craftsmanship, obsessive micro-interaction detail, cinematic spatial rhythm.
+A luxury desert retreat website for **Breezy Island** in Siwa Oasis, Egypt. Every line of code must feel like a $150k+ agency build — award-worthy craftsmanship, obsessive micro-interaction detail, cinematic spatial rhythm.
 
 ## Architecture
 
@@ -24,20 +26,20 @@ app/
   page.tsx             — section composition, "use client"
   lib/transitions.ts   — shared spring/tween configs & variants
   components/
-    SmoothScroll.tsx   — Lenis wrapper
+    SmoothScroll.tsx   — Lenis wrapper (exposes window.__lenis)
     ScrollProgressBar.tsx  — scroll progress (Framer Motion)
-    Navbar.tsx         — fixed header, scroll-aware show/hide
-    HeroSection.tsx    — fullscreen hero, GSAP reveal, CTA
+    Navbar.tsx         — fixed header, scroll-aware show/hide, mobile menu overlay
+    HeroSection.tsx    — fullscreen hero, GSAP reveal, CTA, watermark
     AboutSection.tsx   — stats counters, company intro
-    ProjectsSection.tsx  — project carousel (Stonehaven, Cedarwood, Aldine)
-    ServicesSection.tsx  — 4 service cards, parallax image
-    ArticlesSection.tsx  — blog cards with stagger animation
+    ProjectsSection.tsx  — retreat carousel
+    ServicesSection.tsx  — service cards, parallax image
+    ArticlesSection.tsx  — rooms showcase with modal
     FaqSection.tsx       — accordion (AnimatePresence)
     ProcessCtaSection.tsx — CTA with avatars & parallax
     Footer.tsx           — contact form, links, watermark
 ```
 
-## Design Standards (Awwwards-Tier)
+## Design Standards
 
 ### Banned
 - Inter, Roboto, Arial, Open Sans, Helvetica fonts
@@ -47,19 +49,26 @@ app/
 - `linear` or `ease-in-out` transitions, instant state changes
 
 ### Mandated
-- **Typography:** Use Geist, Clash Display, Playfair Display (serif headings), Inter Display
-- **Icons:** Ultra-light precise lines (Phosphor Light, Remix Line, custom SVG)
-- **Double-Bezel (Doppelrand):** Nested card architecture — outer shell (`p-1.5`, `rounded-[2rem]`, `border-white/10`) + inner core with inset shadow
+- **Typography:** New York (serif) for headings, SF Mono (monospace) for body text
+- **Icons:** Ultra-light precise lines (custom SVG)
 - **Button-in-Button CTAs:** Trailing arrow in its own circular wrapper, flush against button edge
 - **Macro-Whitespace:** Section padding `py-24` to `py-40`
-- **Eyebrow Tags:** Microscopic pill badges before H1/H2s (`rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em]`)
 - **Motion:** Custom cubic-bezier (`cubic-bezier(0.32,0.72,0,1)`), spring physics with real mass/damping
+- **Logo:** `Breezy<span class="font-heading font-normal italic">Island</span>` — no space, Island in New York serif italic
 
-### Navbar: Fluid Island
-- Floating glass pill (`mt-6 mx-auto w-max rounded-full`)
-- Hamburger morphs to X with rotating bars
-- Full-screen glass overlay menu (`backdrop-blur-3xl bg-black/80`)
-- Staggered link reveal (`translate-y-12 opacity-0` → `translate-y-0 opacity-100`)
+### Navbar
+- Desktop: centered links + Book Now link, scroll-aware show/hide and color transitions
+- Mobile: hamburger morphs to X (rotating bars, `cubic-bezier(0.32,0.72,0,1)` duration 500ms)
+- Mobile menu overlay: cream background (`bg-surface-base/95 backdrop-blur-3xl`), links in espresso/caption color (`#5E6B57`), Book Now as text link matching other links
+- Staggered blur-in animation (`translate-y-56 blur-[8px] opacity-0` → `translate-y-0 blur-0 opacity-100`), 0.065s stagger, 0.08s initial delay
+- Logo: two color states — white on hero, `#5E6B57` when scrolled. `Breezy` in New York, `Island` in New York italic
+
+### Watermark Text (Hero & Footer)
+- `Breezy<span className="font-heading font-normal italic">Island</span>`
+- Hero: `clamp(40px,12vw,420px)`, hero `font-black` + `font-normal italic`
+- Footer: `clamp(48px,16vw,580px)`, `font-black` + `font-normal italic`
+- Both use `leading-[0.7]`, positioned absolute at bottom
+- Footer uses `overflow-hidden` to clip oversized text
 
 ### Scroll & Entry
 - **Lenis** for smooth scroll (already integrated)
@@ -77,42 +86,20 @@ app/
 ## Animation Libraries
 
 - **GSAP** (`@gsap/react`): Hero reveals, scroll-triggered timelines, counters, project carousel
-- **Framer Motion**: Navbar scroll-awareness, article stagger, FAQ accordion, progress bar, spring configs
+- **Framer Motion**: Navbar scroll-awareness, article stagger, FAQ accordion, progress bar, spring configs, mobile menu, modal animations
 - **Lenis**: Smooth scroll wrapper on the root layout
 
-Shared spring configs live in `app/lib/transitions.ts`. Extend that file — don't inline magic numbers.
+## Lenis Integration
 
-## Available Skills (Agent-Mounted)
+Lenis is exposed globally via `window.__lenis` in `SmoothScroll.tsx`. When opening modals or the mobile menu, always call `window.__lenis.stop()` and `window.__lenis.start()` on close to prevent scroll leaking.
+
+## Available Skills
 
 These skills are installed and must be invoked automatically when their conditions are met:
 - `gsap-framer-scroll-animation` — any scroll animation, parallax, reveal, GSAP ScrollTrigger, Framer Motion scroll work
 - `web-design-guidelines` — UI review, accessibility audit, best-practice compliance check
 - `high-end-visual-design` — any visual design, layout, component, or motion work (the content above)
 - `graphify` — knowledge graph at `graphify-out/graph.json` for project-wide understanding
-
-## Knowledge Graph
-
-`graphify-out/GRAPH_REPORT.md` contains a structured map of all project files, relationships, and communities. Read it before making cross-cutting changes to understand how components connect.
-
-**Key graph findings:**
-- 48 nodes, 38 edges, 16 communities
-- God nodes: `Next.js` (6 edges), `Breezy` (4 edges), `Stonehaven Residence Interior Photography` (4 edges)
-- Communities: App Pages & Navigation, Project Setup & Branding, Next.js Documentation, Projects Showcase, Hero Section, Layout & Metadata, Footer, PostCSS Config, Logos
-
-## Auto-Update Knowledge Graph
-
-After every prompt — whether you read files, edit files, or simply answer a question — run `graphify update` on the project root to keep the knowledge graph in sync:
-
-```bash
-graphify update .
-```
-
-This re-extracts only changed/new files (incremental), prunes deleted ones, reclusters, and regenerates `graph.html` + `GRAPH_REPORT.md`. It is fast (seconds when few files change) and ensures the graph always reflects the actual project state. **Do not skip this step.**
-
-If the `graphify` CLI is unavailable, run the Python equivalent:
-```bash
-cd /path/to/project && python3 -m graphify --update .
-```
 
 ## Commands
 
@@ -123,8 +110,8 @@ pnpm start      # Start production server
 pnpm lint       # ESLint
 ```
 
-## Design Direction (Read Before Every Edit)
+## Design Direction
 
-This is **Mirell Studio** — an interior design brand. Every visual decision must whisper luxury, spatial awareness, and tactile warmth. The overall vibe is **Editorial Luxury**: warm creams, deep espresso tones, high-contrast serif/variable typography, film-grain texture overlay, floating glass components, and photographic storytelling. The hero image is the brand's anchor — treat it as hero art, not a generic background.
+This is **Breezy Island** — a luxury desert retreat in Siwa Oasis. Every visual decision must whisper warmth, escape, and natural luxury. The overall vibe is **Editorial Luxury**: warm creams, deep espresso tones, sage green accents, high-contrast serif/monospace typography, and photographic storytelling. The hero image is the brand's anchor — treat it as hero art, not a generic background.
 
 Before writing code, roll the variance engine: choose a vibe archetype (Ethereal Glass / Editorial Luxury / Soft Structuralism) and a layout archetype (Asymmetrical Bento / Z-Axis Cascade / Editorial Split) that fits the component's role in the narrative. Never generate the same layout twice.

@@ -15,6 +15,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       smoothWheel: true,
     });
 
+    (window as unknown as Record<string, unknown>).__lenis = lenis;
+
     lenis.on("scroll", ScrollTrigger.update);
 
     const raf = (time: number) => {
@@ -25,6 +27,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     return () => {
       lenis.destroy();
+      delete (window as unknown as Record<string, unknown>).__lenis;
     };
   }, []);
 

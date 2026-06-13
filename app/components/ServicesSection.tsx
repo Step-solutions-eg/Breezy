@@ -130,6 +130,18 @@ export default function ServicesSection() {
       id="services"
       className="relative bg-surface-base px-4 py-20 text-text-primary sm:px-8 sm:py-36"
     >
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+        <div className="absolute -left-32 bottom-0 w-[500px] h-[600px] opacity-[0.08] sm:w-[800px] sm:h-[900px]">
+          <Image
+            src="/images/tree only.svg"
+            alt=""
+            fill
+            className="object-contain object-left-bottom"
+            sizes="500px"
+            aria-hidden="true"
+          />
+        </div>
+      </div>
       <div className="grid gap-12 lg:grid-cols-[1fr_0.94fr] lg:gap-20">
         <div className="flex min-h-0 flex-col sm:min-h-[780px]">
           <motion.div

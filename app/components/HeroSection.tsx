@@ -32,7 +32,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="home"
-      className="sticky top-0 z-0 h-screen min-h-[652px] w-full overflow-hidden bg-surface-overlay"
+      className="sticky top-0 z-0 h-dvh min-h-[600px] w-full overflow-hidden bg-surface-overlay sm:h-screen sm:min-h-[652px]"
     >
       <div ref={bgRef} className="absolute inset-0 will-change-transform">
         <div
@@ -44,17 +44,17 @@ export default function HeroSection() {
           }}
         />
       </div>
-      <div className="absolute inset-0 bg-[rgba(12,10,8,0.34)] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[rgba(12,10,8,0.36)] via-[rgba(12,10,8,0.12)] to-[rgba(12,10,8,0.24)] pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[rgba(12,10,8,0.36)] via-[rgba(12,10,8,0.12)] to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[rgba(12,10,8,0.55)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[rgba(12,10,8,0.50)] via-[rgba(12,10,8,0.20)] to-[rgba(12,10,8,0.35)] pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[rgba(12,10,8,0.55)] via-[rgba(12,10,8,0.20)] to-transparent pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.6 }}
-        className="relative z-10 flex h-full flex-col justify-center px-4 text-white sm:px-8"
+        className="relative z-10 h-full px-4 text-white sm:px-8"
       >
-        <div className="max-w-[490px] pointer-events-auto mb-auto mt-28 sm:mt-44 sm:ml-8">
+        <div className="w-[95vw] mx-auto max-w-[490px] pointer-events-auto pt-28 sm:mx-0 sm:ml-8 sm:w-auto sm:pt-44">
           <p
             className="text-[clamp(18px,2.2vw,26px)] font-normal leading-[1.2] tracking-[-0.02em]"
             style={{
@@ -115,16 +115,13 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 1 }}
-          className="pointer-events-none select-none leading-none"
+          className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 select-none leading-none w-full"
         >
-          <div className="flex items-end justify-center w-full max-w-[100vw] overflow-hidden px-2 sm:px-0">
-            <span className="text-[clamp(64px,18vw,650px)] font-black leading-[0.7]">
+          <div className="flex items-end justify-center w-full">
+            <span className="text-[clamp(40px,16vw,1000px)] font-heading font-black leading-[0.7]">
               Breezy
             </span>
-            <span
-              className="text-[clamp(64px,18vw,650px)] font-light italic leading-[0.7]"
-              style={{ fontFamily: '"New York", serif' }}
-            >
+            <span className="text-[clamp(40px,16vw,1000px)] font-heading font-normal italic leading-[0.7]">
               Island
             </span>
           </div>

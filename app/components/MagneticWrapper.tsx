@@ -5,9 +5,11 @@ import { useState, useRef, type ReactNode } from "react";
 export default function MagneticWrapper({
   children,
   className,
+  style,
 }: {
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -32,6 +34,7 @@ export default function MagneticWrapper({
       style={{
         transform: `translate(${pos.x}px, ${pos.y}px)`,
         transition: "transform 0.2s cubic-bezier(0.32,0.72,0,1)",
+        ...style,
       }}
     >
       {children}

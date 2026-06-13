@@ -47,7 +47,7 @@ export default function Footer() {
       id="contact"
       className="relative min-h-[856px] overflow-hidden bg-surface-overlay px-4 pt-16 text-white sm:px-6 sm:pt-24"
     >
-      <div className="relative z-10 grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+      <div className="relative z-10 grid gap-12 pb-48 sm:pb-48 lg:pb-64 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
         <div>
           <h2
             data-footer-item
@@ -79,7 +79,7 @@ export default function Footer() {
               placeholder="your@email.com"
               whileFocus={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 400, damping: 26 }}
-              className="h-12 min-w-0 flex-1 rounded-[7px] border border-dashed border-white/30 bg-transparent px-4 text-base font-medium text-white outline-none placeholder:text-text-tertiary focus:border-solid sm:h-14 sm:text-xl"
+              className="h-14 min-w-0 flex-1 rounded-[7px] border border-dashed border-white/30 bg-transparent p-[15px] text-sm font-medium text-white outline-none placeholder:text-text-tertiary focus:border-solid sm:h-14 sm:px-4 sm:text-xl"
             />
             <motion.button
               type="submit"
@@ -130,16 +130,13 @@ export default function Footer() {
       <motion.div
         whileHover={{ scale: 1.005 }}
         transition={{ type: "spring", stiffness: 400, damping: 26 }}
-        className="pointer-events-none absolute bottom-[5%] left-1/2 -translate-x-1/2 select-none leading-none w-full overflow-hidden"
+        className="pointer-events-none absolute bottom-[6%] left-1/2 -translate-x-1/2 select-none leading-none w-full"
       >
-        <div className="flex items-end justify-center w-full max-w-[100vw] px-2">
-          <span className="text-[clamp(56px,18vw,650px)] font-black leading-[0.7]">
+        <div className="flex items-end justify-center w-full">
+          <span className="text-[clamp(48px,16vw,580px)] font-heading font-black leading-[0.7]">
             Breezy
           </span>
-          <span
-            className="text-[clamp(56px,18vw,650px)] font-light italic leading-[0.7]"
-            style={{ fontFamily: '"New York", serif' }}
-          >
+          <span className="text-[clamp(48px,16vw,580px)] font-heading font-normal italic leading-[0.7]">
             Island
           </span>
         </div>

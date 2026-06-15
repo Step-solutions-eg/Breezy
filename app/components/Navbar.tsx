@@ -95,6 +95,7 @@ export default function Navbar({ mode, scrollContainer, alwaysScrolled }: { mode
               className={`block whitespace-nowrap font-heading text-lg font-normal leading-none tracking-tight transition-opacity duration-300 sm:text-xl ${
                 isDark && !menuOpen ? "opacity-100" : "opacity-0 absolute inset-0"
               }`}
+              dir="ltr"
             >
               Breezy<span className="font-heading font-normal italic">Island</span>
             </span>
@@ -102,6 +103,7 @@ export default function Navbar({ mode, scrollContainer, alwaysScrolled }: { mode
               className={`block whitespace-nowrap font-heading text-lg font-normal leading-none tracking-tight text-[#5E6B57] transition-opacity duration-300 sm:text-xl ${
                 !isDark || menuOpen ? "opacity-100" : "opacity-0 absolute inset-0"
               }`}
+              dir="ltr"
             >
               Breezy<span className="font-heading font-normal italic">Island</span>
             </span>
@@ -232,7 +234,7 @@ export default function Navbar({ mode, scrollContainer, alwaysScrolled }: { mode
                   <Link
                     href={link.href}
                     onClick={closeMenu}
-                    className="group relative block font-heading text-5xl leading-none tracking-tight text-[#503A26] transition-colors duration-500 hover:text-[#503A26]/70 sm:text-7xl"
+                    className="group relative block text-center font-heading text-5xl leading-none tracking-tight text-[#503A26] transition-colors duration-500 hover:text-[#503A26]/70 sm:text-7xl"
                   >
                     <span className="block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-x-2">
                       {link.label}

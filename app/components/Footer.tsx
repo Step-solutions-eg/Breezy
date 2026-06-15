@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { motion } from "framer-motion";
@@ -10,15 +10,25 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 const pageLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Our Story", href: "#about" },
-  { label: "Retreats", href: "#projects" },
-  { label: "Experiences", href: "#services" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Our Story", href: "/story" },
+  { label: "Rooms", href: "/rooms" },
+  { label: "Adventure Club", href: "/adventure-club" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 export default function Footer() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleEmailSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setSubmitted(true);
+    setEmail("");
+    setTimeout(() => setSubmitted(false), 4000);
+  };
 
   useGSAP(
     () => {
@@ -68,6 +78,7 @@ export default function Footer() {
 
           <form
             data-footer-item
+            onSubmit={handleEmailSubmit}
             className="mt-10 flex max-w-[650px] flex-col gap-4 sm:mt-20 sm:flex-row sm:gap-5"
           >
             <label className="sr-only" htmlFor="footer-email">
@@ -76,7 +87,10 @@ export default function Footer() {
             <motion.input
               id="footer-email"
               type="email"
+              name="email"
               placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               whileFocus={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 400, damping: 26 }}
               className="h-14 min-w-0 flex-1 rounded-[7px] border border-dashed border-white/30 bg-transparent p-[15px] text-sm font-medium text-white outline-none placeholder:text-text-tertiary focus:border-solid sm:h-14 sm:px-4 sm:text-xl"
@@ -100,7 +114,7 @@ export default function Footer() {
               >
                 <ArrowIcon />
               </motion.span>
-              Submit
+              {submitted ? "Sent!" : "Submit"}
             </motion.button>
           </form>
         </div>
@@ -117,13 +131,96 @@ export default function Footer() {
               { label: "Privacy Policy", href: "#" },
             ]}
           />
-          <FooterColumn
-            title="Social"
-            links={[
-              { label: "Instagram", href: "#" },
-              { label: "Facebook", href: "#" },
-            ]}
-          />
+          <div className="col-span-2 sm:col-span-1">
+            <h3 className="mb-6 text-2xl font-bold leading-none text-text-tertiary">
+              Social
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="tel:+201067566607"
+                  className="inline-flex items-center gap-2 text-base font-bold leading-none text-white/80 no-underline transition-colors hover:text-white"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  +20 10 67566607
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/breezyislandresort"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-base font-bold leading-none text-white/80 no-underline transition-colors hover:text-white"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <rect
+                      x="2"
+                      y="2"
+                      width="20"
+                      height="20"
+                      rx="5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
+                  </svg>
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61590675692116"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-base font-bold leading-none text-white/80 no-underline transition-colors hover:text-white"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Facebook
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -132,7 +229,7 @@ export default function Footer() {
         transition={{ type: "spring", stiffness: 400, damping: 26 }}
         className="pointer-events-none absolute bottom-[6%] left-1/2 -translate-x-1/2 select-none leading-none w-full"
       >
-        <div className="flex items-end justify-center w-full">
+        <div className="flex items-end justify-center w-full" dir="ltr">
           <span className="text-[clamp(48px,16vw,580px)] font-heading font-black leading-[0.7]">
             Breezy
           </span>

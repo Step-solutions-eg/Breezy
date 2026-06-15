@@ -414,7 +414,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = language;
-    document.documentElement.dir = "ltr";
+    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
     translateTree(document.body, language);
 
     const observer = new MutationObserver(() => {

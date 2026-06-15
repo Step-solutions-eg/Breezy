@@ -117,7 +117,7 @@ export default function HeroSection() {
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 1 }}
           className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 select-none leading-none w-full"
         >
-          <div className="flex items-end justify-center w-full">
+          <div className="flex items-end justify-center w-full" dir="ltr">
             <span className="text-[clamp(40px,16vw,1000px)] font-heading font-black leading-[0.7]">
               Breezy
             </span>

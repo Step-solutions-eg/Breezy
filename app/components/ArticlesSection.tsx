@@ -381,23 +381,67 @@ function RoomModal({
   room: Room;
   onClose: () => void;
 }) {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const detailsRef = useRef<HTMLDivElement>(null);
+  const lastTouchYRef = useRef<number | null>(null);
+
+  const getScrollTarget = () => {
+    if (typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches) {
+      return detailsRef.current;
+    }
+
+    return panelRef.current;
+  };
+
+  const scrollModalBy = (deltaY: number) => {
+    const target = getScrollTarget();
+    if (!target) return;
+    target.scrollTop += deltaY;
+  };
+
   return (
     <motion.div
+      data-lenis-prevent
+      data-lenis-prevent-wheel
+      data-lenis-prevent-touch
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-0 sm:p-4"
+      className="fixed inset-0 z-50 flex touch-pan-y items-start justify-center overflow-hidden bg-black/70 p-3 backdrop-blur-sm sm:items-center sm:p-4"
       onClick={onClose}
     >
       <motion.div
+        ref={panelRef}
+        data-lenis-prevent
+        data-lenis-prevent-wheel
+        data-lenis-prevent-touch
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ type: "spring", stiffness: 250, damping: 25 }}
         onClick={(e) => e.stopPropagation()}
-        onWheel={(e) => e.stopPropagation()}
-        className="relative w-full max-w-5xl flex-col overflow-hidden bg-surface-base text-text-primary flex h-full md:h-auto md:max-h-[90vh] md:flex-row md:mx-4 md:rounded-[7px]"
+        onWheel={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          scrollModalBy(e.deltaY);
+        }}
+        onTouchStart={(e) => {
+          e.stopPropagation();
+          lastTouchYRef.current = e.touches[0]?.clientY ?? null;
+        }}
+        onTouchMove={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const currentY = e.touches[0]?.clientY;
+          if (currentY == null || lastTouchYRef.current == null) return;
+          scrollModalBy(lastTouchYRef.current - currentY);
+          lastTouchYRef.current = currentY;
+        }}
+        onTouchEnd={() => {
+          lastTouchYRef.current = null;
+        }}
+        className="relative flex max-h-[calc(100dvh-1.5rem)] w-full touch-pan-y flex-col overflow-y-auto overscroll-contain rounded-none bg-surface-base text-text-primary [-webkit-overflow-scrolling:touch] md:max-w-5xl md:max-h-[90dvh] md:flex-row md:overflow-hidden md:rounded-[7px]"
       >
         <button
           onClick={onClose}
@@ -409,7 +453,7 @@ function RoomModal({
           </svg>
         </button>
 
-        <div className="relative w-full shrink-0 min-h-[200px] md:min-h-full md:w-1/2">
+        <div className="relative h-[34dvh] min-h-[220px] w-full shrink-0 md:h-auto md:min-h-full md:w-1/2">
           <Image
             src={room.image}
             alt={room.name}
@@ -420,7 +464,13 @@ function RoomModal({
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-surface-base hidden md:block" />
         </div>
 
-        <div className="overflow-y-auto w-full md:w-1/2 px-5 py-5 md:px-10 md:py-12 min-h-0">
+        <div
+          ref={detailsRef}
+          data-lenis-prevent
+          data-lenis-prevent-wheel
+          data-lenis-prevent-touch
+          className="min-h-0 w-full touch-pan-y px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-5 md:max-h-[90dvh] md:w-1/2 md:overflow-y-auto md:overscroll-contain md:px-10 md:py-12 md:[-webkit-overflow-scrolling:touch]"
+        >
             <span className="inline-flex rounded-full bg-surface-raised px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] text-text-primary md:px-3 md:text-[10px]">
               {room.category}
             </span>

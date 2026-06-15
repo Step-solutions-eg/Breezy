@@ -11,6 +11,8 @@ import MagneticWrapper from "../components/MagneticWrapper";
 import SmoothScroll from "../components/SmoothScroll";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import Footer from "../components/Footer";
+import SeoHead, { BASE_URL } from "../lib/seo/seo-head";
+import { breadcrumbSchema } from "../lib/seo/structured-data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -212,6 +214,35 @@ export default function RoomsPage() {
 
   return (
     <SmoothScroll>
+      <SeoHead
+        data={{
+          title: "Luxury Rooms & Suites in Siwa Oasis — Breezy Island",
+          description:
+            "Explore four distinct luxury accommodations at Breezy Island in Siwa Oasis: Palm Courtyard Suite, Desert Vista Villa, Oasis Hideaway Room, and Salt Lake Penthouse. Each sanctuary frames the silence of the desert in its own way. Book your Siwa room today.",
+          keywords:
+            "Siwa hotel rooms, luxury suites Siwa, Siwa villa rental, boutique accommodation Siwa, Siwa Oasis accommodation, hotels in Siwa Egypt, Siwa resort rooms, family hotel in Siwa, romantic resort Siwa, eco lodge Siwa rooms",
+          canonical: "/rooms",
+          hreflang: [
+            { lang: "en", url: "/rooms" },
+            { lang: "ar", url: "/rooms" },
+          ],
+          ogTitle: "Luxury Rooms & Suites in Siwa Oasis — Breezy Island",
+          ogDescription:
+            "Four distinct sanctuaries in Siwa Oasis, each crafted to frame the silence and beauty of the desert in its own way.",
+          ogImage: "/images/4.jpeg",
+          ogType: "website",
+          twitterCard: "summary_large_image",
+          jsonLd: [
+            breadcrumbSchema(
+              [
+                { name: "Home", item: "/" },
+                { name: "Rooms", item: "/rooms" },
+              ],
+              BASE_URL,
+            ),
+          ],
+        }}
+      />
       <ScrollProgressBar />
       <Navbar />
       <main style={{ background: '#F2F1EF' }}>
@@ -225,11 +256,11 @@ export default function RoomsPage() {
 
         <div ref={sectionRef}>
           {/* HERO — Split Editorial */}
-          <section data-section className="grid h-dvh sm:grid-cols-2">
-            <div ref={bgRef} className="relative min-h-0 overflow-hidden">
+          <section data-section className="grid min-h-dvh sm:h-dvh sm:grid-cols-2">
+            <div ref={bgRef} className="relative h-[50dvh] min-h-0 overflow-hidden sm:h-full">
               <Image
                 src="/images/hero-interior-1.jpeg"
-                alt="Breezy Island luxury room"
+                alt="Luxury suite at Breezy Island resort in Siwa Oasis, Egypt — luxury desert accommodation"
                 fill
                 className="object-cover object-center"
                 sizes="(min-width: 640px) 50vw, 100vw"
@@ -238,7 +269,7 @@ export default function RoomsPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[rgba(12,10,8,0.12)] pointer-events-none" />
             </div>
 
-            <div ref={heroContentRef} className="flex items-center bg-surface-base px-6 py-24 sm:px-10 sm:py-32 lg:px-14 xl:px-18">
+            <div ref={heroContentRef} className="flex sm:items-center bg-surface-base px-6 py-24 sm:px-10 sm:py-32 lg:px-14 xl:px-18">
               <div className="w-full max-w-[480px]">
                 <div id="hero-accent-line" className="mb-8 h-px w-12 bg-accent/60" />
 
@@ -286,12 +317,12 @@ export default function RoomsPage() {
               key={room.id}
               data-section
               data-room-section
-              className="h-dvh w-full overflow-hidden bg-surface-base"
+              className="min-h-dvh w-full overflow-hidden bg-surface-base sm:h-dvh"
             >
               <div className="grid h-full grid-cols-1 sm:grid-cols-2">
                 <div
                   data-room-bg
-                  className={`relative min-h-0 overflow-hidden will-change-transform ${i % 2 === 0 ? "sm:order-2" : ""}`}
+                  className={`relative h-[50dvh] min-h-0 overflow-hidden will-change-transform sm:h-full ${i % 2 === 0 ? "sm:order-2" : ""}`}
                 >
                   <Image
                     src={room.image}
@@ -302,7 +333,7 @@ export default function RoomsPage() {
                   />
                 </div>
 
-                <div className={`flex items-center px-6 py-12 sm:px-10 lg:px-14 ${i % 2 === 0 ? "sm:order-1" : ""}`}>
+                <div className={`flex sm:items-center px-6 py-12 sm:px-10 lg:px-14 ${i % 2 === 0 ? "sm:order-1" : ""}`}>
                   <div className="w-full max-w-[520px]">
                     <div data-room-tagline className="mb-4 inline-flex items-center gap-3">
                       <span className="flex size-7 items-center justify-center rounded-full bg-surface-overlay text-[9px] font-medium uppercase tracking-[0.15em] text-white">{room.id}</span>

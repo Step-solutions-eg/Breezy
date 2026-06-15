@@ -248,7 +248,7 @@ export default function ServicesSection() {
         >
           <Image
             src="/images/hero-interior-1.jpeg"
-            alt="Refined mountain-view interior with a low sofa and sculptural lighting"
+            alt="Refined luxury interior at Breezy Island resort in Siwa Oasis with panoramic desert views"
             fill
             className="object-cover object-center"
             sizes="(min-width: 1024px) 48vw, 100vw"

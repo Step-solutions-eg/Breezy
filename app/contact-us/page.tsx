@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Footer from "../components/Footer";
@@ -7,6 +8,8 @@ import MagneticWrapper from "../components/MagneticWrapper";
 import Navbar from "../components/Navbar";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import SmoothScroll from "../components/SmoothScroll";
+import SeoHead, { BASE_URL } from "../lib/seo/seo-head";
+import { breadcrumbSchema, localBusinessSchema } from "../lib/seo/structured-data";
 
 const ease = [0.32, 0.72, 0, 1] as const;
 
@@ -64,8 +67,53 @@ function ArrowIcon() {
 }
 
 export default function ContactUsPage() {
+  const [formData, setFormData] = useState({ name: "", email: "", arrival: "", guests: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim()) return;
+    setSubmitted(true);
+    setFormData({ name: "", email: "", arrival: "", guests: "", message: "" });
+    setTimeout(() => setSubmitted(false), 4000);
+  };
+
   return (
     <SmoothScroll>
+      <SeoHead
+        data={{
+          title: "Book Your Stay at Breezy Island — Siwa Oasis, Egypt",
+          description:
+            "Contact Breezy Island to plan your luxury desert escape in Siwa Oasis. Request availability, ask about our rooms and suites, or arrange a custom itinerary. We reply within 24 hours.",
+          keywords:
+            "book Siwa hotel, Siwa reservation, contact Breezy Island, Siwa booking, hotels near Siwa attractions, Siwa swimming pool hotel, Siwa Oasis reservation, Egypt desert resort booking",
+          canonical: "/contact-us",
+          hreflang: [
+            { lang: "en", url: "/contact-us" },
+            { lang: "ar", url: "/contact-us" },
+          ],
+          ogTitle: "Book Your Stay at Breezy Island — Siwa Oasis, Egypt",
+          ogDescription:
+            "Tell us when you want to arrive, who is coming, and what kind of stay you imagine. We will reply with the next simple step.",
+          ogImage: "/images/5.jpeg",
+          ogType: "website",
+          twitterCard: "summary_large_image",
+          jsonLd: [
+            breadcrumbSchema(
+              [
+                { name: "Home", item: "/" },
+                { name: "Contact Us", item: "/contact-us" },
+              ],
+              BASE_URL,
+            ),
+            localBusinessSchema(`${BASE_URL}/contact-us`),
+          ],
+        }}
+      />
       <ScrollProgressBar />
       <Navbar alwaysScrolled />
       <main className="relative overflow-hidden bg-surface-base text-text-primary">
@@ -159,7 +207,7 @@ export default function ContactUsPage() {
               </aside>
 
               <form
-                onSubmit={(event) => event.preventDefault()}
+                onSubmit={handleSubmit}
                 className="rounded-[7px] bg-surface-raised p-5 sm:p-8"
               >
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -167,13 +215,13 @@ export default function ContactUsPage() {
                     <span className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-text-secondary">
                       Name
                     </span>
-                    <input className={fieldClass} type="text" placeholder="Your name" />
+                    <input className={fieldClass} type="text" name="name" placeholder="Your name" value={formData.name} onChange={handleChange("name")} />
                   </label>
                   <label className="block">
                     <span className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-text-secondary">
                       Email
                     </span>
-                    <input className={fieldClass} type="email" placeholder="you@email.com" />
+                    <input className={fieldClass} type="email" name="email" placeholder="you@email.com" value={formData.email} onChange={handleChange("email")} />
                   </label>
                 </div>
 
@@ -182,13 +230,13 @@ export default function ContactUsPage() {
                     <span className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-text-secondary">
                       Arrival
                     </span>
-                    <input className={fieldClass} type="text" placeholder="Preferred dates" />
+                    <input className={fieldClass} type="text" name="arrival" placeholder="Preferred dates" value={formData.arrival} onChange={handleChange("arrival")} />
                   </label>
                   <label className="block">
                     <span className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-text-secondary">
                       Guests
                     </span>
-                    <input className={fieldClass} type="text" placeholder="2 guests" />
+                    <input className={fieldClass} type="text" name="guests" placeholder="2 guests" value={formData.guests} onChange={handleChange("guests")} />
                   </label>
                 </div>
 
@@ -198,7 +246,10 @@ export default function ContactUsPage() {
                   </span>
                   <textarea
                     className="min-h-[170px] w-full resize-none rounded-[7px] border border-accent-secondary/20 bg-surface-base px-4 py-4 text-sm font-normal leading-[1.5] text-text-primary outline-none transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] placeholder:text-text-secondary/45 focus:border-accent-secondary focus:bg-white/40"
+                    name="message"
                     placeholder="Tell us what you want your stay to feel like."
+                    value={formData.message}
+                    onChange={handleChange("message")}
                   />
                 </label>
 
@@ -209,7 +260,7 @@ export default function ContactUsPage() {
                       className="group inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-6 text-base font-medium leading-none text-white transition duration-200 hover:opacity-90 active:scale-[0.98]"
                     >
                       <ArrowIcon />
-                      Send Request
+                      {submitted ? "Sent!" : "Send Request"}
                     </button>
                   </MagneticWrapper>
                 </div>

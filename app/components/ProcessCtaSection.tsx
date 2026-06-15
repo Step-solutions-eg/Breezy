@@ -165,7 +165,7 @@ export default function ProcessCtaSection() {
         >
           <Image
             src="/images/4.jpeg"
-            alt="Warm wood interior detail beside a large mountain-view window"
+            alt="Warm luxury interior at Breezy Island Siwa Oasis retreat with desert view window"
             fill
             className="object-cover object-center"
             sizes="(min-width: 1024px) 50vw, 100vw"

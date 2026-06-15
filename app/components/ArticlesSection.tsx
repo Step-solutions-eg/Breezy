@@ -229,7 +229,8 @@ export default function ArticlesSection() {
 
           <div data-article-cta>
             <MagneticWrapper>
-              <div
+              <button
+                onClick={() => setSelectedRoom(rooms[0])}
                 className="group mb-4 inline-flex h-12 w-fit cursor-pointer items-center gap-3 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-5 text-sm font-medium leading-none text-white no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] md:h-14 md:pr-6 md:text-base md:gap-4"
               >
                 <span className="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white md:size-10">
@@ -263,7 +264,7 @@ export default function ArticlesSection() {
                   </svg>
                 </span>
                 View Room
-              </div>
+              </button>
             </MagneticWrapper>
           </div>
         </div>

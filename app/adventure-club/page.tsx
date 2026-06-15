@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import MagneticWrapper from "../components/MagneticWrapper";
+import SeoHead, { BASE_URL } from "../lib/seo/seo-head";
+import { breadcrumbSchema } from "../lib/seo/structured-data";
 
 const experiences = [
   { label: "Upcoming Trips", desc: "Curated journeys to Siwa each season" },
@@ -99,6 +101,35 @@ export default function AdventureClubPage() {
   return (
     <>
       <Navbar alwaysScrolled />
+      <SeoHead
+        data={{
+          title: "Siwa Travel Club & Desert Adventures — Breezy Island",
+          description:
+            "Join the Siwa Travel Club at Breezy Island. Explore curated desert adventures, wellness retreats, salt lake excursions, and cultural immersion experiences in Siwa Oasis, Egypt.",
+          keywords:
+            "Siwa travel club, Siwa desert safari, Siwa adventure, things to do in Siwa, Siwa attractions, desert safari Egypt, Siwa salt lakes, Siwa Oasis tours, wellness retreat Siwa, eco tourism Siwa",
+          canonical: "/adventure-club",
+          hreflang: [
+            { lang: "en", url: "/adventure-club" },
+            { lang: "ar", url: "/adventure-club" },
+          ],
+          ogTitle: "Siwa Travel Club & Desert Adventures — Breezy Island",
+          ogDescription:
+            "More than a travel experience — a gateway into the raw beauty, culture, and spirit of Siwa Oasis.",
+          ogImage: "/images/SAC Main Photo.jpg",
+          ogType: "website",
+          twitterCard: "summary_large_image",
+          jsonLd: [
+            breadcrumbSchema(
+              [
+                { name: "Home", item: "/" },
+                { name: "Adventure Club", item: "/adventure-club" },
+              ],
+              BASE_URL,
+            ),
+          ],
+        }}
+      />
       <main className="relative min-h-dvh bg-surface-base lg:h-dvh lg:overflow-hidden">
         {/* Fixed noise grain overlay */}
         <div
@@ -119,7 +150,7 @@ export default function AdventureClubPage() {
           >
             <Image
               src="/images/SAC Main Photo.jpg"
-              alt="Siwa Oasis desert landscape"
+              alt="Siwa Oasis desert adventure landscape at Breezy Island travel club, Egypt"
               fill
               className="object-cover object-center"
               sizes="50vw"
@@ -182,7 +213,7 @@ export default function AdventureClubPage() {
           className="relative z-10 w-full overflow-hidden lg:ml-[50%] lg:h-[103vh] lg:overflow-y-auto"
         >
           <div className="relative z-10 overflow-hidden px-4 pb-24 pt-30 sm:px-8 sm:pb-32 sm:pt-30 lg:px-12 lg:pb-40 lg:pt-30">
-            <div className="pointer-events-none absolute bottom-0 right-1/2 z-0 h-[320px] w-[270px] select-none opacity-10 sm:h-[440px] sm:w-[380px] lg:h-[520px] lg:w-[450px]">
+            <div className="tree-left pointer-events-none absolute bottom-0 right-1/2 z-0 h-[320px] w-[270px] select-none opacity-10 sm:h-[440px] sm:w-[380px] lg:h-[520px] lg:w-[450px]">
               <img
                 src="/images/tree only.svg"
                 alt=""
@@ -260,7 +291,7 @@ export default function AdventureClubPage() {
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
               >
                 <div className="mb-8 sm:mb-10">
-                  <div className="mb-3 flex items-center gap-3">
+                  <div className="mb-3 flex w-[49%] items-center gap-3">
                     <span className="flex size-8 items-center justify-center rounded-full bg-surface-overlay text-[10px] font-medium uppercase tracking-[0.2em] text-white">
                       01
                     </span>
@@ -294,7 +325,7 @@ export default function AdventureClubPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-60px" }}
-                className="space-y-1"
+                className="w-[49%] space-y-1"
               >
                 {experiences.map((item) => (
                   <motion.div
@@ -328,7 +359,7 @@ export default function AdventureClubPage() {
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
               >
                 <div className="mb-8 sm:mb-10">
-                  <div className="mb-3 flex items-center gap-3">
+                  <div className="mb-3 flex w-[49%] items-center gap-3">
                     <span className="flex size-8 items-center justify-center rounded-full bg-surface-overlay text-[10px] font-medium uppercase tracking-[0.2em] text-white">
                       02
                     </span>
@@ -362,7 +393,7 @@ export default function AdventureClubPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-60px" }}
-                className="space-y-1"
+                className="w-[49%] space-y-1"
               >
                 {programs.map((program) => (
                   <motion.div
@@ -420,7 +451,7 @@ export default function AdventureClubPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-                className="relative min-h-[430px] border-t border-accent-secondary/20 pt-14 sm:min-h-[520px] sm:pt-20"
+                className="relative min-h-[430px] w-[49%] border-t border-accent-secondary/20 pt-14 sm:min-h-[520px] sm:pt-20"
               >
                 <h3 className="relative z-10 text-[clamp(32px,3.35vw,64px)] font-normal leading-[0.985] text-text-primary">
                   Ready to

@@ -11,6 +11,8 @@ import Navbar from "../components/Navbar";
 import SmoothScroll from "../components/SmoothScroll";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import MagneticWrapper from "../components/MagneticWrapper";
+import SeoHead, { BASE_URL } from "../lib/seo/seo-head";
+import { breadcrumbSchema } from "../lib/seo/structured-data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -276,6 +278,35 @@ export default function StoryPage() {
 
   return (
     <SmoothScroll>
+      <SeoHead
+        data={{
+          title: "Our Story — Breezy Island Siwa Oasis Retreat",
+          description:
+            "Discover the story behind Breezy Island, a luxury desert retreat born from the silence of Siwa Oasis. Learn about our philosophy, our journey from dream to destination, and our commitment to authentic Siwan hospitality.",
+          keywords:
+            "Breezy Island story, about Siwa Oasis, Siwa history, desert retreat philosophy, Siwan hospitality, eco tourism Siwa, wellness retreat Siwa, sustainable tourism Egypt",
+          canonical: "/story",
+          hreflang: [
+            { lang: "en", url: "/story" },
+            { lang: "ar", url: "/story" },
+          ],
+          ogTitle: "Our Story — Breezy Island Siwa Oasis Retreat",
+          ogDescription:
+            "Born from the silence of Siwa — discover the journey behind the luxury desert retreat.",
+          ogImage: "/images/hero-interior-1.jpeg",
+          ogType: "website",
+          twitterCard: "summary_large_image",
+          jsonLd: [
+            breadcrumbSchema(
+              [
+                { name: "Home", item: "/" },
+                { name: "Our Story", item: "/story" },
+              ],
+              BASE_URL,
+            ),
+          ],
+        }}
+      />
       <ScrollProgressBar />
       <main>
         <Navbar mode="hide-on-scroll" />
@@ -385,7 +416,7 @@ export default function StoryPage() {
               >
                 <Image
                   src="/images/hero-interior-1.jpeg"
-                  alt="Siwa Oasis sanctuary"
+                  alt="Siwa Oasis luxury retreat at Breezy Island — desert sanctuary in Egypt"
                   fill
                   className="object-cover"
                   sizes="(min-width: 1024px) 62vw, 100vw"
@@ -407,7 +438,7 @@ export default function StoryPage() {
               <div className="relative min-h-[400px] overflow-hidden rounded-[7px] sm:min-h-[600px] lg:min-h-[740px]">
                 <Image
                   src="/images/7.jpeg"
-                  alt="Siwa Oasis landscape at golden hour"
+                  alt="Siwa Oasis landscape at golden hour with palm groves and dunes — Breezy Island luxury resort, Egypt"
                   fill
                   className="object-cover object-center"
                   sizes="(min-width: 1024px) 50vw, 100vw"
@@ -698,7 +729,7 @@ export default function StoryPage() {
               >
                 <Image
                   src="/images/5.jpeg"
-                  alt="Desert landscape with palm groves at sunset"
+                  alt="Desert landscape with palm groves at sunset at Breezy Island luxury resort in Siwa Oasis, Egypt"
                   fill
                   className="object-cover object-center"
                   sizes="(min-width: 1024px) 48vw, 100vw"

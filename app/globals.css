@@ -337,6 +337,10 @@ html {
   padding-left: 35px !important;
 }
 
+[dir="rtl"] [data-ar-phone] {
+  flex-direction: row-reverse;
+}
+
 [dir="rtl"] [data-ar-h2-size] {
   font-size: 2.2rem !important;
 }

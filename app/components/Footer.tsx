@@ -140,6 +140,7 @@ export default function Footer() {
                 <a
                   href="tel:+201067566607"
                   dir="ltr"
+                  data-ar-phone
                   className="inline-flex items-center gap-2 text-base font-bold leading-none text-white/80 no-underline transition-colors hover:text-white"
                 >
                   <svg

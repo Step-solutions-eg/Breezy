@@ -183,6 +183,7 @@ export default function AdventureClubPage() {
                   ease: [0.32, 0.72, 0, 1],
                   delay: 0.5,
                 }}
+                data-ar-font-size
                 className="font-heading text-[clamp(48px,4.3vw,86px)] font-normal leading-[0.985] text-white"
               >
                 Adventure
@@ -262,11 +263,9 @@ export default function AdventureClubPage() {
                   className="max-w-[580px] text-[clamp(40px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
                   style={{ fontFamily: '"SF Mono", monospace' }}
                 >
-                  Gateway to
+                  Gateway to the
                   <br />
-                  the Raw Spirit
-                  <br />
-                  of Siwa
+                  Raw Spirit of Siwa
                 </h2>
 
                 <p
@@ -291,7 +290,7 @@ export default function AdventureClubPage() {
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
               >
                 <div className="mb-8 sm:mb-10">
-                  <div className="mb-3 flex w-[49%] items-center gap-3">
+                  <div className="mb-3 flex w-full items-center gap-3 sm:w-[49%]">
                     <span className="flex size-8 items-center justify-center rounded-full bg-surface-overlay text-[10px] font-medium uppercase tracking-[0.2em] text-white">
                       01
                     </span>
@@ -325,7 +324,7 @@ export default function AdventureClubPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-60px" }}
-                className="w-[49%] space-y-1"
+                className="w-full space-y-1 sm:w-[49%]"
               >
                 {experiences.map((item) => (
                   <motion.div
@@ -359,7 +358,7 @@ export default function AdventureClubPage() {
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
               >
                 <div className="mb-8 sm:mb-10">
-                  <div className="mb-3 flex w-[49%] items-center gap-3">
+                  <div className="mb-3 flex w-full items-center gap-3 sm:w-[49%]">
                     <span className="flex size-8 items-center justify-center rounded-full bg-surface-overlay text-[10px] font-medium uppercase tracking-[0.2em] text-white">
                       02
                     </span>
@@ -393,7 +392,7 @@ export default function AdventureClubPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-60px" }}
-                className="w-[49%] space-y-1"
+                className="w-full space-y-1 sm:w-[49%]"
               >
                 {programs.map((program) => (
                   <motion.div
@@ -451,7 +450,7 @@ export default function AdventureClubPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-                className="relative min-h-[430px] w-[49%] border-t border-accent-secondary/20 pt-14 sm:min-h-[520px] sm:pt-20"
+                className="relative min-h-[430px] w-full border-t border-accent-secondary/20 pt-14 sm:w-[49%] sm:min-h-[520px] sm:pt-20"
               >
                 <h3 className="relative z-10 text-[clamp(32px,3.35vw,64px)] font-normal leading-[0.985] text-text-primary">
                   Ready to

@@ -256,7 +256,7 @@ export default function RoomsPage() {
 
         <div ref={sectionRef}>
           {/* HERO — Split Editorial */}
-          <section data-section className="grid min-h-dvh sm:h-dvh sm:grid-cols-2">
+          <section data-section className="grid min-h-dvh overflow-hidden sm:h-dvh sm:grid-cols-2">
             <div ref={bgRef} className="relative h-[50dvh] min-h-0 overflow-hidden sm:h-full">
               <Image
                 src="/images/hero-interior-1.jpeg"
@@ -269,12 +269,13 @@ export default function RoomsPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[rgba(12,10,8,0.12)] pointer-events-none" />
             </div>
 
-            <div ref={heroContentRef} className="flex sm:items-center bg-surface-base px-6 py-24 sm:px-10 sm:py-32 lg:px-14 xl:px-18">
+            <div ref={heroContentRef} className="flex sm:items-center bg-surface-base px-6 py-16 sm:px-10 sm:py-32 lg:px-14 xl:px-18">
               <div className="w-full max-w-[480px]">
                 <div id="hero-accent-line" className="mb-8 h-px w-12 bg-accent/60" />
 
                 <h1
                   id="hero-heading"
+                  data-ar-room-hero
                   className="font-heading text-[clamp(48px,4.5vw,96px)] font-normal leading-[0.92] text-text-primary"
                 >
                   Where You

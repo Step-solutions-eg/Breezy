@@ -139,6 +139,7 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+201067566607"
+                  dir="ltr"
                   className="inline-flex items-center gap-2 text-base font-bold leading-none text-white/80 no-underline transition-colors hover:text-white"
                 >
                   <svg
@@ -229,7 +230,7 @@ export default function Footer() {
         transition={{ type: "spring", stiffness: 400, damping: 26 }}
         className="pointer-events-none absolute bottom-[6%] left-1/2 -translate-x-1/2 select-none leading-none w-full"
       >
-        <div className="flex items-end justify-center w-full" dir="ltr">
+        <div data-brand-logo className="flex items-end justify-center w-full" dir="ltr">
           <span className="text-[clamp(48px,16vw,580px)] font-heading font-black leading-[0.7]">
             Breezy
           </span>

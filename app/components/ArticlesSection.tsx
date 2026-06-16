@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import MagneticWrapper from "./MagneticWrapper";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -229,9 +230,10 @@ export default function ArticlesSection() {
 
           <div data-article-cta>
             <MagneticWrapper>
-              <button
-                onClick={() => setSelectedRoom(rooms[0])}
+              <Link
+                href="/rooms"
                 className="group mb-4 inline-flex h-12 w-fit cursor-pointer items-center gap-3 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-5 text-sm font-medium leading-none text-white no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] md:h-14 md:pr-6 md:text-base md:gap-4"
+                style={{ color: "#fff" }}
               >
                 <span className="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white md:size-10">
                   <svg
@@ -264,7 +266,7 @@ export default function ArticlesSection() {
                   </svg>
                 </span>
                 View Room
-              </button>
+              </Link>
             </MagneticWrapper>
           </div>
         </div>
@@ -409,7 +411,7 @@ function RoomModal({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="fixed inset-0 z-50 flex touch-pan-y items-start justify-center overflow-hidden bg-black/70 p-3 backdrop-blur-sm sm:items-center sm:p-4"
+      className="fixed inset-0 z-50 flex touch-pan-y items-start justify-center overflow-hidden bg-black/70 p-0 backdrop-blur-sm sm:items-center sm:p-4"
       onClick={onClose}
     >
       <motion.div
@@ -442,7 +444,7 @@ function RoomModal({
         onTouchEnd={() => {
           lastTouchYRef.current = null;
         }}
-        className="relative flex max-h-[calc(100dvh-1.5rem)] w-full touch-pan-y flex-col overflow-y-auto overscroll-contain rounded-none bg-surface-base text-text-primary [-webkit-overflow-scrolling:touch] md:max-w-5xl md:max-h-[90dvh] md:flex-row md:overflow-hidden md:rounded-[7px]"
+        className="relative flex min-h-[100dvh] max-h-[100dvh] w-full touch-pan-y flex-col overflow-y-auto overscroll-contain rounded-none bg-surface-base text-text-primary [-webkit-overflow-scrolling:touch] md:min-h-0 md:max-w-5xl md:max-h-[90dvh] md:flex-row md:overflow-hidden md:rounded-[7px]"
       >
         <button
           onClick={onClose}
@@ -470,7 +472,7 @@ function RoomModal({
           data-lenis-prevent
           data-lenis-prevent-wheel
           data-lenis-prevent-touch
-          className="min-h-0 w-full touch-pan-y px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-5 md:max-h-[90dvh] md:w-1/2 md:overflow-y-auto md:overscroll-contain md:px-10 md:py-12 md:[-webkit-overflow-scrolling:touch]"
+          className="min-h-0 w-full touch-pan-y px-5 pb-[max(6rem,env(safe-area-inset-bottom))] pt-5 md:max-h-[90dvh] md:w-1/2 md:overflow-y-auto md:overscroll-contain md:px-10 md:py-12 md:[-webkit-overflow-scrolling:touch]"
         >
             <span className="inline-flex rounded-full bg-surface-raised px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] text-text-primary md:px-3 md:text-[10px]">
               {room.category}
@@ -522,7 +524,7 @@ function RoomModal({
               </div>
             </div>
 
-            <div className="mt-6 pt-5 border-t border-border-default/20 md:mt-8 md:pt-6">
+            <div className="mt-6 pt-5 pb-8 border-t border-border-default/20 md:mt-8 md:pt-6 md:pb-0">
               <h3 className="text-xs font-medium uppercase tracking-[0.12em] text-text-tertiary md:text-sm md:tracking-[0.1em]">
                 Hotel Features
               </h3>

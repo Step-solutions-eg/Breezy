@@ -132,6 +132,10 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+h3 {
+  margin: 15px 0;
+}
+
 p {
   text-wrap: pretty;
 }
@@ -204,7 +208,7 @@ html {
 }
 
 [lang="ar"] h3 {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 700;
 }
 
@@ -238,8 +242,14 @@ html {
 }
 
 [lang="ar"] h3.font-heading {
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
+}
+
+[lang="ar"] [data-brand-logo],
+[lang="ar"] [data-brand-logo] *,
+[lang="ar"] [data-brand-logo].font-heading {
+  font-family: "New York", serif !important;
 }
 
 [lang="ar"] [style*="font-family"] {
@@ -251,11 +261,7 @@ html {
   font-family: var(--font-cairo), sans-serif;
 }
 
-[dir="rtl"] body {
-  text-align: right;
-}
-
-[dir="rtl"] p {
+[dir="rtl"] p:not([data-cta-content]):not([data-ar-center]) {
   text-align: right;
 }
 
@@ -274,4 +280,88 @@ html {
 [dir="rtl"] .tree-left {
   right: auto;
   left: 50%;
+}
+
+[dir="rtl"] a.group.inline-flex.items-center.overflow-hidden.rounded-full[class*="py-2"] {
+  padding-left: 35px !important;
+}
+
+@media (max-width: 639px) {
+  h2,
+  [lang="ar"] h2,
+  [lang="ar"] h2.font-heading {
+    font-size: 1.9rem !important;
+  }
+}
+
+@media (max-width: 639px) {
+  [dir="rtl"] [data-project-carousel-nav] {
+    right: auto !important;
+    left: 0 !important;
+  }
+}
+
+[dir="rtl"] [data-project-carousel-nav] svg {
+  transform: scaleX(-1);
+}
+
+[data-ar-width] {
+  width: 120% !important;
+}
+
+[dir="ltr"] [data-ar-width] {
+  width: auto !important;
+}
+
+.inline-flex.h-10.rounded-full {
+  padding-left: 35px !important;
+}
+
+@media (max-width: 639px) {
+  [dir="rtl"] [data-ar-story-h1] {
+    font-size: 2.2rem !important;
+  }
+}
+
+@media (max-width: 639px) {
+  [dir="rtl"] [data-ar-font-size] {
+    font-size: 2rem !important;
+  }
+
+  [dir="rtl"] [data-ar-room-hero] {
+    font-size: 2.2rem !important;
+  }
+}
+
+[dir="rtl"] [data-ar-cta-btn] {
+  padding-left: 35px !important;
+}
+
+[dir="rtl"] [data-ar-h2-size] {
+  font-size: 2.2rem !important;
+}
+
+[dir="rtl"] [data-ar-contact-value] {
+  direction: ltr !important;
+  text-align: right !important;
+  unicode-bidi: plaintext !important;
+}
+
+[dir="rtl"] [data-rooms-cta] .absolute.bottom-0.right-0 {
+  right: auto !important;
+  left: 0 !important;
+}
+
+@media (max-width: 1023px) {
+  [dir="rtl"] [data-timeline-list] > .w-px.absolute {
+    display: none;
+  }
+
+  [dir="rtl"] [data-timeline-item] .flex.flex-col.items-center > .w-px.absolute {
+    display: none;
+  }
+}
+
+[dir="ltr"] .inline-flex.h-10.rounded-full {
+  padding-left: 0.5rem !important;
 }

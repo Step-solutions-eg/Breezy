@@ -315,8 +315,8 @@ export default function StoryPage() {
           ref={heroRef}
           className="relative min-h-[100dvh] w-full overflow-hidden bg-surface-base"
         >
-          <div className="pointer-events-none absolute inset-0 select-none overflow-hidden">
-            <div className="absolute -left-[5%] top-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(80px,20vw,600px)] font-heading font-black leading-[0.7] text-text-primary/3">
+            <div className="pointer-events-none absolute inset-0 select-none overflow-hidden">
+            <div dir="ltr" data-brand-logo className="absolute -left-[5%] top-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(80px,20vw,600px)] font-heading font-black leading-[0.7] text-text-primary/3">
               Breezy<span className="font-heading font-normal italic">Island</span>
             </div>
           </div>
@@ -324,7 +324,7 @@ export default function StoryPage() {
           <div className="relative mx-auto flex min-h-[100dvh] flex-col lg:flex-row">
             <div className="relative z-10 flex w-full flex-col justify-center px-4 pt-28 pb-12 sm:px-8 lg:w-[38%] lg:px-10 lg:pb-32 lg:pt-36">
               <div className="relative">
-                <div className="absolute -inset-6 rounded-[12px] lg:-inset-8 lg:bg-surface-base/90 lg:backdrop-blur-md lg:shadow-[0_8px_32px_rgba(80,58,38,0.12)]" />
+                <div data-ar-width className="absolute -inset-6 rounded-[12px] lg:-inset-8 lg:bg-surface-base/90 lg:backdrop-blur-md lg:shadow-[0_8px_32px_rgba(80,58,38,0.12)]" />
                 <div className="relative">
                   <motion.div
                     initial={{ opacity: 0, y: -16, filter: "blur(4px)" }}
@@ -344,17 +344,16 @@ export default function StoryPage() {
                   </motion.div>
 
                   <motion.h1
+                    data-ar-story-h1
                     initial={{ opacity: 0, y: 60, filter: "blur(8px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 0.9, ease: [0.32, 0.72, 0, 1], delay: 0.3 }}
-                    className="max-w-[580px] text-[clamp(36px,4vw,80px)] font-medium uppercase leading-[0.94] tracking-[-0.02em] text-text-primary"
+                    className="max-w-[580px] max-sm:text-[2rem] text-[clamp(36px,4vw,80px)] font-medium uppercase leading-[0.94] tracking-[-0.02em] text-text-primary"
                     style={{ fontFamily: '"SF Mono", monospace' }}
                   >
-                    Born from the
+                    Born from the Silence
                     <br />
-                    Silence of
-                    <br />
-                    Siwa
+                    of Siwa
                   </motion.h1>
 
                   <motion.p
@@ -371,12 +370,13 @@ export default function StoryPage() {
                     initial={{ opacity: 0, y: 20, scale: 0.97 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1], delay: 0.7 }}
-                    className="flex justify-center"
+                    className="flex justify-start"
+                    style={{ margin: '30px 0 0 0' }}
                   >
                     <MagneticWrapper>
                       <Link
                         href="/#contact"
-                        className="group inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-3 pr-7 text-base font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] sm:h-16 sm:pr-8 sm:text-lg"
+                        className="group inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-3 pr-7 text-base font-medium leading-none no-underline transition duration-200 mt-[25px] sm:mt-0 hover:opacity-90 active:scale-[0.98] sm:h-16 sm:pr-8 sm:text-lg"
                         style={{ color: "#fff" }}
                         onClick={(e) => {
                           e.preventDefault();
@@ -455,11 +455,9 @@ export default function StoryPage() {
                   className="max-w-[650px] text-[clamp(40px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
                   style={{ fontFamily: '"SF Mono", monospace' }}
                 >
-                  A Vision
+                  A Vision Born
                   <br />
-                  Born from the
-                  <br />
-                  Desert
+                  from the Desert
                 </h2>
 
                 <div data-origin-text className="mt-10 space-y-6 sm:mt-16">
@@ -514,11 +512,9 @@ export default function StoryPage() {
                 className="max-w-[780px] text-[clamp(40px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
                 style={{ fontFamily: '"SF Mono", monospace' }}
               >
-                Four Pillars That
+                Four Pillars That Define
                 <br />
-                Define Everything
-                <br />
-                We Do
+                Everything We Do
               </h2>
 
               <div
@@ -657,13 +653,9 @@ export default function StoryPage() {
                   className="max-w-[650px] text-[clamp(40px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
                   style={{ fontFamily: '"SF Mono", monospace' }}
                 >
-                  Built with
+                  Built with Intention,
                   <br />
-                  Intention,
-                  <br />
-                  Designed for
-                  <br />
-                  Stillness
+                  Designed for Stillness
                 </h2>
 
                 <div data-ethos-text className="mt-10 space-y-6 sm:mt-16">
@@ -674,9 +666,7 @@ export default function StoryPage() {
                     for generations.
                   </p>
                   <p className="max-w-[600px] text-[clamp(16px,0.9vw,20px)] font-normal leading-[1.3] text-white/60">
-                    The result is a place that feels less like a resort and more
-                    like a return \u2014 to what matters, to what lasts, to the quiet
-                    rhythm of life that the desert has always known.
+                    The result is a place that feels less like a resort and more like a return — to what matters, to what lasts, to the quiet rhythm of life that the desert has always known.
                   </p>
                 </div>
 
@@ -763,16 +753,14 @@ export default function StoryPage() {
                 className="text-[clamp(40px,4.3vw,86px)] font-normal leading-[0.98] text-center"
                 style={{ fontFamily: '"New York", serif' }}
               >
-                Every Great Story
+                Every Great Story Begins
                 <br />
-                Begins with a
-                <br />
-                <span className="italic">Single Step</span>
+                with a <span className="italic">Single Step</span>
               </h2>
 
               <p
                 data-cta-content
-                className="mx-auto mt-8 max-w-[540px] text-lg font-medium leading-[1.3] text-text-secondary sm:mt-12 sm:text-[clamp(20px,1.2vw,24px)]"
+                className="mx-auto mt-8 max-w-[540px] text-center text-lg font-medium leading-[1.3] text-text-secondary sm:mt-12 sm:text-[clamp(20px,1.2vw,24px)]"
               >
                 Come write your chapter in the heart of Siwa. The desert is
                 waiting, and the stars are already aligned.
@@ -782,7 +770,7 @@ export default function StoryPage() {
                 <MagneticWrapper>
                   <Link
                     href="/#contact"
-                    className="group inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-3 pr-7 text-base font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] sm:h-16 sm:pr-8 sm:text-lg"
+                    className="group inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-3 pr-7 text-base font-medium leading-none no-underline transition duration-200 my-5 hover:opacity-90 active:scale-[0.98] sm:h-16 sm:pr-8 sm:text-lg"
                     style={{ color: "#fff" }}
                   >
                     <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white sm:size-11">
@@ -828,7 +816,7 @@ export default function StoryPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="pointer-events-none absolute bottom-0 left-1/2 z-0 w-full -translate-x-1/2 translate-y-0 select-none overflow-hidden leading-none text-text-primary/90"
             >
-              <div className="flex items-end justify-center w-full">
+              <div dir="ltr" data-brand-logo className="flex items-end justify-center w-full">
                 <span className="text-[clamp(52px,14vw,360px)] font-heading font-black leading-[0.7]">
                   Breezy
                 </span>

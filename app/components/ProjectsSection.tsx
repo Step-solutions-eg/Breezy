@@ -268,14 +268,14 @@ export default function ProjectsSection() {
             <MagneticWrapper>
               <Link
                 href="#contact"
-                className="group inline-flex h-12 items-center gap-4 overflow-hidden rounded-full bg-white py-2 pl-2 pr-5 text-sm font-medium leading-none no-underline transition duration-200 hover:bg-surface-base active:scale-[0.98] sm:h-14 sm:pr-6 sm:text-base"
+                className="group inline-flex h-10 items-center gap-3 overflow-hidden rounded-full bg-white py-1.5 pl-1.5 pr-4 text-xs font-medium leading-none no-underline transition duration-200 hover:bg-surface-base active:scale-[0.98] sm:h-14 sm:gap-4 sm:py-2 sm:pl-2 sm:pr-6 sm:text-base"
                 style={{ color: "#503A26" }}
               >
-                <span className="relative flex size-8 items-center justify-center overflow-hidden rounded-full bg-surface-overlay sm:size-10">
+                <span className="relative flex size-6 items-center justify-center overflow-hidden rounded-full bg-surface-overlay sm:size-10">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-3 -rotate-45 transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5 sm:size-4"
+                    className="absolute size-2 -rotate-45 transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -289,7 +289,7 @@ export default function ProjectsSection() {
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="absolute size-3 -rotate-45 -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 sm:size-4"
+                    className="absolute size-2 -rotate-45 -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 sm:size-4"
                     aria-hidden="true"
                   >
                     <path
@@ -307,7 +307,7 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        <div className="absolute bottom-[5%] right-0 flex items-center justify-end gap-4 pr-4 sm:left-1/2 sm:-translate-x-1/2 sm:bottom-5 sm:right-auto sm:pr-0 sm:justify-center sm:gap-8">
+        <div data-project-carousel-nav className="absolute bottom-[5%] right-0 flex items-center justify-end gap-4 pr-4 sm:left-1/2 sm:-translate-x-1/2 sm:bottom-5 sm:right-auto sm:pr-0 sm:justify-center sm:gap-8">
           <motion.button
             onClick={prev}
             whileHover={{ scale: 1.1, x: -2 }}

@@ -165,7 +165,7 @@ export default function ContactUsPage() {
                 <span className="italic">your escape.</span>
               </h1>
 
-              <p className="mx-auto mt-7 max-w-[650px] text-[clamp(18px,1.45vw,24px)] font-normal leading-[1.28] text-text-secondary">
+              <p data-ar-center className="mx-auto mt-7 max-w-[650px] text-center text-[clamp(18px,1.45vw,24px)] font-normal leading-[1.28] text-text-secondary">
                 Tell us when you want to arrive, who is coming, and what kind of
                 stay you imagine. We will reply with the next simple step.
               </p>
@@ -181,29 +181,22 @@ export default function ContactUsPage() {
                 <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-white/60">
                   Direct Lines
                 </span>
-                <p className="mt-5 font-heading text-[clamp(32px,3.2vw,50px)] leading-[0.96]">
+                <p data-ar-h2-size className="mt-5 font-heading text-[clamp(32px,3.2vw,50px)] leading-[0.96]">
                   Quiet details, answered clearly.
                 </p>
 
-                <div className="mt-10 grid gap-7">
+                <div data-ar-contact-dir className="mt-10 grid gap-7">
                   {contactDetails.map((item) => (
                     <div key={item.label}>
                       <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
                         {item.label}
                       </span>
-                      <span className="mt-2 block text-sm leading-[1.45] text-white">
+                      <span dir="ltr" data-ar-contact-value className="mt-2 block text-sm leading-[1.45] text-white">
                         {item.value}
                       </span>
                     </div>
                   ))}
                 </div>
-
-                <Link
-                  href="mailto:stay@breezyisland.com"
-                  className="mt-12 inline-flex text-sm font-normal leading-none text-white/70 transition-colors duration-300 hover:text-white"
-                >
-                  stay@breezyisland.com
-                </Link>
               </aside>
 
               <form
@@ -257,6 +250,7 @@ export default function ContactUsPage() {
                   <MagneticWrapper>
                     <button
                       type="submit"
+                      data-ar-cta-btn
                       className="group inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-6 text-base font-medium leading-none text-white transition duration-200 hover:opacity-90 active:scale-[0.98]"
                     >
                       <ArrowIcon />

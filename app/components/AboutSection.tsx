@@ -134,9 +134,7 @@ export default function AboutSection() {
               fontFamily: '"SF Mono", monospace',
             }}
           >
-            A Hidden Sanctuary
-            <br />
-            in the Heart
+            A Hidden Sanctuary in the Heart
             <br />
             of Siwa
           </h2>
@@ -156,8 +154,10 @@ export default function AboutSection() {
               data-stat-card
               whileHover={{ y: -4, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 400, damping: 26 }}
-              className={`min-h-[240px] border-accent-secondary/20 px-5 pb-8 pt-8 sm:min-h-[322px] sm:border-l sm:pb-10 sm:pt-10 ${
-                index === 0 ? "sm:border-l-0" : ""
+              className={`min-h-[240px] border-accent-secondary/20 border-b px-5 pb-8 pt-8 sm:min-h-[322px] sm:border-s sm:border-b-0 sm:pb-10 sm:pt-10 ${
+                index === 0 ? "sm:border-s-0" : ""
+              } ${
+                index === stats.length - 1 ? "border-b-0" : ""
               }`}
             >
               <motion.span

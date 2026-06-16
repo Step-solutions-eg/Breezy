@@ -814,7 +814,7 @@ export default function StoryPage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="pointer-events-none absolute bottom-[5%] left-1/2 z-0 w-full -translate-x-1/2 translate-y-0 select-none overflow-hidden leading-none text-text-primary/90"
+              className="pointer-events-none absolute bottom-[5%] left-1/2 z-0 w-full -translate-x-1/2 translate-y-0 select-none leading-none text-text-primary/90"
             >
               <div dir="ltr" data-brand-logo className="flex items-end justify-center w-full">
                 <span className="text-[clamp(52px,14vw,360px)] font-heading font-black leading-[0.7]">

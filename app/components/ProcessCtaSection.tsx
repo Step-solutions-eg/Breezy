@@ -13,6 +13,13 @@ import MagneticWrapper from "./MagneticWrapper";
 
 const collaborators = ["A", "B", "C", "D", "E"];
 
+const policies = [
+  { label: "Check-in", value: "2 PM" },
+  { label: "Check-out", value: "11 AM — late checkout available" },
+  { label: "Children", value: "6–10 free, max 1 · 11+ counted as adult" },
+  { label: "Pets", value: "Not allowed" },
+];
+
 export default function ProcessCtaSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -88,7 +95,7 @@ export default function ProcessCtaSection() {
           <div data-cta-content className="mb-16">
             <MagneticWrapper className="mt-7">
               <Link
-                href="#contact"
+                href="/contact-us"
                 className="group inline-flex h-14 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-3 pr-7 text-base font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] sm:h-16 sm:pr-8 sm:text-lg"
                 style={{ color: "#fff" }}
               >
@@ -127,11 +134,44 @@ export default function ProcessCtaSection() {
             </MagneticWrapper>
           </div>
 
+          <div data-cta-content className="mt-10 mb-10 max-w-[660px] sm:mb-12">
+            <div className="flex items-center gap-3">
+              <span
+                className="h-px w-8 bg-text-secondary/30"
+                aria-hidden="true"
+              />
+              <span
+                className="text-xs font-medium uppercase tracking-[0.2em] text-text-secondary"
+                style={{ fontFamily: '"SF Mono", monospace' }}
+              >
+                Resort Policies
+              </span>
+            </div>
+            <div className="mt-5 border-t border-text-secondary/25">
+              {policies.map((policy) => (
+                <div
+                  key={policy.label}
+                  className="flex items-baseline justify-between gap-6 border-b border-text-secondary/25 py-3.5"
+                >
+                  <span className="text-base font-normal leading-none text-text-primary sm:text-lg">
+                    {policy.label}
+                  </span>
+                  <span
+                    className="text-right text-xs font-normal leading-none text-text-secondary sm:text-sm"
+                    style={{ fontFamily: '"SF Mono", monospace' }}
+                  >
+                    {policy.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-8 sm:mt-auto" data-cta-content>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "0px 0px 20% 0px" }}
               transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-4 text-sm font-medium leading-none text-text-secondary sm:mb-5 sm:text-base"
             >
@@ -164,7 +204,7 @@ export default function ProcessCtaSection() {
           className="relative min-h-[280px] overflow-hidden rounded-[7px] sm:min-h-[500px] lg:min-h-[858px] will-change-transform"
         >
           <Image
-            src="/images/4.jpeg"
+            src="/images/Facilities/Sunset/sunset-1.jpg"
             alt="Warm luxury interior at Breezy Island Siwa Oasis retreat with desert view window"
             fill
             className="object-cover object-center"

@@ -6,6 +6,14 @@ import gsap from "gsap";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_INTL,
+  MAPS_EMBED_SRC,
+  MAPS_LINK,
+  whatsappLink,
+} from "../lib/contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,6 +33,12 @@ export default function Footer() {
   const handleEmailSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
+    window.open(
+      whatsappLink(
+        `Hello Breezy Island! I'm interested in staying with you. (${email.trim()})`,
+      ),
+      "_blank",
+    );
     setSubmitted(true);
     setEmail("");
     setTimeout(() => setSubmitted(false), 4000);
@@ -138,7 +152,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="tel:+201067566607"
+                  href={`tel:${CONTACT_PHONE_INTL}`}
                   dir="ltr"
                   data-ar-phone
                   className="inline-flex items-center gap-2 text-base font-bold leading-none text-white/80 no-underline transition-colors hover:text-white"
@@ -158,7 +172,40 @@ export default function Footer() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  +20 10 67566607
+                  {CONTACT_PHONE}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  dir="ltr"
+                  className="inline-flex max-w-full items-center gap-2 text-base font-bold leading-none text-white/80 no-underline transition-colors hover:text-white"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <rect
+                      x="2"
+                      y="4"
+                      width="20"
+                      height="16"
+                      rx="3"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M2 7l10 7 10-7"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="break-all">{CONTACT_EMAIL}</span>
                 </a>
               </li>
               <li>
@@ -222,6 +269,28 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+            <a
+              href={MAPS_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Breezy Island location on Google Maps"
+              className="mt-6 block aspect-square w-36 overflow-hidden rounded-[7px] border border-white/15 transition-colors duration-300 hover:border-white/35 sm:w-40"
+            >
+              <iframe
+                src={MAPS_EMBED_SRC}
+                title="Breezy Island Resort location map"
+                width="100%"
+                height="100%"
+                style={{
+                  border: 0,
+                  filter: "grayscale(0.4) contrast(1.05)",
+                }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="block h-full w-full"
+              />
+            </a>
           </div>
         </div>
       </div>

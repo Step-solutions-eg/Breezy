@@ -54,61 +54,85 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.6 }}
         className="relative z-10 h-full px-4 text-white sm:px-8"
       >
-        <div className="w-[95vw] mx-auto max-w-[490px] pointer-events-auto pt-28 sm:mx-0 sm:ml-8 sm:w-auto sm:pt-44">
+        <div className="w-[95vw] mx-auto max-w-[820px] pointer-events-auto pt-24 sm:mx-0 sm:ml-8 sm:w-auto sm:pt-32">
+          <h1 className="font-heading font-normal leading-[1.02] tracking-[-0.02em]">
+            <span className="block text-[clamp(22px,3vw,44px)]">
+              The tranquility and magic of nature
+            </span>
+            <span className="block text-[clamp(22px,3vw,44px)] font-normal italic">
+              in Siwa Oasis.
+            </span>
+          </h1>
+
           <p
-            className="text-[1.6rem] sm:text-[clamp(18px,2.2vw,26px)] font-normal leading-[1.2] tracking-[-0.02em]"
+            className="mt-5 max-w-[560px] text-[0.95rem] font-normal leading-[1.5] tracking-[-0.01em] sm:mt-7 sm:text-[clamp(13px,1.2vw,15px)]"
             style={{
               fontFamily: '"SF Mono", monospace',
             }}
           >
-            A hidden sanctuary in the heart of Siwa Oasis,
-            <br className="hidden sm:block" />
-            where desert silence meets unparalleled luxury
-            <br className="hidden sm:block" />
-            and timeless Egyptian hospitality.
+            An island surrounded by water, where warm sunsets meet the stillness
+            of nature, you&rsquo;ll find a place designed to give you the
+            comfort you&rsquo;ve been looking for.
           </p>
 
-          <MagneticWrapper>
-            <Link
-              href="#contact"
-              className="group mt-8 inline-flex w-fit items-center gap-4 overflow-hidden rounded-full bg-white py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:bg-surface-raised active:scale-[0.98] sm:mt-11"
-              style={{ color: "#503A26" }}
-            >
-              <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-surface-overlay">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="absolute size-4 -rotate-45 transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M5 12h14M13 5l7 7-7 7"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="absolute size-4 -rotate-45 -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M5 12h14M13 5l7 7-7 7"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-              <span className="whitespace-nowrap text-base font-medium leading-none">
-                Book Your Stay
-              </span>
-            </Link>
-          </MagneticWrapper>
+          <p
+            className="mt-4 max-w-[520px] text-[0.8rem] font-normal leading-[1.55] text-white/75 sm:mt-5 sm:text-[clamp(11px,1vw,13px)]"
+            style={{
+              fontFamily: '"SF Mono", monospace',
+            }}
+          >
+            Luxurious rooms, peaceful surroundings, and a stay that feels like
+            home&hellip; not a hotel.
+          </p>
+
+          <p className="mt-5 font-heading font-normal italic text-[clamp(13px,1.3vw,16px)] leading-[1.25] text-white/90 sm:mt-6">
+            Leave the world behind and let Breezy Island give you time for
+            yourself.
+          </p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-4 sm:mt-9">
+            <MagneticWrapper>
+              <Link
+                href="/contact-us"
+                className="group inline-flex w-fit items-center gap-4 overflow-hidden rounded-full bg-white py-2 pl-2 pr-6 text-base font-medium leading-none no-underline transition duration-200 hover:bg-surface-raised active:scale-[0.98]"
+                style={{ color: "#503A26" }}
+              >
+                <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-surface-overlay">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="absolute size-4 -rotate-45 transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12h14M13 5l7 7-7 7"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="absolute size-4 -rotate-45 -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12h14M13 5l7 7-7 7"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span className="whitespace-nowrap text-base font-medium leading-none">
+                  Book Your Stay
+                </span>
+              </Link>
+            </MagneticWrapper>
+          </div>
         </div>
 
         <motion.div
@@ -117,7 +141,11 @@ export default function HeroSection() {
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 1 }}
           className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 select-none leading-none w-full"
         >
-          <div data-brand-logo className="flex items-end justify-center w-full" dir="ltr">
+          <div
+            data-brand-logo
+            className="flex items-end justify-center w-full"
+            dir="ltr"
+          >
             <span className="text-[clamp(40px,16vw,1000px)] font-heading font-black leading-[0.7]">
               Breezy
             </span>

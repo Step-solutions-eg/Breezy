@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { motion } from "framer-motion";
@@ -8,40 +8,70 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
-import Link from "next/link";
-import MagneticWrapper from "./MagneticWrapper";
+
+const galleryImages = [
+  "/images/Facilities/Pool/pool.jpg",
+  "/images/Facilities/Pool/pool-1.jpg",
+  "/images/Facilities/Breakfast/breakfast.jpg",
+  "/images/Facilities/Boat and kaiak/boat.jpg",
+  "/images/Facilities/Boat and kaiak/kaiak.jpg",
+  "/images/Facilities/Sunset/sunset.jpg",
+  "/images/Facilities/Sunset/sunset-1.jpg",
+];
 
 const services = [
   {
     number: "01",
-    title: "Spa & Wellness",
-    description:
-      "Traditional Siwan treatments, natural salt scrubs, and guided meditation beneath the desert sky.",
+    title: "Swimming Pool",
+    image: "/images/Facilities/Pool/pool.jpg",
   },
+  { number: "02", title: "Restaurant 24/7" },
+  { number: "03", title: "Café" },
+  { number: "04", title: "Bar" },
   {
-    number: "02",
-    title: "Desert Adventures",
-    description:
-      "Guided safaris across golden dunes, sunset camel treks, and stargazing in the Great Sand Sea.",
+    number: "05",
+    title: "Breakfast",
+    image: "/images/Facilities/Breakfast/breakfast.jpg",
   },
+  { number: "06", title: "Beach Volleyball" },
+  { number: "07", title: "Room Service" },
+  { number: "08", title: "Wi-Fi" },
+  { number: "09", title: "Parking" },
+  { number: "10", title: "Reception" },
   {
-    number: "03",
-    title: "Farm to Table Dining",
-    description:
-      "Fresh local ingredients, traditional Siwan recipes, and candlelit dinners under the palms.",
+    number: "11",
+    title: "Garden — Swings, Bird Garden, Photo Spot & Flower Garden",
   },
+  { number: "12", title: "Swimming Lake" },
+  { number: "13", title: "Laundry" },
   {
-    number: "04",
-    title: "Cultural Immersion",
-    description:
-      "Visit ancient temples, meet local artisans, and experience the rich heritage of Siwa.",
+    number: "14",
+    title: "Water Sports — Kayak, Pedal Boats, Boat Trips & Car Lake",
+    image: "/images/Facilities/Boat and kaiak/boat.jpg",
   },
+  { number: "15", title: "Beach Buggy" },
+  { number: "16", title: "Camels & Horses" },
+  { number: "17", title: "Airport Transportation" },
+  { number: "18", title: "Ask Reception" },
 ];
 
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const serviceGridRef = useRef<HTMLDivElement>(null);
+  const [galleryIndex, setGalleryIndex] = useState(0);
+  const [galleryPaused, setGalleryPaused] = useState(false);
+
+  const galleryPrev = () =>
+    setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+  const galleryNext = () =>
+    setGalleryIndex((i) => (i + 1) % galleryImages.length);
+
+  useEffect(() => {
+    if (galleryPaused) return;
+    const id = setInterval(galleryNext, 5000);
+    return () => clearInterval(id);
+  }, [galleryPaused, galleryIndex]);
 
   useGSAP(
     () => {
@@ -106,19 +136,6 @@ export default function ServicesSection() {
             toggleActions: "play none none none",
           },
         });
-
-        gsap.from("[data-service-cta]", {
-          opacity: 0,
-          y: 30,
-          duration: 0.6,
-          delay: 0.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: "[data-service-cta]",
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        });
       });
     },
     { scope: sectionRef },
@@ -142,10 +159,9 @@ export default function ServicesSection() {
           />
         </div>
       </div>
-      <div className="grid gap-12 lg:grid-cols-[1fr_0.94fr] lg:gap-20">
-        <div className="flex min-h-0 flex-col sm:min-h-[780px]">
-          <motion.div
-            data-service-badge
+      <div>
+        <motion.div
+          data-service-badge
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 400, damping: 26 }}
           >
@@ -164,79 +180,47 @@ export default function ServicesSection() {
             Ultimate Comfort
           </h2>
 
-          <div data-service-cta>
-            <MagneticWrapper>
-              <Link
-                href="#about"
-                className="group mt-12 inline-flex h-12 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-5 text-sm font-medium leading-none text-white no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] sm:mt-24 sm:h-14 sm:pr-6 sm:text-base"
-                style={{ color: "#fff" }}
-              >
-                <span className="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white sm:size-10">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="absolute size-3 -rotate-45 text-surface-overlay transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5 sm:size-4"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M5 12h14M13 5l7 7-7 7"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="absolute size-3 -rotate-45 text-surface-overlay -translate-x-5 translate-y-5 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 sm:size-4"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M5 12h14M13 5l7 7-7 7"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                Explore All Amenities
-              </Link>
-            </MagneticWrapper>
-          </div>
-
+          <div className="mt-10 grid gap-12 sm:mt-16 lg:grid-cols-[1fr_0.94fr] lg:gap-20">
+          <div>
           <div
             ref={serviceGridRef}
-            className="mt-12 grid gap-4 sm:mt-20 sm:gap-[28px] sm:grid-cols-2"
+            className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4"
           >
             {services.map((service) => (
               <motion.article
                 key={service.number}
                 data-service-card
-                whileHover={{ y: -6, scale: 1.02 }}
+                whileHover={{ y: -4, scale: 1.02 }}
                 whileTap={{ scale: 0.99 }}
                 transition={{ type: "spring", stiffness: 400, damping: 26 }}
-                className="block min-h-[200px] w-full rounded-[7px] bg-surface-raised px-4 py-4 text-text-primary transition-colors duration-300 hover:brightness-[0.96] sm:h-[240px] sm:px-5 sm:py-5"
+                role={service.image ? "button" : undefined}
+                tabIndex={service.image ? 0 : undefined}
+                onClick={() => {
+                  if (!service.image) return;
+                  const idx = galleryImages.indexOf(service.image);
+                  if (idx !== -1) setGalleryIndex(idx);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key !== "Enter" && e.key !== " ") return;
+                  e.preventDefault();
+                  if (!service.image) return;
+                  const idx = galleryImages.indexOf(service.image);
+                  if (idx !== -1) setGalleryIndex(idx);
+                }}
+                className={`block min-h-[110px] w-full rounded-[7px] bg-surface-raised px-3 py-3 text-text-primary transition-colors duration-300 hover:brightness-[0.96] sm:min-h-[120px] sm:px-4 sm:py-4 ${
+                  service.image ? "cursor-pointer" : ""
+                }`}
               >
                 <motion.span
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 26 }}
-                  className="flex size-10 items-center justify-center rounded-full bg-white text-lg font-medium leading-none text-text-primary sm:size-12 sm:text-[22px]"
+                  className="flex size-8 items-center justify-center rounded-full bg-white text-base font-medium leading-none text-text-primary sm:size-9 sm:text-lg"
                 >
                   {service.number}
                 </motion.span>
-                <h3 className="mt-5 mb-4 text-lg font-normal leading-[1.05] tracking-normal sm:mt-[35px] sm:mb-[25px] sm:text-[22px]">
+                <h3 className="mt-3 max-w-[260px] text-[15px] font-normal leading-[1.15] tracking-normal sm:mt-4 sm:text-base">
                   {service.title}
                 </h3>
-                <p
-                  className="mt-1 max-w-[330px] text-sm font-normal leading-[1.22] text-text-secondary sm:mt-2 sm:text-[18px]"
-                  style={{
-                    fontFamily: '"SF Mono", monospace',
-                  }}
-                >
-                  {service.description}
-                </p>
               </motion.article>
             ))}
           </div>
@@ -244,15 +228,93 @@ export default function ServicesSection() {
 
         <div
           ref={imageRef}
-          className="relative min-h-[320px] overflow-hidden rounded-[7px] sm:min-h-[600px] lg:min-h-[805px] will-change-transform"
+          onMouseEnter={() => setGalleryPaused(true)}
+          onMouseLeave={() => setGalleryPaused(false)}
+          className="relative h-full min-h-[340px] overflow-hidden rounded-[7px] sm:min-h-[520px] lg:min-h-[600px] will-change-transform"
         >
-          <Image
-            src="/images/hero-interior-1.jpeg"
-            alt="Refined luxury interior at Breezy Island resort in Siwa Oasis with panoramic desert views"
-            fill
-            className="object-cover object-center"
-            sizes="(min-width: 1024px) 48vw, 100vw"
-          />
+          <div className="absolute inset-0">
+            {galleryImages.map((src, i) => (
+              <div
+                key={src}
+                aria-hidden={i !== galleryIndex}
+                className={`absolute inset-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                  i === galleryIndex ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Image
+                  src={src}
+                  alt={
+                    i === galleryIndex
+                      ? (services.find((s) => s.image === galleryImages[i])
+                            ?.title
+                          ? `${services.find((s) => s.image === galleryImages[i])!.title} at Breezy Island resort in Siwa Oasis`
+                          : "Facility at Breezy Island resort in Siwa Oasis")
+                      : ""
+                  }
+                  fill
+                  priority={i === 0}
+                  className="object-cover object-center"
+                  sizes="(min-width: 1024px) 48vw, 100vw"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="absolute bottom-3 right-3 z-10 flex items-center gap-2">
+            <span className="rounded-full bg-white/85 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.15em] text-text-primary backdrop-blur-sm">
+              {String(galleryIndex + 1).padStart(2, "0")} /{" "}
+              {String(galleryImages.length).padStart(2, "0")}
+            </span>
+            <motion.button
+              onClick={galleryPrev}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 400, damping: 26 }}
+              aria-label="Previous image"
+              className="flex size-9 items-center justify-center rounded-full bg-surface-overlay text-white transition-colors duration-300 hover:bg-surface-base hover:text-text-primary"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                className="size-3.5 rtl:-scale-x-100"
+                aria-hidden="true"
+              >
+                <path
+                  d="M19 12H5M11 18l-6-6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </motion.button>
+            <motion.button
+              onClick={galleryNext}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 400, damping: 26 }}
+              aria-label="Next image"
+              className="flex size-9 items-center justify-center rounded-full bg-surface-overlay text-white transition-colors duration-300 hover:bg-surface-base hover:text-text-primary"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                className="size-3.5 rtl:-scale-x-100"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12h14M13 18l6-6-6-6"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </motion.button>
+          </div>
+        </div>
         </div>
       </div>
     </section>

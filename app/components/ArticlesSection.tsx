@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
@@ -12,14 +12,22 @@ import MagneticWrapper from "./MagneticWrapper";
 gsap.registerPlugin(ScrollTrigger);
 
 const sharedAmenities = [
-  "Mini bar",
+  "Lake view",
+  "With balcony",
   "Air conditioning",
-  "Iron",
-  "Heater",
-  "Hair dryer",
+  "Heating",
   "Free Wi-Fi",
-  "Room service",
-  "Complimentary water, tea, and Nescafé",
+  "TV",
+  "Fire alarm",
+  "Mini bar",
+  "Hair dryer",
+  "Towels",
+  "Kettle",
+  "Fan",
+  "Air freshener",
+  "Iron",
+  "Mosquito device",
+  "Wardrobe",
 ];
 
 const hotelFeatures = [
@@ -37,39 +45,85 @@ interface Room {
   name: string;
   category: string;
   image: string;
+  gallery: string[];
   description: string;
   highlights: string[];
 }
 
 const rooms: Room[] = [
   {
-    name: "Honeymoon Room",
-    category: "Premium Suite",
-    image: "/images/3.jpeg",
-    description: "The largest room in the hotel, designed for romance and relaxation.",
-    highlights: [
-      "Balcony overlooking the lake",
-      "Bathroom with a jacuzzi",
-      "Traditional Arabic-style seating area",
+    name: "Standard Room",
+    category: "Classic",
+    image: "/images/Rooms/Standard/IMG-20260815-WA0093.jpg",
+    gallery: [
+      "/images/Rooms/Standard/IMG-20260815-WA0093.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0096.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0097.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0101.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0105.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0109.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0111.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0113.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0115.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0119.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0120.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0121.jpg",
+      "/images/Rooms/Standard/IMG-20260815-WA0122.jpg",
     ],
-  },
-  {
-    name: "Sedra Room",
-    category: "Lake View",
-    image: "/images/4.jpeg",
-    description: "A serene retreat with stunning views of the lake and landscaped gardens.",
+    description:
+      "A calm, essential retreat — a king bed (160cm) or twin beds (120cm), and 32 square meters of simple, quiet comfort.",
     highlights: [
-      "Balcony overlooking the lake",
-      "Views of landscaped gardens",
+      "King bed 160cm or twin bed 120cm",
+      "Room space 8×4 = 32 m²",
     ],
   },
   {
     name: "Salty Room",
     category: "Unique Experience",
-    image: "/images/project-stonehaven.jpeg",
-    description: "A one-of-a-kind room with walls made of salt for a truly unique stay.",
+    image: "/images/Rooms/Salty/IMG-20260815-WA0060.jpg",
+    gallery: [
+      "/images/Rooms/Salty/IMG-20260815-WA0060.jpg",
+      "/images/Rooms/Salty/IMG-20260815-WA0062.jpg",
+      "/images/Rooms/Salty/IMG-20260815-WA0064.jpg",
+      "/images/Rooms/Salty/IMG-20260815-WA0066.jpg",
+      "/images/Rooms/Salty/IMG-20260815-WA0068.jpg",
+      "/images/Rooms/Salty/IMG-20260815-WA0070.jpg",
+      "/images/Rooms/Salty/IMG-20260815-WA0073.jpg",
+      "/images/Rooms/Salty/IMG-20260815-WA0075.jpg",
+      "/images/Rooms/Salty/IMG-20260815-WA0076.jpg",
+    ],
+    description:
+      "A one-of-a-kind stay inside walls of natural salt, with a hammock on the balcony, wool curtains, and a view over the pool.",
     highlights: [
-      "Walls made of salt",
+      "Salt walls",
+      "Hammock on the balcony",
+      "King bed 160cm or twin bed 120cm",
+      "Wool curtains",
+      "Pool view",
+      "Room space 8×4 = 32 m²",
+    ],
+  },
+  {
+    name: "Cedra & Honeymoon Rooms",
+    category: "In the Heart of the Lake",
+    image: "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0085.jpg",
+    gallery: [
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0085.jpg",
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0086.jpg",
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0087.jpg",
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0089.jpg",
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0091.jpg",
+    ],
+    description:
+      "Built at the heart of the lake, with a jacuzzi facing the water, a two-meter bed, a hammock on the balcony, an Arabic seating corner, and evenings made for two — forty square meters of pure stillness.",
+    highlights: [
+      "In the heart of the lake",
+      "Jacuzzi overlooking the view",
+      "Two-meter bed",
+      "Hammock on the balcony",
+      "Wool curtains",
+      "Arabic seating area",
+      "Room space 8×5 = 40 m²",
     ],
   },
 ];
@@ -265,7 +319,7 @@ export default function ArticlesSection() {
                     />
                   </svg>
                 </span>
-                View Room
+                View Rooms
               </Link>
             </MagneticWrapper>
           </div>
@@ -276,8 +330,8 @@ export default function ArticlesSection() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        className="grid gap-4 md:gap-5 md:grid-cols-3"
+        viewport={{ once: true, margin: "0px 0px 20% 0px" }}
+        className="grid gap-4 md:gap-5 md:grid-cols-2 xl:grid-cols-3"
       >
         {rooms.map((room, index) => (
           <motion.div key={room.name} variants={cardVariants}>
@@ -368,6 +422,7 @@ export default function ArticlesSection() {
       <AnimatePresence>
         {selectedRoom && (
           <RoomModal
+            key={selectedRoom.name}
             room={selectedRoom}
             onClose={() => setSelectedRoom(null)}
           />
@@ -387,6 +442,23 @@ function RoomModal({
   const panelRef = useRef<HTMLDivElement>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
   const lastTouchYRef = useRef<number | null>(null);
+  const [galleryIndex, setGalleryIndex] = useState(0);
+  const [galleryPaused, setGalleryPaused] = useState(false);
+
+  const galleryPrev = () =>
+    setGalleryIndex((i) => (i - 1 + room.gallery.length) % room.gallery.length);
+  const galleryNext = () =>
+    setGalleryIndex((i) => (i + 1) % room.gallery.length);
+
+  useEffect(() => {
+    if (galleryPaused) return;
+    const id = setInterval(galleryNext, 5000);
+    return () => clearInterval(id);
+  }, [galleryPaused, galleryIndex, room.gallery.length]);
+
+  useEffect(() => {
+    setGalleryIndex(0);
+  }, [room]);
 
   const getScrollTarget = () => {
     if (typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches) {
@@ -456,15 +528,87 @@ function RoomModal({
           </svg>
         </button>
 
-        <div className="relative h-[34dvh] min-h-[220px] w-full shrink-0 md:h-auto md:min-h-full md:w-1/2">
-          <Image
-            src={room.image}
-            alt={room.name}
-            fill
-            className="object-cover"
-            sizes="(min-width: 768px) 50vw, 100vw"
-          />
+        <div
+          onMouseEnter={() => setGalleryPaused(true)}
+          onMouseLeave={() => setGalleryPaused(false)}
+          className="relative h-[34dvh] min-h-[220px] w-full shrink-0 md:h-auto md:min-h-full md:w-1/2"
+        >
+          <div className="absolute inset-0">
+            {room.gallery.map((src, i) => (
+              <div
+                key={src}
+                aria-hidden={i !== galleryIndex}
+                className={`absolute inset-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                  i === galleryIndex ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Image
+                  src={src}
+                  alt={i === galleryIndex ? room.name : ""}
+                  fill
+                  priority={i === 0}
+                  className="object-cover"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                />
+              </div>
+            ))}
+          </div>
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-surface-base hidden md:block" />
+
+          <div className="absolute bottom-3 right-3 z-10 flex items-center gap-2">
+            <span className="rounded-full bg-white/85 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.15em] text-text-primary backdrop-blur-sm">
+              {String(galleryIndex + 1).padStart(2, "0")} /{" "}
+              {String(room.gallery.length).padStart(2, "0")}
+            </span>
+            <motion.button
+              onClick={galleryPrev}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 400, damping: 26 }}
+              aria-label="Previous image"
+              className="flex size-9 items-center justify-center rounded-full bg-surface-overlay text-white transition-colors duration-300 hover:bg-surface-base hover:text-text-primary"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                className="size-3.5 rtl:-scale-x-100"
+                aria-hidden="true"
+              >
+                <path
+                  d="M19 12H5M11 18l-6-6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </motion.button>
+            <motion.button
+              onClick={galleryNext}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 400, damping: 26 }}
+              aria-label="Next image"
+              className="flex size-9 items-center justify-center rounded-full bg-surface-overlay text-white transition-colors duration-300 hover:bg-surface-base hover:text-text-primary"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                className="size-3.5 rtl:-scale-x-100"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12h14M13 18l6-6-6-6"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </motion.button>
+          </div>
         </div>
 
         <div

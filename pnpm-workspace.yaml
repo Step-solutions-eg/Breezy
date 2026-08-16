@@ -5,10 +5,13 @@ allowBuilds:
   a: true
   c: true
   e: true
+  ecc-universal: set this to true or false
   i: true
   l: true
   n: true
   r: true
   s: true
+  sharp: set this to true or false
   u: true
+  unrs-resolver: set this to true or false
   v: true

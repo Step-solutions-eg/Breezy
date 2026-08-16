@@ -14,9 +14,18 @@ const experiences = [
   { label: "Adventure Programs", desc: "Dune bashing, trekking, sandboarding" },
   { label: "Accommodations", desc: "Boutique stays beneath the desert stars" },
   { label: "Activities", desc: "Salt lakes, ancient temples, desert sports" },
-  { label: "Seasonal Experiences", desc: "Harvest festivals, spring blossom trails" },
-  { label: "Wellness Retreats", desc: "Yoga, meditation, traditional Siwan treatments" },
-  { label: "Desert Events", desc: "Stargazing dinners under the Great Sand Sea" },
+  {
+    label: "Seasonal Experiences",
+    desc: "Harvest festivals, spring blossom trails",
+  },
+  {
+    label: "Wellness Retreats",
+    desc: "Yoga, meditation, traditional Siwan treatments",
+  },
+  {
+    label: "Desert Events",
+    desc: "Stargazing dinners under the Great Sand Sea",
+  },
 ];
 
 const programs = [
@@ -27,7 +36,12 @@ const programs = [
     mood: "Relaxed",
     description:
       "Quick yet immersive getaways into Siwa's palm-fringed tranquility. Perfect for a fast reset.",
-    activities: ["Oasis Walks", "Salt Lake Swim", "Sunset Meditation", "Local Cuisine"],
+    activities: [
+      "Oasis Walks",
+      "Salt Lake Swim",
+      "Sunset Meditation",
+      "Local Cuisine",
+    ],
   },
   {
     title: "Group Expeditions",
@@ -36,7 +50,12 @@ const programs = [
     mood: "Social",
     description:
       "Travel with a community of like-minded explorers uncovering Siwa's hidden corners together.",
-    activities: ["Desert Safaris", "Temple Tours", "Campfire Stories", "Group Dining"],
+    activities: [
+      "Desert Safaris",
+      "Temple Tours",
+      "Campfire Stories",
+      "Group Dining",
+    ],
   },
   {
     title: "Private Experiences",
@@ -45,7 +64,12 @@ const programs = [
     mood: "Intimate",
     description:
       "Fully tailored journeys designed around your rhythm, interests, and dreams of the oasis.",
-    activities: ["Private Guide", "Bespoke Dining", "Sunset Camel Ride", "Photography Tour"],
+    activities: [
+      "Private Guide",
+      "Bespoke Dining",
+      "Sunset Camel Ride",
+      "Photography Tour",
+    ],
   },
   {
     title: "Luxury Retreats",
@@ -54,7 +78,12 @@ const programs = [
     mood: "Indulgent",
     description:
       "Uncompromising luxury set against the raw, haunting beauty of the Great Sand Sea.",
-    activities: ["Spa Treatments", "Private Pool", "Gourmet Dining", "Stargazing"],
+    activities: [
+      "Spa Treatments",
+      "Private Pool",
+      "Gourmet Dining",
+      "Stargazing",
+    ],
   },
   {
     title: "Adventure Packages",
@@ -63,7 +92,12 @@ const programs = [
     mood: "Thrilling",
     description:
       "Push your limits across dunes, mountains, and ancient salt lakes carved by time.",
-    activities: ["Dune Bashing", "Mountain Trek", "Sandboarding", "Survival Skills"],
+    activities: [
+      "Dune Bashing",
+      "Mountain Trek",
+      "Sandboarding",
+      "Survival Skills",
+    ],
   },
   {
     title: "Custom Itineraries",
@@ -72,7 +106,12 @@ const programs = [
     mood: "Personalized",
     description:
       "Dream it, and we will build it. Every detail crafted around your vision of Siwa.",
-    activities: ["Full Customization", "Expert Planning", "Personal Concierge", "24/7 Support"],
+    activities: [
+      "Full Customization",
+      "Expert Planning",
+      "Personal Concierge",
+      "24/7 Support",
+    ],
   },
 ];
 
@@ -227,7 +266,7 @@ export default function AdventureClubPage() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
+                viewport={{ once: true, margin: "0px 0px 20% 0px" }}
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
                 className="mb-12 inline-flex h-10 w-fit items-center gap-2.5 rounded-full bg-surface-raised py-1 pl-2 pr-4"
               >
@@ -250,13 +289,15 @@ export default function AdventureClubPage() {
                     />
                   </motion.svg>
                 </span>
-                <span className="text-base font-normal leading-none">The Experience</span>
+                <span className="text-base font-normal leading-none">
+                  The Experience
+                </span>
               </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, margin: "0px 0px 20% 0px" }}
                 transition={{ duration: 1, ease: [0.32, 0.72, 0, 1] }}
               >
                 <h2
@@ -286,7 +327,7 @@ export default function AdventureClubPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
+                viewport={{ once: true, margin: "0px 0px 20% 0px" }}
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
               >
                 <div className="mb-8 sm:mb-10">
@@ -309,7 +350,7 @@ export default function AdventureClubPage() {
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
+                viewport={{ once: true, margin: "0px 0px 20% 0px" }}
                 transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
                 className="mb-10 max-w-[580px] text-[clamp(18px,2.2vw,26px)] font-normal leading-[1.2] text-text-secondary"
                 style={{ fontFamily: '"SF Mono", monospace' }}
@@ -323,7 +364,7 @@ export default function AdventureClubPage() {
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true, margin: "0px 0px 20% 0px" }}
                 className="w-full space-y-1 sm:w-[49%]"
               >
                 {experiences.map((item) => (
@@ -354,7 +395,7 @@ export default function AdventureClubPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
+                viewport={{ once: true, margin: "0px 0px 20% 0px" }}
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
               >
                 <div className="mb-8 sm:mb-10">
@@ -377,7 +418,7 @@ export default function AdventureClubPage() {
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
+                viewport={{ once: true, margin: "0px 0px 20% 0px" }}
                 transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
                 className="mb-10 max-w-[580px] text-[clamp(18px,2.2vw,26px)] font-normal leading-[1.2] text-text-secondary"
                 style={{ fontFamily: '"SF Mono", monospace' }}
@@ -391,7 +432,7 @@ export default function AdventureClubPage() {
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true, margin: "0px 0px 20% 0px" }}
                 className="w-full space-y-1 sm:w-[49%]"
               >
                 {programs.map((program) => (
@@ -448,7 +489,7 @@ export default function AdventureClubPage() {
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, margin: "0px 0px 20% 0px" }}
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
                 className="relative min-h-[430px] w-full border-t border-accent-secondary/20 pt-14 sm:w-[49%] sm:min-h-[520px] sm:pt-20"
               >
@@ -461,20 +502,24 @@ export default function AdventureClubPage() {
                   className="relative z-10 mt-6 max-w-[480px] text-[clamp(18px,2.2vw,26px)] font-normal leading-[1.2] text-text-secondary"
                   style={{ fontFamily: '"SF Mono", monospace' }}
                 >
-                  Whether you seek solitude, adventure, or connection — there
-                  is a journey waiting for you in Siwa.
+                  Whether you seek solitude, adventure, or connection — there is
+                  a journey waiting for you in Siwa.
                 </p>
 
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1], delay: 0.15 }}
+                  viewport={{ once: true, margin: "0px 0px 20% 0px" }}
+                  transition={{
+                    duration: 0.7,
+                    ease: [0.32, 0.72, 0, 1],
+                    delay: 0.15,
+                  }}
                   className="relative z-10"
                 >
                   <MagneticWrapper>
                     <Link
-                      href="/#contact"
+                      href="/contact-us"
                       className="group mt-10 inline-flex h-12 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-5 text-sm font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] sm:mt-14 sm:h-14 sm:pr-6 sm:text-base"
                       style={{ color: "#fff" }}
                     >
@@ -513,7 +558,6 @@ export default function AdventureClubPage() {
                   </MagneticWrapper>
                 </motion.div>
               </motion.div>
-
             </section>
           </div>
         </div>

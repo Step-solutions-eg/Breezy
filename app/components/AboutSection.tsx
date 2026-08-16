@@ -10,28 +10,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   {
-    value: 10,
+    value: 3,
+    prefix: "",
     suffix: "",
-    description:
-      "Years of Siwan hospitality rooted in tradition and authentic desert warmth.",
+    description: "years of hospitality",
   },
   {
-    value: 5,
+    value: 20000,
+    prefix: "",
     suffix: "",
-    description:
-      "Acres of pristine oasis sanctuary surrounded by endless palm groves.",
+    description: "m²",
   },
   {
-    value: 50,
-    suffix: "+",
-    description:
-      "Luxury rooms and private villas crafted for peace and total relaxation.",
-  },
-  {
-    value: 100,
-    suffix: "%",
-    description:
-      "Tranquility guaranteed. Every guest leaves with a renewed sense of self.",
+    value: 40,
+    prefix: "+",
+    suffix: "",
+    description: "rooms",
   },
 ];
 
@@ -94,7 +88,8 @@ export default function AboutSection() {
           onUpdate: () => {
             const el = document.querySelector(`[data-stat-value="${i}"]`);
             if (el) {
-              el.textContent = Math.round(obj.val).toString() + stat.suffix;
+              el.textContent =
+                stat.prefix + Math.round(obj.val).toString() + stat.suffix;
             }
           },
         });
@@ -129,25 +124,44 @@ export default function AboutSection() {
 
         <div ref={headingRef} className="grid grid-cols-1 gap-8 lg:grid-cols-[0.49fr_0.51fr] lg:items-start lg:gap-12">
           <h2
-            className="max-w-[650px] text-[clamp(40px,3.35vw,64px)] font-medium uppercase leading-[0.985] tracking-normal"
+            className="max-w-[650px] text-[clamp(36px,3.1vw,58px)] font-medium uppercase leading-[0.985] tracking-normal"
             style={{
               fontFamily: '"SF Mono", monospace',
             }}
           >
-            A Hidden Sanctuary in the Heart
+            Siwa in its spirit&hellip;
             <br />
-            of Siwa
+            and Breezy in its details
           </h2>
 
-          <p className="max-w-[850px] pt-4 text-[clamp(22px,1.62vw,32px)] font-normal leading-[1.22] tracking-normal lg:pt-8">
-            Nestled among ancient palm groves and golden dunes, Breezy Island
-            offers a rare escape where timeless Egyptian hospitality meets
-            understated luxury. Every detail is designed to help you disconnect,
-            unwind, and rediscover the rhythm of a slower life.
-          </p>
+          <div className="max-w-[850px] pt-2 text-[clamp(14px,1.05vw,17px)] font-normal leading-[1.45] tracking-normal lg:pt-4">
+            <p>
+              In the heart of Siwa&rsquo;s western lake, where the waters
+              stretch calmly between golden sand dunes, a different story
+              begins.
+            </p>
+            <p className="mt-5">
+              As the sun sets, the sky&rsquo;s colors reflect on the
+              lake&rsquo;s waters, and as the moon rises from behind the dunes,
+              the island becomes an unforgettable scene.
+            </p>
+            <p className="mt-5">
+              And in this enchanting place, we discovered{" "}
+              <strong className="font-heading font-normal italic">
+                Breezy Island
+              </strong>
+              ; a space that blends the stillness of nature with the spirit of
+              Siwa, where time passes slowly, and every moment becomes a story.
+            </p>
+            <p className="mt-5">
+              Here, you don&rsquo;t come to simply step away from the
+              world&hellip; you come to discover a beauty you didn&rsquo;t know
+              you were looking for.
+            </p>
+          </div>
         </div>
 
-        <div className="mt-16 grid border-t border-accent-secondary/20 sm:mt-[122px] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid border-t border-accent-secondary/20 sm:mt-[122px] sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -166,7 +180,7 @@ export default function AboutSection() {
                 data-stat-value={index}
                 className="block text-[clamp(40px,3.35vw,64px)] font-normal leading-none tracking-normal"
               >
-                0{stat.suffix}
+                {stat.prefix}0{stat.suffix}
               </motion.span>
               <p className="mt-8 max-w-[380px] text-[clamp(17px,1.14vw,23px)] font-normal leading-[1.18] text-text-primary sm:mt-14">
                 {stat.description}

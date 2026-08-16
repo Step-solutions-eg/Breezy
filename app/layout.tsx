@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./lib/language";
+import WhatsAppFloat from "./components/WhatsAppFloat";
 
 const cairo = Cairo({
   subsets: ["arabic"],
@@ -83,7 +84,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={cairo.variable}>
       <body className="antialiased">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+          <WhatsAppFloat />
+        </LanguageProvider>
       </body>
     </html>
   );

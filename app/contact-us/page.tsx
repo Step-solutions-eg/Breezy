@@ -10,21 +10,37 @@ import ScrollProgressBar from "../components/ScrollProgressBar";
 import SmoothScroll from "../components/SmoothScroll";
 import SeoHead, { BASE_URL } from "../lib/seo/seo-head";
 import { breadcrumbSchema, localBusinessSchema } from "../lib/seo/structured-data";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_INTL,
+  MAPS_EMBED_SRC,
+  MAPS_LINK,
+  whatsappLink,
+} from "../lib/contact";
 
 const ease = [0.32, 0.72, 0, 1] as const;
 
 const contactDetails = [
   {
-    label: "Reservations",
-    value: "stay@breezyisland.com",
+    label: "Phone",
+    value: CONTACT_PHONE,
+    href: `tel:${CONTACT_PHONE_INTL}`,
+  },
+  {
+    label: "Email",
+    value: CONTACT_EMAIL,
+    href: `mailto:${CONTACT_EMAIL}`,
   },
   {
     label: "WhatsApp",
-    value: "+20 100 000 0000",
+    value: CONTACT_PHONE,
+    href: whatsappLink("Hello Breezy Island! I'd like to book a stay."),
   },
   {
     label: "Location",
     value: "Siwa Oasis, Matrouh, Egypt",
+    href: MAPS_LINK,
   },
 ];
 
@@ -77,6 +93,19 @@ export default function ContactUsPage() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim()) return;
+    const details = [
+      `Name: ${formData.name.trim()}`,
+      `Email: ${formData.email.trim()}`,
+      formData.arrival.trim() && `Preferred dates: ${formData.arrival.trim()}`,
+      formData.guests.trim() && `Guests: ${formData.guests.trim()}`,
+      formData.message.trim() && `Message: ${formData.message.trim()}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+    window.open(
+      whatsappLink(`New booking request — Breezy Island\n\n${details}`),
+      "_blank",
+    );
     setSubmitted(true);
     setFormData({ name: "", email: "", arrival: "", guests: "", message: "" });
     setTimeout(() => setSubmitted(false), 4000);
@@ -191,9 +220,20 @@ export default function ContactUsPage() {
                       <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
                         {item.label}
                       </span>
-                      <span dir="ltr" data-ar-contact-value className="mt-2 block text-sm leading-[1.45] text-white">
+                      <a
+                        href={item.href}
+                        dir="ltr"
+                        target={item.href.startsWith("http") ? "_blank" : undefined}
+                        rel={
+                          item.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        data-ar-contact-value
+                        className="mt-2 block text-sm leading-[1.45] text-white no-underline transition-colors hover:text-accent"
+                      >
                         {item.value}
-                      </span>
+                      </a>
                     </div>
                   ))}
                 </div>
@@ -259,6 +299,63 @@ export default function ContactUsPage() {
                   </MagneticWrapper>
                 </div>
               </form>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 46, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 1, ease, delay: 0.2 }}
+              className="relative z-10 mx-auto mt-14 max-w-[1060px] overflow-hidden rounded-[7px] border border-border-default/20"
+            >
+              <iframe
+                src={MAPS_EMBED_SRC}
+                title="Breezy Island Resort location map"
+                width="100%"
+                height="420"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="block w-full"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease, delay: 0.3 }}
+              className="relative z-10 mt-8 text-center"
+            >
+              <a
+                href={MAPS_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.15em] text-text-secondary no-underline transition-colors hover:text-text-primary"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 21s-7-5.6-7-11a7 7 0 1114 0c0 5.4-7 11-7 11z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <circle
+                    cx="12"
+                    cy="10"
+                    r="2.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+                Open in Google Maps
+              </a>
             </motion.div>
           </div>
         </section>

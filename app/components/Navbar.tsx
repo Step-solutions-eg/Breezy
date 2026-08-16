@@ -119,10 +119,10 @@ export default function Navbar({ mode, scrollContainer, alwaysScrolled }: { mode
                 }`}
               >
                 <span className="relative block overflow-hidden">
-                  <span className="block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform group-hover:-translate-y-[calc(100%+2px)]">
+                  <span className="block py-1 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform group-hover:-translate-y-[calc(100%+2px)]">
                     {link.label}
                   </span>
-                  <span className="absolute inset-0 block transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform translate-y-[calc(100%+2px)] group-hover:translate-y-0">
+                  <span className="absolute inset-0 block py-1 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform translate-y-[calc(100%+2px)] group-hover:translate-y-0">
                     {link.label}
                   </span>
                 </span>

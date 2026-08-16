@@ -146,7 +146,7 @@ export default function FaqSection() {
           <div data-faq-cta>
             <MagneticWrapper>
             <Link
-              href="#services"
+              href="/contact-us"
               className="group mt-10 inline-flex h-12 w-fit items-center gap-4 overflow-hidden rounded-full bg-surface-overlay py-2 pl-2 pr-5 text-sm font-medium leading-none no-underline transition duration-200 hover:opacity-90 active:scale-[0.98] sm:mt-14 sm:h-14 sm:pr-6 sm:text-base"
               style={{ color: "#fff" }}
             >

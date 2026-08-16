@@ -54,7 +54,7 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.6 }}
         className="relative z-10 h-full px-4 text-white sm:px-8"
       >
-        <div className="w-[95vw] mx-auto max-w-[820px] pointer-events-auto pt-24 sm:mx-0 sm:ml-8 sm:w-auto sm:pt-32">
+        <div className="hero-content w-[95vw] mx-auto max-w-[820px] pointer-events-auto pt-24 sm:mx-0 sm:ml-8 sm:w-auto sm:pt-32">
           <h1 className="font-heading font-normal leading-[1.02] tracking-[-0.02em]">
             <span className="block text-[clamp(22px,3vw,44px)]">
               The tranquility and magic of nature
@@ -146,10 +146,10 @@ export default function HeroSection() {
             className="flex items-end justify-center w-full"
             dir="ltr"
           >
-            <span className="text-[clamp(40px,16vw,1000px)] font-heading font-black leading-[0.7]">
+            <span className="text-[clamp(40px,12vw,420px)] max-sm:text-[clamp(40px,16vw,1000px)] font-heading font-black leading-[0.7]">
               Breezy
             </span>
-            <span className="text-[clamp(40px,16vw,1000px)] font-heading font-normal italic leading-[0.7]">
+            <span className="text-[clamp(40px,12vw,420px)] max-sm:text-[clamp(40px,16vw,1000px)] font-heading font-normal italic leading-[0.7]">
               Island
             </span>
           </div>

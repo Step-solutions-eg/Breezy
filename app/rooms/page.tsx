@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
@@ -26,7 +27,22 @@ const rooms = [
     size: "32 m²",
     guests: "2",
     features: ["King bed 160cm or twin bed 120cm", "Room space 8×4 = 32 m²"],
-    image: "/images/Rooms/Standard/IMG-20260815-WA0093.jpg",
+    image: "/images/Rooms/Standard/IMG-20260815-WA0093.webp",
+    gallery: [
+      "/images/Rooms/Standard/IMG-20260815-WA0093.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0096.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0097.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0101.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0105.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0109.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0111.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0113.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0115.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0119.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0120.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0121.webp",
+      "/images/Rooms/Standard/IMG-20260815-WA0122.webp",
+    ],
   },
   {
     id: "02",
@@ -42,7 +58,18 @@ const rooms = [
       "Wool curtains",
       "Pool view",
     ],
-    image: "/images/Rooms/Salty/IMG-20260815-WA0060.jpg",
+    image: "/images/Rooms/Salty/IMG-20260815-WA0060.webp",
+    gallery: [
+      "/images/Rooms/Salty/IMG-20260815-WA0060.webp",
+      "/images/Rooms/Salty/IMG-20260815-WA0062.webp",
+      "/images/Rooms/Salty/IMG-20260815-WA0064.webp",
+      "/images/Rooms/Salty/IMG-20260815-WA0066.webp",
+      "/images/Rooms/Salty/IMG-20260815-WA0068.webp",
+      "/images/Rooms/Salty/IMG-20260815-WA0070.webp",
+      "/images/Rooms/Salty/IMG-20260815-WA0073.webp",
+      "/images/Rooms/Salty/IMG-20260815-WA0075.webp",
+      "/images/Rooms/Salty/IMG-20260815-WA0076.webp",
+    ],
   },
   {
     id: "03",
@@ -60,7 +87,14 @@ const rooms = [
       "Wool curtains",
       "Arabic seating area",
     ],
-    image: "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0085.jpg",
+    image: "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0085.webp",
+    gallery: [
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0085.webp",
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0086.webp",
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0087.webp",
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0089.webp",
+      "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0091.webp",
+    ],
   },
 ];
 
@@ -230,7 +264,7 @@ export default function RoomsPage() {
           ogTitle: "Luxury Rooms & Suites in Siwa Oasis — Breezy Island",
           ogDescription:
             "Four distinct sanctuaries in Siwa Oasis, each crafted to frame the silence and beauty of the desert in its own way.",
-          ogImage: "/images/4.jpeg",
+          ogImage: "/images/4.webp",
           ogType: "website",
           twitterCard: "summary_large_image",
           jsonLd: [
@@ -266,7 +300,7 @@ export default function RoomsPage() {
               className="relative h-[50dvh] min-h-0 overflow-hidden sm:h-full"
             >
               <Image
-                src="/images/hero-interior-1.jpeg"
+                src="/images/hero-interior-1.webp"
                 alt="Luxury suite at Breezy Island resort in Siwa Oasis, Egypt — luxury desert accommodation"
                 fill
                 className="object-cover object-center"
@@ -346,18 +380,10 @@ export default function RoomsPage() {
               className="min-h-dvh w-full overflow-hidden bg-surface-base sm:h-dvh"
             >
               <div className="grid h-full grid-cols-1 sm:grid-cols-2">
-                <div
-                  data-room-bg
-                  className={`relative h-[50dvh] min-h-0 overflow-hidden will-change-transform sm:h-full ${i % 2 === 0 ? "sm:order-2" : ""}`}
-                >
-                  <Image
-                    src={room.image}
-                    alt={room.name}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(min-width: 640px) 50vw, 100vw"
-                  />
-                </div>
+                <RoomGallery
+                  room={room}
+                  className={i % 2 === 0 ? "sm:order-2" : ""}
+                />
 
                 <div
                   className={`flex sm:items-center px-6 py-12 sm:px-10 lg:px-14 ${i % 2 === 0 ? "sm:order-1" : ""}`}
@@ -515,5 +541,125 @@ export default function RoomsPage() {
         <Footer />
       </main>
     </SmoothScroll>
+  );
+}
+
+interface Room {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  size: string;
+  guests: string;
+  features: string[];
+  image: string;
+  gallery: string[];
+}
+
+function RoomGallery({
+  room,
+  className,
+}: {
+  room: Room;
+  className?: string;
+}) {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const galleryPrev = () =>
+    setIndex((i) => (i - 1 + room.gallery.length) % room.gallery.length);
+  const galleryNext = () =>
+    setIndex((i) => (i + 1) % room.gallery.length);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % room.gallery.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [paused, room.gallery.length]);
+
+  return (
+    <div
+      data-room-bg
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      className={`relative h-[50dvh] min-h-0 overflow-hidden will-change-transform sm:h-full ${className ?? ""}`}
+    >
+      <div className="absolute inset-0">
+        {room.gallery.map((src, i) => (
+          <div
+            key={src}
+            aria-hidden={i !== index}
+            className={`absolute inset-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+              i === index ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={src}
+              alt={i === index ? room.name : ""}
+              fill
+              className="object-cover object-center"
+              sizes="(min-width: 640px) 50vw, 100vw"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="absolute bottom-3 right-3 z-10 flex items-center gap-2">
+        <span className="rounded-full bg-white/85 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.15em] text-text-primary backdrop-blur-sm">
+          {String(index + 1).padStart(2, "0")} /{" "}
+          {String(room.gallery.length).padStart(2, "0")}
+        </span>
+        <motion.button
+          onClick={galleryPrev}
+          whileTap={{ scale: 0.92 }}
+          transition={{ type: "spring", stiffness: 400, damping: 26 }}
+          aria-label="Previous image"
+          className="flex size-9 items-center justify-center rounded-full bg-surface-overlay text-white transition-colors duration-300 hover:bg-surface-base hover:text-text-primary"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="size-3.5 rtl:-scale-x-100"
+            aria-hidden="true"
+          >
+            <path
+              d="M19 12H5M11 18l-6-6 6-6"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </motion.button>
+        <motion.button
+          onClick={galleryNext}
+          whileTap={{ scale: 0.92 }}
+          transition={{ type: "spring", stiffness: 400, damping: 26 }}
+          aria-label="Next image"
+          className="flex size-9 items-center justify-center rounded-full bg-surface-overlay text-white transition-colors duration-300 hover:bg-surface-base hover:text-text-primary"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="size-3.5 rtl:-scale-x-100"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 12h14M13 18l6-6-6-6"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </motion.button>
+      </div>
+    </div>
   );
 }

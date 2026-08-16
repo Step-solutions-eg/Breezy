@@ -10,8 +10,8 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 const galleryImages = [
-  "/images/Facilities/Breakfast/breakfast.jpg",
-  "/images/SAC Main Photo.jpg",
+  "/images/Facilities/Breakfast/breakfast.webp",
+  "/images/SAC Main Photo.webp",
 ];
 
 const restaurantItems = [

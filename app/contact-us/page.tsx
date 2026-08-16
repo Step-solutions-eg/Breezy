@@ -128,7 +128,7 @@ export default function ContactUsPage() {
           ogTitle: "Book Your Stay at Breezy Island — Siwa Oasis, Egypt",
           ogDescription:
             "Tell us when you want to arrive, who is coming, and what kind of stay you imagine. We will reply with the next simple step.",
-          ogImage: "/images/5.jpeg",
+          ogImage: "/images/5.webp",
           ogType: "website",
           twitterCard: "summary_large_image",
           jsonLd: [
@@ -263,7 +263,7 @@ export default function ContactUsPage() {
                     <span className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-text-secondary">
                       Arrival
                     </span>
-                    <input className={fieldClass} type="text" name="arrival" placeholder="Preferred dates" value={formData.arrival} onChange={handleChange("arrival")} />
+                    <input className={fieldClass} type="date" name="arrival" placeholder="Preferred dates" value={formData.arrival} onChange={handleChange("arrival")} />
                   </label>
                   <label className="block">
                     <span className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-text-secondary">

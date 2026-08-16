@@ -37,7 +37,7 @@ export default function Home() {
           ogTitle: "Breezy Island — Luxury Resort in Siwa Oasis, Egypt",
           ogDescription:
             "A hidden sanctuary in the heart of Siwa Oasis, where desert silence meets unparalleled luxury.",
-          ogImage: "/images/3.jpeg",
+          ogImage: "/images/3.webp",
           ogType: "website",
           twitterCard: "summary_large_image",
           jsonLd: [

@@ -204,7 +204,7 @@ export default function ProcessCtaSection() {
           className="relative min-h-[280px] overflow-hidden rounded-[7px] sm:min-h-[500px] lg:min-h-[858px] will-change-transform"
         >
           <Image
-            src="/images/Facilities/Sunset/sunset-1.jpg"
+            src="/images/Facilities/Sunset/sunset-1.webp"
             alt="Warm luxury interior at Breezy Island Siwa Oasis retreat with desert view window"
             fill
             className="object-cover object-center"

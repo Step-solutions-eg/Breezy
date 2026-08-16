@@ -155,7 +155,7 @@ export default function AdventureClubPage() {
           ogTitle: "Siwa Travel Club & Desert Adventures — Breezy Island",
           ogDescription:
             "More than a travel experience — a gateway into the raw beauty, culture, and spirit of Siwa Oasis.",
-          ogImage: "/images/SAC Main Photo.jpg",
+          ogImage: "/images/SAC Main Photo.webp",
           ogType: "website",
           twitterCard: "summary_large_image",
           jsonLd: [
@@ -188,7 +188,7 @@ export default function AdventureClubPage() {
             className="absolute inset-0 will-change-transform"
           >
             <Image
-              src="/images/SAC Main Photo.jpg"
+              src="/images/SAC Main Photo.webp"
               alt="Siwa Oasis desert adventure landscape at Breezy Island travel club, Egypt"
               fill
               className="object-cover object-center"

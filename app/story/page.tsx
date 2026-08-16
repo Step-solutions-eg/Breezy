@@ -308,7 +308,7 @@ export default function StoryPage() {
           ogTitle: "Our Story — Breezy Island Siwa Oasis Retreat",
           ogDescription:
             "Born from the silence of Siwa — discover the journey behind the luxury desert retreat.",
-          ogImage: "/images/hero-interior-1.jpeg",
+          ogImage: "/images/hero-interior-1.webp",
           ogType: "website",
           twitterCard: "summary_large_image",
           jsonLd: [
@@ -474,7 +474,7 @@ export default function StoryPage() {
                 className="relative min-h-[400px] w-full overflow-hidden sm:min-h-[500px] lg:absolute lg:inset-y-0 lg:-left-[8%] lg:right-0 will-change-transform"
               >
                 <Image
-                  src="/images/hero-interior-1.jpeg"
+                  src="/images/hero-interior-1.webp"
                   alt="Siwa Oasis luxury retreat at Breezy Island — desert sanctuary in Egypt"
                   fill
                   className="object-cover"
@@ -495,7 +495,7 @@ export default function StoryPage() {
             <div className="grid gap-12 lg:grid-cols-[1fr_0.98fr] lg:gap-24">
               <div className="relative min-h-[400px] overflow-hidden rounded-[7px] sm:min-h-[600px] lg:min-h-[740px]">
                 <Image
-                  src="/images/7.jpeg"
+                  src="/images/7.webp"
                   alt="Siwa Oasis landscape at golden hour with palm groves and dunes — Breezy Island luxury resort, Egypt"
                   fill
                   className="object-cover object-center"
@@ -635,7 +635,7 @@ export default function StoryPage() {
                 </h2>
               </div>
 
-              <div data-timeline-list className="relative">
+              <div data-timeline-list className="relative overflow-x-hidden">
                 <div className="absolute left-[27px] inset-y-0 w-px bg-accent-secondary/15 lg:left-1/2 lg:-ml-px" />
 
                 {timeline.map((item, i) => {
@@ -802,7 +802,7 @@ export default function StoryPage() {
                 className="relative min-h-[320px] overflow-hidden rounded-[7px] sm:min-h-[500px] lg:min-h-[740px] will-change-transform"
               >
                 <Image
-                  src="/images/Owner/IMG-20260815-WA0167.jpg"
+                  src="/images/Owner/IMG-20260815-WA0167.webp"
                   alt="Mustafa Youssef Shali, founder of Breezy Island luxury resort in Siwa Oasis, Egypt"
                   fill
                   className="object-cover object-center"

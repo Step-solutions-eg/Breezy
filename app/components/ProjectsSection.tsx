@@ -19,8 +19,8 @@ const projects = [
     guests: 2,
     bathrooms: 1,
     size: "32",
-    image: "/images/Rooms/Standard/IMG-20260815-WA0111.jpg",
-    thumbnail: "/images/Rooms/Standard/IMG-20260815-WA0111.jpg",
+    image: "/images/Rooms/Standard/IMG-20260815-WA0111.webp",
+    thumbnail: "/images/Rooms/Standard/IMG-20260815-WA0111.webp",
   },
   {
     id: "02",
@@ -29,8 +29,8 @@ const projects = [
     guests: 2,
     bathrooms: 1,
     size: "32",
-    image: "/images/Rooms/Salty/IMG-20260815-WA0070.jpg",
-    thumbnail: "/images/Rooms/Salty/IMG-20260815-WA0070.jpg",
+    image: "/images/Rooms/Salty/IMG-20260815-WA0070.webp",
+    thumbnail: "/images/Rooms/Salty/IMG-20260815-WA0070.webp",
   },
   {
     id: "03",
@@ -39,8 +39,8 @@ const projects = [
     guests: 2,
     bathrooms: 1,
     size: "40",
-    image: "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0089.jpg",
-    thumbnail: "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0089.jpg",
+    image: "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0089.webp",
+    thumbnail: "/images/Rooms/Cedra and honeymoon/IMG-20260815-WA0089.webp",
   },
 ];
 

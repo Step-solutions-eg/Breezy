@@ -10,20 +10,20 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 const galleryImages = [
-  "/images/Facilities/Pool/pool.jpg",
-  "/images/Facilities/Pool/pool-1.jpg",
-  "/images/Facilities/Breakfast/breakfast.jpg",
-  "/images/Facilities/Boat and kaiak/boat.jpg",
-  "/images/Facilities/Boat and kaiak/kaiak.jpg",
-  "/images/Facilities/Sunset/sunset.jpg",
-  "/images/Facilities/Sunset/sunset-1.jpg",
+  "/images/Facilities/Pool/pool.webp",
+  "/images/Facilities/Pool/pool-1.webp",
+  "/images/Facilities/Breakfast/breakfast.webp",
+  "/images/Facilities/Boat and kaiak/boat.webp",
+  "/images/Facilities/Boat and kaiak/kaiak.webp",
+  "/images/Facilities/Sunset/sunset.webp",
+  "/images/Facilities/Sunset/sunset-1.webp",
 ];
 
 const services = [
   {
     number: "01",
     title: "Swimming Pool",
-    image: "/images/Facilities/Pool/pool.jpg",
+    image: "/images/Facilities/Pool/pool.webp",
   },
   { number: "02", title: "Restaurant 24/7" },
   { number: "03", title: "Café" },
@@ -31,7 +31,7 @@ const services = [
   {
     number: "05",
     title: "Breakfast",
-    image: "/images/Facilities/Breakfast/breakfast.jpg",
+    image: "/images/Facilities/Breakfast/breakfast.webp",
   },
   { number: "06", title: "Beach Volleyball" },
   { number: "07", title: "Room Service" },
@@ -47,7 +47,7 @@ const services = [
   {
     number: "14",
     title: "Water Sports — Kayak, Pedal Boats, Boat Trips & Car Lake",
-    image: "/images/Facilities/Boat and kaiak/boat.jpg",
+    image: "/images/Facilities/Boat and kaiak/boat.webp",
   },
   { number: "15", title: "Beach Buggy" },
   { number: "16", title: "Camels & Horses" },

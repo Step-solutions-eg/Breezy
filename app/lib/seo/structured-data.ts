@@ -14,7 +14,7 @@ export function hotelSchema(url: string) {
     telephone: "+20 1278792538",
     email: "breezyislandresort@gmail.com",
     priceRange: "$$$",
-    image: "https://breezyisland.com/images/3.jpeg",
+    image: "https://breezyisland.com/images/3.webp",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Siwa Oasis",
@@ -52,7 +52,7 @@ export function localBusinessSchema(url: string) {
     telephone: "+20 1278792538",
     email: "breezyislandresort@gmail.com",
     priceRange: "$$$",
-    image: "https://breezyisland.com/images/3.jpeg",
+    image: "https://breezyisland.com/images/3.webp",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Siwa Oasis",

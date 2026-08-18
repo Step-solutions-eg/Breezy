@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { LanguageProvider } from "./lib/language";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import { SITE_NAME, SITE_URL } from "./lib/site";
+
+const GA_ID = "G-SXCX9XSZWT";
 
 const cairo = Cairo({
   subsets: ["arabic"],
@@ -78,7 +81,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "",
+    google: "9fd5896b6f228633",
   },
   icons: {
     icon: [
@@ -116,6 +119,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={cairo.variable}>
       <body className="antialiased">
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

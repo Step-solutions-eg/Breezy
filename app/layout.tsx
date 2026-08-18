@@ -3,6 +3,7 @@ import { Cairo } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./lib/language";
 import WhatsAppFloat from "./components/WhatsAppFloat";
+import { SITE_NAME, SITE_URL } from "./lib/site";
 
 const cairo = Cairo({
   subsets: ["arabic"],
@@ -12,12 +13,13 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Breezy Island — Luxury Resort in Siwa Oasis, Egypt",
+    default: "Breezy Island — Luxury Desert Resort in Siwa Oasis, Egypt",
     template: "%s — Breezy Island Siwa Oasis",
   },
   description:
-    "Discover Breezy Island, a luxury desert retreat in the heart of Siwa Oasis, Egypt. Experience unparalleled tranquility, private villas, salt lake views, and timeless Egyptian hospitality. Book your Siwa escape today.",
+    "Book Breezy Island, a 5-star luxury desert resort in Siwa Oasis, Egypt. Private villas with salt lake views, salt pools, authentic Bedouin hospitality & unforgettable desert adventures.",
   keywords: [
     "Breezy Island",
     "Siwa Oasis",
@@ -31,24 +33,39 @@ export const metadata: Metadata = {
     "Siwa Oasis resort",
     "eco lodge Siwa",
     "best hotel in Siwa",
+    "Siwa salt lake",
     "فنادق سيوة",
     "منتجع سيوة",
     "واحة سيوة",
+    "حجز فندق سيوة",
   ],
   category: "travel",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Breezy Island — Luxury Resort in Siwa Oasis, Egypt",
+    title: "Breezy Island — Luxury Desert Resort in Siwa Oasis, Egypt",
     description:
-      "Discover Breezy Island, a luxury desert retreat in the heart of Siwa Oasis, Egypt.",
+      "Book Breezy Island, a 5-star luxury desert resort in Siwa Oasis, Egypt. Private villas with salt lake views, salt pools & authentic Bedouin hospitality.",
     type: "website",
     locale: "en_US",
-    siteName: "Breezy Island",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    images: [
+      {
+        url: "/images/SAC%20Main%20Photo.webp",
+        width: 1200,
+        height: 630,
+        alt: "Breezy Island luxury desert resort in Siwa Oasis, Egypt",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Breezy Island — Luxury Resort in Siwa Oasis, Egypt",
+    title: "Breezy Island — Luxury Desert Resort in Siwa Oasis, Egypt",
     description:
-      "Discover Breezy Island, a luxury desert retreat in the heart of Siwa Oasis, Egypt.",
+      "Book Breezy Island, a 5-star luxury desert resort in Siwa Oasis, Egypt. Private villas with salt lake views & authentic Bedouin hospitality.",
+    images: ["/images/SAC%20Main%20Photo.webp"],
   },
   robots: {
     index: true,
@@ -76,6 +93,21 @@ export const metadata: Metadata = {
   manifest: "/favicon/site.webmanifest",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Resort",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description:
+    "Luxury desert resort in Siwa Oasis, Egypt with private villas, salt lake views and authentic Bedouin hospitality.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Siwa Oasis",
+    addressCountry: "EG",
+  },
+  priceRange: "$$$",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -84,6 +116,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={cairo.variable}>
       <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <LanguageProvider>
           {children}
           <WhatsAppFloat />

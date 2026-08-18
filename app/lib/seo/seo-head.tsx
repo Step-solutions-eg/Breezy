@@ -16,7 +16,7 @@ export type SeoData = {
   jsonLd?: Record<string, unknown>[];
 };
 
-const BASE_URL = "https://breezyisland.com";
+const BASE_URL = "https://www.breezyhotel.online";
 
 function upsertTag(
   tagName: string,

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://breezyisland.com/sitemap.xml
+Sitemap: https://www.breezyhotel.online/sitemap.xml
